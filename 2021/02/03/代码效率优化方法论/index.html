@@ -372,7 +372,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <a title='代码效率优化方法论' href='/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720&margin=%5Bobject%20Object%5D&name=CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif&originHeight=720&originWidth=1280&size=9958377&status=done&style=none&width=1280'>
+        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720'>
       </a>
     
     
@@ -445,7 +445,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。<br>那么我们应该怎么取舍这两个标准呢？</p>
 <h2 id="提高代码效率的方法"><a href="#提高代码效率的方法" class="headerlink" title="提高代码效率的方法"></a>提高代码效率的方法</h2><p>我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？</p>
 <p>总的策略就是降低代码的时间复杂度和空间复杂度。</p>
-<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720&margin=%5Bobject%20Object%5D&name=CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif&originHeight=720&originWidth=1280&size=9958377&status=done&style=none&width=1280" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720&margin=%5Bobject%20Object%5D&name=CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif&originHeight=720&originWidth=1280&size=9958377&status=done&style=none&width=1280" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76&margin=%5Bobject%20Object%5D&name=image.png&originHeight=152&originWidth=142&size=26430&status=done&style=none&width=71" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76&margin=%5Bobject%20Object%5D&name=image.png&originHeight=152&originWidth=142&size=26430&status=done&style=none&width=71" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
+<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
 <ol>
 <li>暴力解法：在没有任何时间和空间的限制下，将目标达成</li>
 <li>剔除无效操作：将代码中没有必要的计算、无效的存储删除来优化时间和空间复杂度</li>
@@ -524,7 +524,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T17:53:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T19:53:25+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年2月3日</p>
