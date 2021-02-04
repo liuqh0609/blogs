@@ -16,10 +16,10 @@ jobs:
     - name: Checkout Repository master branch 
       uses: actions/checkout@master 
     # from: https://github.com/actions/setup-node 
-    - name: 设置 Node.js 版本为 12+
+    - name: 设置 Node.js 版本为 14+
       uses: actions/setup-node@master 
       with: 
-       node-version: "12" 
+       node-version: "14" 
     # from https://github.com/x-cold/yuque-hexo 
     - name: 安装Hexo的依赖并生成public文件夹
       env:
