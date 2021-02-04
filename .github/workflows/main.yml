@@ -1,0 +1,41 @@
+# workflow name 
+name: 部署Hexo至page 
+# 当有 push 到仓库和外部触发的时候就运行 
+on: [push, repository_dispatch] 
+# YUQUE_TOKEN 
+# Github_SSH_PRIVATE_KEY 
+jobs: 
+  deploy: 
+    name: 部署Hexo至page 
+    runs-on: ubuntu-latest
+    env: 
+      TZ: Asia/Shanghai
+    steps: 
+    # check it to your workflow can access it 
+    # from: https://github.com/actions/checkout 
+    - name: Checkout Repository master branch 
+      uses: actions/checkout@master 
+    # from: https://github.com/actions/setup-node 
+    - name: 设置 Node.js 版本为 12+
+      uses: actions/setup-node@master 
+      with: 
+       node-version: "12" 
+    # from https://github.com/x-cold/yuque-hexo 
+    - name: 安装Hexo的依赖并生成public文件夹
+      env:
+        YUQUE_TOKEN: ${{ secrets.YUQUE_TOKEN }} 
+      run: |
+          yarn add hexo-cli -g 
+          yarn add yuque-hexo -g 
+          yarn  
+          yarn start
+      # from https://github.com/peaceiris/actions-gh-pages 
+    - name: 部署至github-page 
+      uses: peaceiris/actions-gh-pages@v3
+      with: 
+        deploy_key: ${{ secrets.SSH_KEY }} 
+        personal_token: ${{ secrets.YUQUE_TOKEN }} 
+        external_repository: liuqh0609/blogs
+        publish_branch: gh_page 
+        publish_dir: ./public 
+        commit_message: 文章更新完成
