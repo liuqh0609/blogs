@@ -22,9 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>代码效率优化方法论 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>翻译记录 - 火热</title>
   
 
   
@@ -104,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +319,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -371,13 +369,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="article-meta" id="top">
     
     
-      <a title='代码效率优化方法论' href='/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720'>
-      </a>
-    
     
       <h1 class="title">
-        代码效率优化方法论
+        翻译记录
       </h1>
       <div class='new-meta-box'>
         
@@ -394,13 +388,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -408,7 +395,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年2月3日</p>
+    <p>2020年12月15日</p>
   </a>
 </div>
 
@@ -419,7 +406,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="代码效率优化方法论" data-path="/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
+      <div id="lc-pv" data-title="翻译记录" data-path="/blogs/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -437,60 +424,78 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="代码效率优化方法论"><a href="#代码效率优化方法论" class="headerlink" title="代码效率优化方法论"></a>代码效率优化方法论</h1><h2 id="如何衡量一段代码的优劣呢？"><a href="#如何衡量一段代码的优劣呢？" class="headerlink" title="如何衡量一段代码的优劣呢？"></a>如何衡量一段代码的优劣呢？</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
+  <h2 id="Selectors-Level-4"><a href="#Selectors-Level-4" class="headerlink" title="Selectors Level 4"></a>Selectors Level 4</h2><h3 id="Selector-syntax-选择器语法）"><a href="#Selector-syntax-选择器语法）" class="headerlink" title="Selector syntax(选择器语法）"></a>Selector syntax(选择器语法）</h3><p>一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过<strong>连接符（Combinators）</strong>分割开。并且在一个选择器中的最后一个简单选择器的末尾可以添加一个伪元素。</p>
+<p>简单选择器序列（sequences of simple selectors)：由一连串没有使用<strong>连接符（Combinators）</strong>分割开来的简单选择器组合而成。通常是由标签选择器（h1、div）和通用选择器（*）作为开头。在简单选择器序列中不允许其他的标签选择器或者是通用选择器。</p>
+<p>简单选择器（simple selectors）：</p>
+<ul>
+<li>标签选择器(h1)</li>
+<li>通用选择器(*)</li>
+<li>属性选择器（[])</li>
+<li>类选择器(.)</li>
+<li>id 选择器(#)</li>
+<li>伪类选择器（::)</li>
+</ul>
+<p>连接符（Combinators）：</p>
+<ul>
+<li>whitespace 空格</li>
+<li><blockquote>
+</blockquote>
+</li>
+<li>-</li>
+<li>~</li>
+</ul>
+<h2 id="Calculating-a-selector’s-specificity-计算选择器的优先级）"><a href="#Calculating-a-selector’s-specificity-计算选择器的优先级）" class="headerlink" title="Calculating a selector’s specificity(计算选择器的优先级）"></a>Calculating a selector’s specificity(计算选择器的优先级）</h2><p>为给定元素计算它的优先级，遵循以下原则：</p>
+<ul>
+<li>计算 ID 选择器的值 A</li>
+<li>计算类选择、属性选择器、伪类选择器的值 B</li>
+<li>计算标签选择器和伪元素选择器的值 C</li>
+<li>忽略通用选择器*</li>
+</ul>
 <ol>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
-</ol>
-<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。<br>那么我们应该怎么取舍这两个标准呢？</p>
-<h2 id="提高代码效率的方法"><a href="#提高代码效率的方法" class="headerlink" title="提高代码效率的方法"></a>提高代码效率的方法</h2><p>我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？</p>
-<p>总的策略就是降低代码的时间复杂度和空间复杂度。</p>
-<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
-<ol>
-<li>暴力解法：在没有任何时间和空间的限制下，将目标达成</li>
-<li>剔除无效操作：将代码中没有必要的计算、无效的存储删除来优化时间和空间复杂度</li>
-<li>时空转换：设计合理的数据结构，将时间向空间转换</li>
-</ol>
-<h2 id="增删查：数据的基本操作"><a href="#增删查：数据的基本操作" class="headerlink" title="增删查：数据的基本操作"></a>增删查：数据的基本操作</h2><p>一般一段算法的实现最常设计的三个操作就是：增、删、查。<br>而我们对一个算法的优化和实现只要围绕这三个为重心去思考展开即可：</p>
-<ol>
-<li>分析这段代码对数据进行了那些操作</li>
-<li>这些操作中有哪些操作是最消耗性能的，对时间复杂度的损耗是最高的？</li>
-<li>考虑有哪种数据结构可以帮助提高数据操作的使用效率。</li>
-</ol>
-<p>以上三点就是构成我们实现代码效率优化的方法论。</p>
-<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><ol>
-<li>按照元素索引查找<ul>
-<li>对于数组这些天生拥有索引的数据结构来说十分简单</li>
-<li>对于链表这种，通过指针进行连接的就需要知道前面一个元素</li>
-</ul>
+<li><p>:is()、:not()、:has(),这三个伪类选择器的计算值将被其中优先级最高的值所代替</p>
+<blockquote>
+<p>eg:<br>:is(#id) [1,0,0] 伪类的优先级值 B 被 id 的高优先值所代替</p>
+</blockquote>
 </li>
-<li>按照元素特征值查找<ul>
-<li>对于字典类型的数据来说，key 就相当是特征，value 就是值，查找起来非常方便</li>
-<li>对于数组和链表来说就需要循环对比每个元素来进行比较值的特征是否符合</li>
-</ul>
+<li><p>类似的, :nth-child()、：nth-last-child()的计算值是一个伪类的值加上参数的计算值之和。</p>
+<blockquote>
+<p>eg:<br>:nth-child(.item) [0,2,0] 伪类的值加上参数.item 的值</p>
+</blockquote>
+</li>
+<li><p>:where() 伪类的计算值为 0</p>
+<blockquote>
+<p>eg:<br>.item:where(em,#foo) [0,1,0] where 伪类的值为 0</p>
+</blockquote>
 </li>
 </ol>
-<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><ol>
-<li>在复杂数据结构的末尾添加数据<ul>
-<li>不会影响数据的原始位置</li>
+<p>【A，B，C】</p>
+<blockquote>
+<ul>
+<li>/_ a=0 b=0 c=0 <em>/<br>LI                                      /</em> a=0 b=0 c=1 <em>/<br>UL LI                                  /</em> a=0 b=0 c=2 _/</li>
 </ul>
-</li>
-<li>在复杂数据结构的中间添加数据<ul>
-<li>会影响到数据原始的位置</li>
-</ul>
-</li>
-</ol>
-<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><ol>
-<li>在复杂数据结构的末尾删除<ul>
-<li>不会影响到原先数据的位置</li>
-</ul>
-</li>
-<li>在复杂数据结构的中间位置进行删除<ul>
-<li>会影响到之前数据的原始位置</li>
-</ul>
-</li>
-</ol>
-
+</blockquote>
+<blockquote>
+<p>UL OL+LI                           /_ a=0 b=0 c=3 _/</p>
+</blockquote>
+<blockquote>
+<p>H1 + <em>[REL=up]                  /</em> a=0 b=1 c=1 */</p>
+</blockquote>
+<blockquote>
+<p>UL OL LI.red                      /_ a=0 b=1 c=3 _/</p>
+</blockquote>
+<blockquote>
+<p>LI.red.level                        /_ a=0 b=2 c=1 _/</p>
+</blockquote>
+<blockquote>
+<p>#x34y                               /_ a=1 b=0 c=0 _/</p>
+</blockquote>
+<blockquote>
+<p>#s12:not(FOO)                   /_ a=1 b=0 c=1 _/</p>
+</blockquote>
+<blockquote>
+<p>.foo :is(.bar, #baz)             /_ a=1 b=1 c=0 _/</p>
+</blockquote>
+<h2 id="Grammar"><a href="#Grammar" class="headerlink" title="Grammar"></a>Grammar</h2>
   
   
     
@@ -507,7 +512,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://liuqh0609.github.io/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/>https://liuqh0609.github.io/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/</a></p>
+                <p>本文永久链接：<a href=https://liuqh0609.github.io/blogs/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/>https://liuqh0609.github.io/blogs/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/</a></p>
               
             
           </blockquote>
@@ -524,10 +529,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T19:53:25+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T10:27:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月3日</p>
+    <p>2021年2月4日</p>
   </a>
 </div>
 
@@ -543,22 +548,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/blogs/2021/02/03/%E6%A0%88/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
-          <p class='content'>栈
-定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
-名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中...</p>
+        <a class='prev' href='/blogs/2020/12/20/yuque/Selector!%20%E9%80%89%E6%8B%A9%E5%99%A8/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Selector: 选择器</p>
+          <p class='content'>选择器简单选择器
+-
+div、svg、a
+.class
+#id
+[attr=value]
+:hover
+::before
+
+复合选择器
+&lt;简单选择器&gt;&lt;简单选择器&gt;&lt...</p>
         </a>
       
       
-        <a class='next' href='/blogs/2021/02/03/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-          <p class='title'>时间复杂度&空间复杂度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
+        <a class='next' href='/blogs/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/'>
+          <p class='title'>CSS结构<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。
+CSS2.1 语法
+css2.1Gra...</p>
         </a>
       
     </div>
@@ -601,7 +611,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A1%A1%E9%87%8F%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BC%98%E5%8A%A3%E5%91%A2%EF%BC%9F"><span class="toc-text">如何衡量一段代码的优劣呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">提高代码效率的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%9F%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">增删查：数据的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-text">查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0"><span class="toc-text">删</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Selectors-Level-4"><span class="toc-text">Selectors Level 4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Selector-syntax-%E9%80%89%E6%8B%A9%E5%99%A8%E8%AF%AD%E6%B3%95%EF%BC%89"><span class="toc-text">Selector syntax(选择器语法）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calculating-a-selector%E2%80%99s-specificity-%E8%AE%A1%E7%AE%97%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%EF%BC%89"><span class="toc-text">Calculating a selector’s specificity(计算选择器的优先级）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grammar"><span class="toc-text">Grammar</span></a></li></ol>
     </div>
   </section>
 
@@ -620,20 +630,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="代码效率优化方法论";
+  pdata.postTitle="翻译记录";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

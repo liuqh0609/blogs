@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -26,11 +22,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>火热</title>
+  <title>栈 - 火热</title>
   
 
-  
-    <meta name="description" content="你我山巅自相逢，予你与我遇清风">
   
 
   <!-- feed -->
@@ -108,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -325,7 +319,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -356,7 +350,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -367,584 +361,174 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/04/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
-        代码效率优化方法论
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        代码效率优化方法论如何衡量一段代码的优劣呢？一般我们会从两个维度去考虑一段代码的质量：
 
-时间复杂度
-空间复杂度
 
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。那么我们应该怎么取舍这两个标准呢？
-提高代码效率的方法我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？
-总的策略就是降低代码的时间复杂...
-      
+  
+  <div class="article-meta" id="top">
     
+    
+    
+      <h1 class="title">
+        栈
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/blogs/" rel="nofollow">
+    <img no-lazy src="http://qiniu.lqh.kim/avatar.jpeg">
+    <p>火热</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>2021年2月2日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="栈" data-path="/blogs/2021/02/02/yuque/%E6%A0%88/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一种<strong>后进先出</strong>的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="push：-入栈"><a href="#push：-入栈" class="headerlink" title="push： 入栈"></a>push： 入栈</h3><h3 id="pop：-出栈"><a href="#pop：-出栈" class="headerlink" title="pop： 出栈"></a>pop： 出栈</h3><h3 id="top：栈顶"><a href="#top：栈顶" class="headerlink" title="top：栈顶"></a>top：栈顶</h3><h2 id="JavaScript-中的栈"><a href="#JavaScript-中的栈" class="headerlink" title="JavaScript 中的栈"></a>JavaScript 中的栈</h2><p>在 js 中是没用栈这种数据结构的，不过我们可以利用<strong>数组</strong>来模拟。<br>而且在 js 中也是有对应的 <code>push</code>  和 <code>pop</code>  方法的:</p>
+<p>push: 向数组末尾添加一个元素，返回值是数组的长度<br>pop：移除数组的第一个元素，返回值是移除的元素</p>
+<h2 id="什么场景下用栈？"><a href="#什么场景下用栈？" class="headerlink" title="什么场景下用栈？"></a>什么场景下用栈？</h2><blockquote>
+<p>最直白的讲就是需要<strong>后进先出</strong>的场景</p>
+</blockquote>
+<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们计算十进制转二进制时，就是不断除以 2，然后取余数<br>然后将最后一位的余数与第一位的余数拼成二进制</p>
+<p>这样的后进先出的手法有没有想到栈！</p>
+<h3 id="判断字符串的括号是否有效"><a href="#判断字符串的括号是否有效" class="headerlink" title="判断字符串的括号是否有效"></a>判断字符串的括号是否有效</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们验证括号是否有效其实就是在验证是不是能够凑齐一对完整的闭合括号。</p>
+<p>而且我们可以发现一个规律，越靠左的左括号，它对应的右括号就越靠右。反之也就是最后面的左括号，对应的必定是出现的第一个右括号。</p>
+<p>所以我们就可以在遇到左括号时就入栈，遇到右括号时就与栈顶的括号就行配对比较，若果符合配对规则则出栈，否则就不符合规则直接判定无效。匹配到最后结如果栈内是空就证明可以完整闭合</p>
+<h3 id="函数调用栈等"><a href="#函数调用栈等" class="headerlink" title="函数调用栈等"></a>函数调用栈等</h3><p>这个可以看浏览器，js 的解释器就是通过调用栈的形式实现的<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<p>执行 fun1 时先将 fun1 入栈，然后调用 fun2，入栈；然后调用 fun3 入栈。</p>
+<p>fun3 执行完毕出栈<br>fun2 执行完毕出栈<br>fun1 执行完毕出栈<br>程序执行完毕</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/blogs/2021/02/04/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://liuqh0609.github.io/blogs/2021/02/02/yuque/%E6%A0%88/>https://liuqh0609.github.io/blogs/2021/02/02/yuque/%E6%A0%88/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T10:27:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年2月4日</p>
+  </a>
 </div>
 
-          </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+    </div>
+  </div>
+
+
   
   
+
   
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/04/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
-        时间复杂度&空间复杂度
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+    <div class="prev-next">
       
-        时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+        <a class='prev' href='/blogs/2021/02/02/demo/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>demo</p>
+          <p class='content'>这是一个测试的页面哈哈哈哈内容是没什么内容的哈
+测试用例1234const fn = () =&gt; &#123;  console.log(1);  arr.map((item) =&gt;...</p>
+        </a>
+      
+      
+        <a class='next' href='/blogs/2021/02/02/yuque/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
+          <p class='title'>时间复杂度&空间复杂度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
 
 时间复杂度
 空间复杂度
 
 顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。
-所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。
-那么我们应该怎么来定义复杂度呢？
-复杂度的定义与特点定义
-复杂度是一个关于输入量 n 的函数。eg：假设你的代码复...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/04/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-            阅读全文
-          </a>
-        </div>
+所以...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/04/%E6%A0%88/">
-        栈 - 基础知识
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        栈
-定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
-名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中是没用栈这种数据结构的，不过我们可以利用数组来模拟。而且在 js 中也是有对应的 push  和 pop  方法的:
-push: 向数组末尾添加一个元素，返回值是数组的长度pop：移除数组的第一个元素...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/04/%E6%A0%88/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/04/%E6%B5%8B%E8%AF%95/">
-        2021年2月4日
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        这是一个测试的页面哈哈哈哈内容是没什么内容的哈
-测试用例1234const fn = () =&gt; &#123;  console.log(1);  arr.map((item) =&gt; item.a === 1);&#125;;
-详情介绍其实没什么东西
-
-这个也是随便写的你随便看看哈
+  </article>
 
 
-11111
-22222
-
-二级目录三级牡蛎下面没东西
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-04</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/04/%E6%B5%8B%E8%AF%95/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/03/yuque/%E6%B5%8B%E8%AF%95%E4%BA%91%E5%87%BD%E6%95%B0%E6%98%AF%E5%90%A6%E4%BC%9A%E4%B8%BB%E5%8A%A8%E5%A4%84%E7%BD%9A/">
-        测试云函数是否会主动处罚
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        是数据库离得近发拉喀什死掉了副科级三方实际得分开大数据非空死掉了副科级三方
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/03/yuque/%E6%B5%8B%E8%AF%95%E4%BA%91%E5%87%BD%E6%95%B0%E6%98%AF%E5%90%A6%E4%BC%9A%E4%B8%BB%E5%8A%A8%E5%A4%84%E7%BD%9A/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/02/demo/">
-        demo
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        这是一个测试的页面哈哈哈哈内容是没什么内容的哈
-测试用例1234const fn = () =&gt; &#123;  console.log(1);  arr.map((item) =&gt; item.a === 1);&#125;;
-详情介绍其实没什么东西
-
-这个也是随便写的你随便看看哈
 
 
-11111
-22222
-
-二级目录三级牡蛎下面没东西
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/blogs/categories/%E6%B5%8B%E8%AF%95/">测试</a>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/02/demo/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/02/yuque/%E6%A0%88/">
-        栈
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
-名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中是没用栈这种数据结构的，不过我们可以利用数组来模拟。而且在 js 中也是有对应的 push  和 pop  方法的:
-push: 向数组末尾添加一个元素，返回值是数组的长度pop：移除数组的第一个元素，...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/02/yuque/%E6%A0%88/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/02/02/yuque/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
-        时间复杂度&空间复杂度
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。
-所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。
-那么我们应该怎么来定义复杂度呢？
-复杂度的定义与特点定义
-复杂度是一个关于输入量 n 的函数。eg：假设你的代码复杂度是 f(n),那么用大写字...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/02/02/yuque/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2021/01/26/yuque/%5B%E7%BA%A2%E5%AE%9D%E4%B9%A6%E8%B4%A8%E6%A3%80%E5%8E%82%5D%E7%9C%8B%E7%9C%8B%E8%AF%BB%E5%AE%8C%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%9A%84%E4%BD%A0%EF%BC%8C%E5%88%B0%E5%BA%95%E5%AD%A6%E5%BA%9F%E4%BA%86%E5%90%97%EF%BC%9F/">
-        [红宝书质检厂]看看读完红宝书的你，到底学废了吗？
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        对于技术类的书籍，我认为我们在阅读的时候应该是带着问题又目的性的阅读，当我们读完一个章节或者一部分之后就回头问问自己是否了解或者掌握了这其中的知识点，以问题的形式来回顾和检查自己的理解程度。
-本篇文章我就以这种角度来带大家检查一下自己阅读红宝书的质量到底如何
-第一章你眼里的 JavaScript 是什么？在前端的远古时代（95 年之前）为了验证一个输入字段是否有效，就需要与服务器进行一次往返...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2021/01/26/yuque/%5B%E7%BA%A2%E5%AE%9D%E4%B9%A6%E8%B4%A8%E6%A3%80%E5%8E%82%5D%E7%9C%8B%E7%9C%8B%E8%AF%BB%E5%AE%8C%E7%BA%A2%E5%AE%9D%E4%B9%A6%E7%9A%84%E4%BD%A0%EF%BC%8C%E5%88%B0%E5%BA%95%E5%AD%A6%E5%BA%9F%E4%BA%86%E5%90%97%EF%BC%9F/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/blogs/2020/12/30/yuque/%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96/">
-        标签语义化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2020-12-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/blogs/2020/12/30/yuque/%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 3
-        </p>
-        
-          <a class="next" rel="next" href="/blogs/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -954,113 +538,22 @@ push: 向数组末尾添加一个元素，返回值是数组的长度pop：移�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/blogs/about/'>
-          <img no-lazy src='https://qiniu.lqh.kim/avatar.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>火热</h2>
-        
-        
-          <p>时间会见证一切</p>
 
-        
-        
-          <p><span id="jinrishici-sentence">火热</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:528851597@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/liuqh0609/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
-            id="blogscategoriesE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
-            ><div class='name'>数据结构与算法</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/blogs/categories/%E6%B5%8B%E8%AF%95/" href="/blogs/categories/%E6%B5%8B%E8%AF%95/"
-            id="blogscategoriesE6B58BE8AF95"
-            ><div class='name'>测试</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-text">名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#push%EF%BC%9A-%E5%85%A5%E6%A0%88"><span class="toc-text">push： 入栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop%EF%BC%9A-%E5%87%BA%E6%A0%88"><span class="toc-text">pop： 出栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top%EF%BC%9A%E6%A0%88%E9%A1%B6"><span class="toc-text">top：栈顶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E6%A0%88"><span class="toc-text">JavaScript 中的栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E6%A0%88%EF%BC%9F"><span class="toc-text">什么场景下用栈？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88"><span class="toc-text">判断字符串的括号是否有效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E7%AD%89"><span class="toc-text">函数调用栈等</span></a></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/blogs/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 24px; color: #ff7875">数据结构与算法</a> <a href="/blogs/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 14px; color: #73d13d">测试</a>
-    </div>
-  </section>
-
-
-  
 
   
 
@@ -1075,21 +568,21 @@ push: 向数组末尾添加一个元素，返回值是数组的长度pop：移�
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="栈";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="full";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

@@ -22,9 +22,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>时间复杂度&amp;空间复杂度 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>动画与绘制 - 火热</title>
   
 
   
@@ -104,7 +102,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +319,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -371,13 +369,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="article-meta" id="top">
     
     
-      <a title='时间复杂度&空间复杂度' href='/blogs/2021/02/03/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99'>
-      </a>
-    
     
       <h1 class="title">
-        时间复杂度&空间复杂度
+        动画与绘制
       </h1>
       <div class='new-meta-box'>
         
@@ -394,13 +388,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/blogs/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -408,7 +395,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年2月3日</p>
+    <p>2020年12月27日</p>
   </a>
 </div>
 
@@ -419,7 +406,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="时间复杂度&空间复杂度" data-path="/blogs/2021/02/03/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+      <div id="lc-pv" data-title="动画与绘制" data-path="/blogs/2020/12/27/yuque/%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -437,44 +424,61 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="时间复杂度-amp-空间复杂度"><a href="#时间复杂度-amp-空间复杂度" class="headerlink" title="时间复杂度&amp;空间复杂度"></a>时间复杂度&amp;空间复杂度</h1><h2 id="复杂度的作用"><a href="#复杂度的作用" class="headerlink" title="复杂度的作用"></a>复杂度的作用</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
-<ol>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
-</ol>
-<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。</p>
-<p>所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。</p>
-<p>那么我们应该怎么来定义复杂度呢？<br><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="复杂度的定义与特点"><a href="#复杂度的定义与特点" class="headerlink" title="复杂度的定义与特点"></a>复杂度的定义与特点</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>复杂度是一个关于输入量 n 的函数。<br>eg：假设你的代码复杂度是 f(n),那么用大写字母 O 将其括起来就可以表示复杂度了 — O(f(n))</p>
-</blockquote>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h4 id="与常系数无关"><a href="#与常系数无关" class="headerlink" title="与常系数无关"></a>与常系数无关</h4><blockquote>
-<p>例如 O(n) + O(n) = O(2n), 其实 O(n)复杂度和 O(2n)复杂度是一样的，我们通常会忽略常系数对复杂度的影响</p>
-</blockquote>
-<h4 id="多项式级相加的复杂度，会取结果最大的那一个作为最后的结果"><a href="#多项式级相加的复杂度，会取结果最大的那一个作为最后的结果" class="headerlink" title="多项式级相加的复杂度，会取结果最大的那一个作为最后的结果"></a>多项式级相加的复杂度，会取结果最大的那一个作为最后的结果</h4><blockquote>
-<p>O(n^2) + O(n)，明显 n^2 在输入量 n 逐渐变大的情况下，变化会更大，所以我们就说复杂度是 O(n^2)即可</p>
-</blockquote>
-<h4 id="O-1-是一个特殊的复杂度：输入量-n-与消耗的资源无关"><a href="#O-1-是一个特殊的复杂度：输入量-n-与消耗的资源无关" class="headerlink" title="O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关"></a>O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关</h4><blockquote>
-<p>O（1）表示的是当前复杂度和输入 n 无关。例如你的代码处理 100 条数据是消耗 3 个时间单元和 1 个空间单元，处理 500 条数据依然还是消耗 3 个时间单元和 1 个空间单元，那么就是输入量与消耗资源无</p>
-</blockquote>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><h3 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
-<h3 id="O-n"><a href="#O-n" class="headerlink" title="O(n)"></a>O(n)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<blockquote>
-<p>单个变量所占的空间永远都是一个常量所以是 O(1)</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  arr.push(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<blockquote>
-<p>这段代码相当于我们给数组 arr 中添加了 n 个元素，所以占用了 n 个内存单元，因此空间复杂度为 O(n)</p>
-</blockquote>
-<h3 id="O-logn"><a href="#O-logn" class="headerlink" title="O(logn)"></a>O(logn)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= n) &#123;</span><br><span class="line">  i *= <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<blockquote>
-<p>这段代码相当于是在计算 2&lt;=n，也就是 x 次之后循环结束那么 x=logn</p>
-</blockquote>
+  <h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li>@keyframes 定义<ul>
+<li>可以使用百分比表示进度</li>
+<li>也可以使用 from、to</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> mykf&#123;</span><br><span class="line">	<span class="selector-tag">form</span>&#123;</span><br><span class="line">  	<span class="attribute">background</span>: red</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: blue</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>animation：使用</p>
+<ul>
+<li>animation-name     动画名称</li>
+<li>animation-duration     动画的时长</li>
+<li>animation-timing-function     动画的时间曲线<ul>
+<li>贝塞尔曲线：<a target="_blank" rel="noopener" href="https://cubic-bezier.com/#.17,.67,.83,.67">https://cubic-bezier.com/#.17,.67,.83,.67</a></li>
+<li>一次贝塞尔曲线（直线）</li>
+<li>二次贝塞尔曲线</li>
+<li>三次贝塞尔曲线（常用）</li>
+</ul>
+</li>
+<li>animation-delay     动画开始前的延迟</li>
+<li>animation-iteration-count     动画的播放次数</li>
+<li>animation-rirection     动画的方向</li>
+</ul>
+</li>
+<li><p>transition</p>
+<ul>
+<li>transition-property 需要变换的属性</li>
+<li>transition-duration 变换的时长</li>
+<li>transition-timing-function 时间曲线</li>
+<li>transition-delay 延迟</li>
+</ul>
+</li>
+</ul>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609074986965-f439f290-534a-4e1c-ab66-5c49265301b7.png#align=left&display=inline&height=298&margin=%5Bobject%20Object%5D&name=image.png&originHeight=596&originWidth=742&size=98359&status=done&style=none&width=371" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609074986965-f439f290-534a-4e1c-ab66-5c49265301b7.png#align=left&display=inline&height=298&margin=%5Bobject%20Object%5D&name=image.png&originHeight=596&originWidth=742&size=98359&status=done&style=none&width=371" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>在自然界中我们看到的光都是混色光，极少有纯色光（激光笔可以达到纯色光）<br>正常人类看到的光的波长在 400~760nm。</p>
+<p>人眼内有三种视锥细胞，这三种细胞分别用来识别三种颜色：红绿蓝（RGB）</p>
+<h3 id="HSL-和-HSV"><a href="#HSL-和-HSV" class="headerlink" title="HSL 和 HSV"></a>HSL 和 HSV</h3><ul>
+<li>Hue： 色相（将颜色分成一个色盘，然后我们通过制定一个色盘中的角度，来决定他的颜色）</li>
+<li>Ssturation：纯度</li>
+<li>Lightness： 亮度（到达 100 是白色，到达 0 是黑色，中间的才是纯色）</li>
+<li>Value：明度 （value 到达 100%时，就相当于是一个纯色）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609075457053-ef9ba5ca-8060-40bf-a17b-f4a2c5f4f7ce.png#align=left&display=inline&height=237&margin=%5Bobject%20Object%5D&name=image.png&originHeight=250&originWidth=640&size=189658&status=done&style=none&width=607" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609075457053-ef9ba5ca-8060-40bf-a17b-f4a2c5f4f7ce.png#align=left&display=inline&height=237&margin=%5Bobject%20Object%5D&name=image.png&originHeight=250&originWidth=640&size=189658&status=done&style=none&width=607" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>（HSL： W3C 采用的标准）</p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="几何图形"><a href="#几何图形" class="headerlink" title="几何图形"></a>几何图形</h3><ul>
+<li>border</li>
+<li>box-shadow</li>
+<li>border-radius</li>
+</ul>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><ul>
+<li>font</li>
+<li>text-decoration</li>
+</ul>
+<h3 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h3><ul>
+<li>background-image</li>
+</ul>
 
   
   
@@ -492,7 +496,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://liuqh0609.github.io/blogs/2021/02/03/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/>https://liuqh0609.github.io/blogs/2021/02/03/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</a></p>
+                <p>本文永久链接：<a href=https://liuqh0609.github.io/blogs/2020/12/27/yuque/%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/>https://liuqh0609.github.io/blogs/2020/12/27/yuque/%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/</a></p>
               
             
           </blockquote>
@@ -509,10 +513,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T17:54:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T10:27:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月3日</p>
+    <p>2021年2月4日</p>
   </a>
 </div>
 
@@ -528,21 +532,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/blogs/2021/02/03/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>代码效率优化方法论</p>
-          <p class='content'>代码效率优化方法论如何衡量一段代码的优劣呢？一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是...</p>
+        <a class='prev' href='/blogs/2020/12/30/yuque/%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>标签语义化</p>
+          <p class='content'></p>
         </a>
       
       
-        <a class='next' href='/blogs/2021/02/03/%E6%B5%8B%E8%AF%95/'>
-          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>这是一个测试的页面哈哈哈哈内容是没什么内容的哈
-测试用例1234const fn = () =&gt; &#123;  console.log(1);  arr.map((item) =&gt;...</p>
+        <a class='next' href='/blogs/2020/12/21/yuque/CSS%E6%8E%92%E7%89%88/'>
+          <p class='title'>CSS排版<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>盒（Box)
+HTML 代码中可以书写开始标签，结束标签，和自封闭标签一对起止标签，表示一个元素DOM 树中存储的是元素和其他类型的节点（Node)CSS 选择器选中的是元素CSS 选择器选中的...</p>
         </a>
       
     </div>
@@ -585,7 +584,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">复杂度的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-text">复杂度的定义与特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E5%B8%B8%E7%B3%BB%E6%95%B0%E6%97%A0%E5%85%B3"><span class="toc-text">与常系数无关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E7%9B%B8%E5%8A%A0%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BC%9A%E5%8F%96%E7%BB%93%E6%9E%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E9%82%A3%E4%B8%80%E4%B8%AA%E4%BD%9C%E4%B8%BA%E6%9C%80%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-text">多项式级相加的复杂度，会取结果最大的那一个作为最后的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1-%E6%98%AF%E4%B8%80%E4%B8%AA%E7%89%B9%E6%AE%8A%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A%E8%BE%93%E5%85%A5%E9%87%8F-n-%E4%B8%8E%E6%B6%88%E8%80%97%E7%9A%84%E8%B5%84%E6%BA%90%E6%97%A0%E5%85%B3"><span class="toc-text">O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#O-1"><span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-n"><span class="toc-text">O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-logn"><span class="toc-text">O(logn)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Animation"><span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2"><span class="toc-text">颜色</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HSL-%E5%92%8C-HSV"><span class="toc-text">HSL 和 HSV</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6"><span class="toc-text">绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2"><span class="toc-text">几何图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E5%AD%97"><span class="toc-text">文字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE"><span class="toc-text">位图</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -604,20 +603,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="时间复杂度&amp;空间复杂度";
+  pdata.postTitle="动画与绘制";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
