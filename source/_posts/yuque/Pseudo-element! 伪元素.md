@@ -1,3 +1,11 @@
+---
+title: 'Pseudo-element: 伪元素'
+urlname: sge22l
+date: '2020-12-20 19:07:45 +0800'
+tags: []
+categories: []
+---
+
 - ::before
 - ::after
 - ::first-line 选中第一行

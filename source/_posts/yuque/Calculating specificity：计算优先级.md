@@ -1,3 +1,11 @@
+---
+title: Calculating specificity：计算优先级
+urlname: xq2an5
+date: '2020-12-20 08:34:25 +0800'
+tags: []
+categories: []
+---
+
 ## 计算方法
 
 为给定元素计算它的优先级，遵循以下原则：

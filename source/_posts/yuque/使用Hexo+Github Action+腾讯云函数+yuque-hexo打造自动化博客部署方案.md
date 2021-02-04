@@ -1,9 +1,9 @@
 ---
-
-tags: [hexo, github]
-categories: [fe]
-cover: [https://cdn.nlark.com/yuque/0/2021/png/2705850/1612418500562-e844caa3-bb3e-4b5d-8b27-573fd7f1d7ab.png](https://cdn.nlark.com/yuque/0/2021/png/2705850/1612418500562-e844caa3-bb3e-4b5d-8b27-573fd7f1d7ab.png)
-
+title: 使用Hexo+Github Action+腾讯云函数+yuque-hexo打造自动化博客部署方案
+urlname: awnpev
+date: '2021-02-04 13:56:33 +0800'
+tags: []
+categories: []
 ---
 
 本文将会一步一步的带你打造一套自动化部署的博客系统。
