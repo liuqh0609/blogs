@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>所有标签 - 火热</title>
+  <title>火热</title>
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper tag search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -362,23 +362,157 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+  </div>
+
+
+  
+  
+  <p>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。<br>现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。</p>
+<h2 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.ayqy.net/doc/css2-1/grammar.html">css2.1Grammar 中文对照版</a></li>
+</ul>
+<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p>一个样式文件从上到下的顺序结构：</p>
+<ol>
+<li><p>@charset</p>
+<blockquote>
+<p><code>@charset &#39;UTF-8&#39;;</code> <br>声明 css 文件的字符编码标准。</p>
+<ul>
+<li>必须在样式表的第一行声明</li>
+<li>如果有多个@charset 声明，那么只有第一个会生效</li>
+<li>无法在 HTML 的 style 标签里使用该 at-rule 规则</li>
+</ul>
+<p>Tip:<br>在样式表中声明字符编码有很多种方式，浏览器会按照以下顺序去尝试确定文件的编码方式（只要找到一种就会停止并得出结果）：</p>
+<ol>
+<li>文件开头的  <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Byte_order_mark">Unicode byte-order</a>  字符值</li>
+<li>由 Content-type 确定：HTTP 协议中的  charset 属性给出的值或用于提供样式表的协议中的等效值</li>
+<li>CSS @rule 规则：@charset</li>
+<li>假设文档上是 UTF-8 的格式</li>
+</ol>
+</blockquote>
+</li>
+<li><p>@import</p>
+</li>
+<li><p>rules （这部分是我们日常最常用到的部分）</p>
+<ol>
+<li>@media</li>
+<li>@page</li>
+<li>rule</li>
+</ol>
+</li>
+</ol>
+<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: <span class="comment">/* value */</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
+<ol>
+<li>Selector（选择器）</li>
+<li>Declare（声明）<ol>
+<li>key</li>
+<li>value</li>
+</ol>
+</li>
+</ol>
+<h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      name: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      url: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+
+  
   
     
-      <div class='post-wrapper'>
-        <article id="tag" class="post article white-box reveal shadow">
-          <h2>所有标签</h2>
-          <div class="all-tags">
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
             
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">4</span></li></ul>
-          </div>
-          <br>
-          
-        </article>
-      </div>
-    
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/02/04/yuque/CSS%E7%BB%93%E6%9E%84/>https://blog.lqh.kim/2021/02/04/yuque/CSS%E7%BB%93%E6%9E%84/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
   
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T14:22:11+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年2月4日</p>
+  </a>
+</div>
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/04/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+          <p class='content'>本次升级之路分模块，逐个击破。
+反转链表
+题解
+这是个经典的链表问题，其实这个问题的关键就在于要提前保存下一个节点的值。
+
+
+因为你在让当前节点指向上一个节点的过程中，就会把当前节点的 next...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/04/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Selectors Level 4Selector syntax(选择器语法）一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过连接符（Combinators）分割开。并且在一个选择器...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -388,11 +522,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">CSS2.1 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">总体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E8%A7%84%E5%88%99%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 规则的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E5%8F%96-w3c-%E7%9A%84-css-%E8%A7%84%E5%88%99"><span class="toc-text">爬取 w3c 的 css 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-text">思维导图</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
 
 </aside>
+
 
 
 		  
@@ -408,14 +557,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

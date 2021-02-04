@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>所有标签 - 火热</title>
+  <title>火热</title>
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper tag search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -362,23 +362,162 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+  </div>
+
+
+  
+  
+  <h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><ul>
+<li>@keyframes 定义<ul>
+<li>可以使用百分比表示进度</li>
+<li>也可以使用 from、to</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> mykf&#123;</span><br><span class="line">	<span class="selector-tag">form</span>&#123;</span><br><span class="line">  	<span class="attribute">background</span>: red</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">to</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: blue</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>animation：使用</p>
+<ul>
+<li>animation-name     动画名称</li>
+<li>animation-duration     动画的时长</li>
+<li>animation-timing-function     动画的时间曲线<ul>
+<li>贝塞尔曲线：<a target="_blank" rel="noopener" href="https://cubic-bezier.com/#.17,.67,.83,.67">https://cubic-bezier.com/#.17,.67,.83,.67</a></li>
+<li>一次贝塞尔曲线（直线）</li>
+<li>二次贝塞尔曲线</li>
+<li>三次贝塞尔曲线（常用）</li>
+</ul>
+</li>
+<li>animation-delay     动画开始前的延迟</li>
+<li>animation-iteration-count     动画的播放次数</li>
+<li>animation-rirection     动画的方向</li>
+</ul>
+</li>
+<li><p>transition</p>
+<ul>
+<li>transition-property 需要变换的属性</li>
+<li>transition-duration 变换的时长</li>
+<li>transition-timing-function 时间曲线</li>
+<li>transition-delay 延迟</li>
+</ul>
+</li>
+</ul>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609074986965-f439f290-534a-4e1c-ab66-5c49265301b7.png#align=left&display=inline&height=298&margin=%5Bobject%20Object%5D&name=image.png&originHeight=596&originWidth=742&size=98359&status=done&style=none&width=371" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609074986965-f439f290-534a-4e1c-ab66-5c49265301b7.png#align=left&display=inline&height=298&margin=%5Bobject%20Object%5D&name=image.png&originHeight=596&originWidth=742&size=98359&status=done&style=none&width=371" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>在自然界中我们看到的光都是混色光，极少有纯色光（激光笔可以达到纯色光）<br>正常人类看到的光的波长在 400~760nm。</p>
+<p>人眼内有三种视锥细胞，这三种细胞分别用来识别三种颜色：红绿蓝（RGB）</p>
+<h3 id="HSL-和-HSV"><a href="#HSL-和-HSV" class="headerlink" title="HSL 和 HSV"></a>HSL 和 HSV</h3><ul>
+<li>Hue： 色相（将颜色分成一个色盘，然后我们通过制定一个色盘中的角度，来决定他的颜色）</li>
+<li>Ssturation：纯度</li>
+<li>Lightness： 亮度（到达 100 是白色，到达 0 是黑色，中间的才是纯色）</li>
+<li>Value：明度 （value 到达 100%时，就相当于是一个纯色）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609075457053-ef9ba5ca-8060-40bf-a17b-f4a2c5f4f7ce.png#align=left&display=inline&height=237&margin=%5Bobject%20Object%5D&name=image.png&originHeight=250&originWidth=640&size=189658&status=done&style=none&width=607" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1609075457053-ef9ba5ca-8060-40bf-a17b-f4a2c5f4f7ce.png#align=left&display=inline&height=237&margin=%5Bobject%20Object%5D&name=image.png&originHeight=250&originWidth=640&size=189658&status=done&style=none&width=607" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>（HSL： W3C 采用的标准）</p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="几何图形"><a href="#几何图形" class="headerlink" title="几何图形"></a>几何图形</h3><ul>
+<li>border</li>
+<li>box-shadow</li>
+<li>border-radius</li>
+</ul>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><ul>
+<li>font</li>
+<li>text-decoration</li>
+</ul>
+<h3 id="位图"><a href="#位图" class="headerlink" title="位图"></a>位图</h3><ul>
+<li>background-image</li>
+</ul>
+
+  
   
     
-      <div class='post-wrapper'>
-        <article id="tag" class="post article white-box reveal shadow">
-          <h2>所有标签</h2>
-          <div class="all-tags">
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
             
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">4</span></li></ul>
-          </div>
-          <br>
-          
-        </article>
-      </div>
-    
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/02/04/yuque/%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/>https://blog.lqh.kim/2021/02/04/yuque/%E5%8A%A8%E7%94%BB%E4%B8%8E%E7%BB%98%E5%88%B6/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
   
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T14:22:11+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年2月4日</p>
+  </a>
+</div>
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/04/yuque/CSS%E6%8E%92%E7%89%88/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+          <p class='content'>盒（Box)
+HTML 代码中可以书写开始标签，结束标签，和自封闭标签一对起止标签，表示一个元素DOM 树中存储的是元素和其他类型的节点（Node)CSS 选择器选中的是元素CSS 选择器选中的...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/04/yuque/%E6%A0%87%E7%AD%BE%E8%AF%AD%E4%B9%89%E5%8C%96/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'></p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -388,11 +527,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Animation"><span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2"><span class="toc-text">颜色</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HSL-%E5%92%8C-HSV"><span class="toc-text">HSL 和 HSV</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6"><span class="toc-text">绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%9B%BE%E5%BD%A2"><span class="toc-text">几何图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E5%AD%97"><span class="toc-text">文字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E5%9B%BE"><span class="toc-text">位图</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
   
 
 
 </aside>
+
 
 
 		  
@@ -408,14 +562,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

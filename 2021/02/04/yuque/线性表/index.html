@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>所有标签 - 火热</title>
+  <title>火热</title>
   
 
   
@@ -104,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper tag search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -362,23 +362,166 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+  </div>
+
+
+  
+  
+  <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>线性表是 n 个元素的<strong>有限</strong>序列，最常用的是<strong>链式表达式，</strong>通常也叫作<strong>线性链表</strong>或者<strong>链表。</strong><br>**<br>在链表中存储的数据元素也叫作*<em>节点，\</em>*一个节点存储的就是一条数据记录。<br>每个节点的结构包括两个部分：</p>
+<ol>
+<li>具体的数据值</li>
+<li>指向下一个节点的指针</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607567010381-356ba543-6cba-4ef6-91ab-f86c874b14e8.png#align=left&display=inline&height=95&margin=%5Bobject%20Object%5D&name=image.png&originHeight=95&originWidth=159&size=910&status=done&style=none&width=159" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607567010381-356ba543-6cba-4ef6-91ab-f86c874b14e8.png#align=left&display=inline&height=95&margin=%5Bobject%20Object%5D&name=image.png&originHeight=95&originWidth=159&size=910&status=done&style=none&width=159" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>在链表的最前面通常有一个<strong>头指针</strong>用来指向第一个节点。<br>对于链表的最后一个节点，由于在他之后没有下一个节点，因此它的指针是一个<strong>空指针。</strong><br>**</p>
+<h3 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607566998007-7eb2e286-606b-4997-aed6-2e7934b20015.png#align=left&display=inline&height=106&margin=%5Bobject%20Object%5D&name=image.png&originHeight=131&originWidth=721&size=5098&status=done&style=none&width=584" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607566998007-7eb2e286-606b-4997-aed6-2e7934b20015.png#align=left&display=inline&height=106&margin=%5Bobject%20Object%5D&name=image.png&originHeight=131&originWidth=721&size=5098&status=done&style=none&width=584" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<blockquote>
+<p>如上图所示：只能通过上一个节点的指针找到下一个节点，而不能通过下一个节点去找到上一个节点</p>
+</blockquote>
+<h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607568508498-ae10d7f7-ae94-4fca-94c4-0e91af21feeb.png#align=left&display=inline&height=107&margin=%5Bobject%20Object%5D&name=image.png&originHeight=124&originWidth=666&size=5026&status=done&style=none&width=573" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607568508498-ae10d7f7-ae94-4fca-94c4-0e91af21feeb.png#align=left&display=inline&height=107&margin=%5Bobject%20Object%5D&name=image.png&originHeight=124&originWidth=666&size=5026&status=done&style=none&width=573" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<blockquote>
+<p>让最后一个元素的指针指向第一个元素，就形成了循环链表</p>
+</blockquote>
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607568635088-458b72fc-2265-4c16-ac27-766a45c35168.png#align=left&display=inline&height=94&margin=%5Bobject%20Object%5D&name=image.png&originHeight=111&originWidth=691&size=4776&status=done&style=none&width=584" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607568635088-458b72fc-2265-4c16-ac27-766a45c35168.png#align=left&display=inline&height=94&margin=%5Bobject%20Object%5D&name=image.png&originHeight=111&originWidth=691&size=4776&status=done&style=none&width=584" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<blockquote>
+<p>给每个元素增加一个指向上一个元素的指针就形成了双向链表<br>双向链表可以通过自身查找到上一个元素，也可以查找到下一个元素</p>
+</blockquote>
+<h3 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h3><blockquote>
+<p>同样的还可以将双向链表和循环链表相结合，形成双向循环链表</p>
+</blockquote>
+<h2 id="单向链表的增删查"><a href="#单向链表的增删查" class="headerlink" title="单向链表的增删查"></a>单向链表的增删查</h2><h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>当我们想要在一个链表<strong>A</strong>节点和<strong>B</strong>节点的中间增加节点<strong>C</strong>时，需要进行以下两步：</p>
+<ol>
+<li>使 C 节点的 net 等于 A 节点的 next</li>
+<li>改变 A 节点的 next 等于 C 节点<blockquote>
+<p>第一步和第二步的顺序不能调换，如果先执行第一步的话，那么就没办法获取到指向 B 节点的指针了，除非是新建一个变量提前缓存该指针</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607571219091-ccbdcb0d-d048-463b-8b86-9aca0faad5ac.png#align=left&display=inline&height=175&margin=%5Bobject%20Object%5D&name=image.png&originHeight=202&originWidth=692&size=7827&status=done&style=none&width=601" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1607571219091-ccbdcb0d-d048-463b-8b86-9aca0faad5ac.png#align=left&display=inline&height=175&margin=%5Bobject%20Object%5D&name=image.png&originHeight=202&originWidth=692&size=7827&status=done&style=none&width=601" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C.next = A.next;</span><br><span class="line">A.next = C;</span><br></pre></td></tr></table></figure>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><p>当我们想要在一个链表中删除<strong>B</strong>节点时，需要进行以下一步：</p>
+<ol>
+<li>使 A 的 next 等于 B 的 next<blockquote>
+<p>这里需要注意，A.next = B， 所以我们在处理这一步的时候，完全可以写成 <code>A.next = A.next.next</code> ;</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.next = A.next.next;</span><br></pre></td></tr></table></figure>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><p>链表这种数据结构对于查找操作来说是<strong>弱项。</strong><br>因为链表的查找只能从第一个节点开始，逐个查找。</p>
+<p>通过上面的增删查操作我们可以明显感知到，链表这种数据结构在<strong>增、删</strong>的操作上是比较方便的，可以在<strong>O(1)的时间复杂度</strong>内完成，但是<strong>查</strong>的话就是<strong>O(n)的时间复杂度</strong>了。<br>但是链表在增删上的优势并不明显，因为我们在增删的时候往往会伴随着查找的动作，比如我们在第五个节点后面添加一个新的节点，就会有这样的过程：</p>
+<ol>
+<li>查找到链表中的第 5 个节点</li>
+<li>在他后面新增节点</li>
+</ol>
+<p>那这么说链表就没什么用了吗？</p>
+<p>当然不是，链表的真正价值在于它存储的数据方式是按照顺序进行关联存储的，如果对于元素个数不确定，并且经常进行增删的数据来说，链表是比较合适的</p>
+<blockquote>
+<p>链表在内存中可以存储在不连续的内存空间内<br>因为链表的顺序关联是通过指针进行关联的<br>所以对于不确定元素个数的数据来说，存储在内存空间中的各个位置，然后通过 next 指针关联是较好的</p>
+</blockquote>
+<p>对于元素个数确定的数据，那么数组就是比较好的选择了</p>
+<blockquote>
+<p>数组在内存中开辟的是一块固定的连续内存空间</p>
+</blockquote>
+
+  
   
     
-      <div class='post-wrapper'>
-        <article id="tag" class="post article white-box reveal shadow">
-          <h2>所有标签</h2>
-          <div class="all-tags">
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
             
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a><span class="tag-list-count">4</span></li></ul>
-          </div>
-          <br>
-          
-        </article>
-      </div>
-    
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/02/04/yuque/%E7%BA%BF%E6%80%A7%E8%A1%A8/>https://blog.lqh.kim/2021/02/04/yuque/%E7%BA%BF%E6%80%A7%E8%A1%A8/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
   
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-04T14:22:11+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年2月4日</p>
+  </a>
+</div>
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/04/yuque/useCallback/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i></p>
+          <p class='content'></p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/04/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
+          <p class='title'><i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>本次升级之路分模块，逐个击破。
+反转链表
+题解
+这是个经典的链表问题，其实这个问题的关键就在于要提前保存下一个节点的值。
+
+
+因为你在让当前节点指向上一个节点的过程中，就会把当前节点的 next...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -388,11 +531,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-text">单向链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">循环链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-text">双向链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-text">双向循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%9F%A5"><span class="toc-text">单向链表的增删查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0"><span class="toc-text">删</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-text">查</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
   
 
 
 </aside>
+
 
 
 		  
@@ -408,14 +566,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
