@@ -105,5 +105,5 @@ theme: volantis
 deploy:
   type: 'git'
   repo: 'https://github.com/liuqh0609/blogs.git'
-  branch: 'gh_page'
+  branch: 'gh-page'
   message: 'feat: 完成文章发布'
