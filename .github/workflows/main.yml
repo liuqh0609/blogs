@@ -36,6 +36,7 @@ jobs:
         deploy_key: ${{ secrets.SSH_KEY }} 
         personal_token: ${{ secrets.YUQUE_TOKEN }} 
         external_repository: liuqh0609/blogs
+        cname: blog.lqh.kim
         publish_branch: gh-page 
         publish_dir: ./public 
         commit_message: 文章更新完成
