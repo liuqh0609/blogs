@@ -1,16 +1,9 @@
 {
   "name": "hexo-site",
   "yuqueConfig": {
-    "postPath": "source/_posts/yuque",
-    "cachePath": "yuque.json",
-    "mdNameFormat": "title",
-    "adapter": "hexo",
-    "concurrency": 5,
     "baseUrl": "https://www.yuque.com/api/v2",
     "login": "callmew",
-    "repo": "blog",
-    "onlyPublished": true,
-    "onlyPublic": true
+    "repo": "blog"
   },
   "version": "0.0.0",
   "private": true,
