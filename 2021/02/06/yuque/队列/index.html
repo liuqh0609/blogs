@@ -433,6 +433,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>两个数组两两对应</li>
 </ol>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> RecentCounter = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 创建缓存队列</span></span><br><span class="line">  <span class="built_in">this</span>.q = [];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;number&#125;</span> <span class="variable">t</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;number&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">RecentCounter.prototype.ping = <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将传入的每一个参数入队</span></span><br><span class="line">  <span class="built_in">this</span>.q.push(t);</span><br><span class="line">  <span class="comment">// 判断队列的首元素是否在当前参数的值到3000之间[t-3000,t]</span></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">this</span>.q[<span class="number">0</span>] &lt; t - <span class="number">3000</span>) &#123;</span><br><span class="line">    <span class="comment">// 不在就剔除队列中</span></span><br><span class="line">    <span class="built_in">this</span>.q.shift();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回队列的长度</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.q.length;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your RecentCounter object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * var obj = new RecentCounter()</span></span><br><span class="line"><span class="comment"> * var param_1 = obj.ping(t)</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+
   
   
     
@@ -466,10 +468,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-06T14:46:59+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T15:12:34+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月6日</p>
+    <p>2021年2月8日</p>
   </a>
 </div>
 
@@ -485,7 +487,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/02/06/%E6%B5%8B%E8%AF%95/'>
+        <a class='prev' href='/2021/02/08/%E6%B5%8B%E8%AF%95/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
           <p class='content'>测试首页图片是否能正常显示以及文章描述
 </p>
