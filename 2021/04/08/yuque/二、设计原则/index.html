@@ -24,9 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>栈 - 基础知识 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>二、设计原则 - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -375,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        栈 - 基础知识
+        二、设计原则
       </h1>
       <div class='new-meta-box'>
         
@@ -392,13 +390,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -417,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="栈 - 基础知识" data-path="/2021/04/08/%E6%A0%88/">
+      <div id="lc-pv" data-title="二、设计原则" data-path="/2021/04/08/yuque/%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -435,21 +426,79 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一种<strong>后进先出</strong>的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="push：-入栈"><a href="#push：-入栈" class="headerlink" title="push： 入栈"></a>push： 入栈</h3><h3 id="pop：-出栈"><a href="#pop：-出栈" class="headerlink" title="pop： 出栈"></a>pop： 出栈</h3><h3 id="top：栈顶"><a href="#top：栈顶" class="headerlink" title="top：栈顶"></a>top：栈顶</h3><h2 id="JavaScript-中的栈"><a href="#JavaScript-中的栈" class="headerlink" title="JavaScript 中的栈"></a>JavaScript 中的栈</h2><p>在 js 中是没用栈这种数据结构的，不过我们可以利用<strong>数组</strong>来模拟。<br>而且在 js 中也是有对应的 <code>push</code>  和 <code>pop</code>  方法的:</p>
-<p>push: 向数组末尾添加一个元素，返回值是数组的长度<br>pop：移除数组的第一个元素，返回值是移除的元素</p>
-<h2 id="什么场景下用栈？"><a href="#什么场景下用栈？" class="headerlink" title="什么场景下用栈？"></a>什么场景下用栈？</h2><blockquote>
-<p>最直白的讲就是需要<strong>后进先出</strong>的场景</p>
-</blockquote>
-<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们计算十进制转二进制时，就是不断除以 2，然后取余数<br>然后将最后一位的余数与第一位的余数拼成二进制</p>
-<p>这样的后进先出的手法有没有想到栈！</p>
-<h3 id="判断字符串的括号是否有效"><a href="#判断字符串的括号是否有效" class="headerlink" title="判断字符串的括号是否有效"></a>判断字符串的括号是否有效</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们验证括号是否有效其实就是在验证是不是能够凑齐一对完整的闭合括号。</p>
-<p>而且我们可以发现一个规律，越靠左的左括号，它对应的右括号就越靠右。反之也就是最后面的左括号，对应的必定是出现的第一个右括号。</p>
-<p>所以我们就可以在遇到左括号时就入栈，遇到右括号时就与栈顶的括号就行配对比较，若果符合配对规则则出栈，否则就不符合规则直接判定无效。匹配到最后结如果栈内是空就证明可以完整闭合</p>
-<h3 id="函数调用栈等"><a href="#函数调用栈等" class="headerlink" title="函数调用栈等"></a>函数调用栈等</h3><p>这个可以看浏览器，js 的解释器就是通过调用栈的形式实现的<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<p>执行 fun1 时先将 fun1 入栈，然后调用 fun2，入栈；然后调用 fun3 入栈。</p>
-<p>fun3 执行完毕出栈<br>fun2 执行完毕出栈<br>fun1 执行完毕出栈<br>程序执行完毕</p>
+  <h2 id="何为设计？"><a href="#何为设计？" class="headerlink" title="何为设计？"></a>何为设计？</h2><ul>
+<li>即按照哪一种思路或者标准来实现功能</li>
+<li>功能相同，可以有不同的设计方案来实现</li>
+<li>伴随着需求增加，设计的作用才能体现出来</li>
+</ul>
+<p><strong>《UNIX/LINUX 设计哲学》一书中提出了几个设计的准则：</strong></p>
+<ol>
+<li>准则 1： 小即是美</li>
+<li>准则 2： 让每个程序只做好一件事</li>
+<li>准则 3： 快速建立原型</li>
+<li>准则 4： 舍弃高效率而取可移植性</li>
+<li>准则 5： 采用纯文本来存储数据（可读性）</li>
+<li>准则 6： 充分利用软件的杠杆效应（复用性）</li>
+<li>准则 7： 使用 shell 脚本来提高杠杆效应和可移植性</li>
+<li>准则 8： 避免强制性的用户界面</li>
+<li>准则 9： 让每个程序都成为过滤器</li>
+</ol>
+<p>几个小准则：</p>
+<ol>
+<li>允许用户定制环境</li>
+<li>尽量使操作系统内核小而轻量化</li>
+<li>使用小写字母和简写</li>
+<li>沉默是金</li>
+<li>各部分之和大于整体</li>
+<li>寻求 90%的解决方案（100 个人里只需要满足 90 个用户的需求 - 28 准则）</li>
+</ol>
+<h2 id="S-O-L-I-D-五大设计原则"><a href="#S-O-L-I-D-五大设计原则" class="headerlink" title="S O L I D 五大设计原则**"></a>S O L I D 五大设计原则**</h2><table>
+<thead>
+<tr>
+<th>S</th>
+<th>单一职责</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O</td>
+<td>开放封闭（对扩展开放，对修改封闭）</td>
+</tr>
+<tr>
+<td>L</td>
+<td>李氏置换</td>
+</tr>
+<tr>
+<td>I</td>
+<td>接口独立</td>
+</tr>
+<tr>
+<td>D</td>
+<td>依赖导致</td>
+</tr>
+</tbody></table>
+<h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><ul>
+<li>一个函数只负责一件事</li>
+<li>专职专用</li>
+</ul>
+<h3 id="开放封闭"><a href="#开放封闭" class="headerlink" title="开放封闭"></a>开放封闭</h3><ul>
+<li>对扩展开放，对修改封闭</li>
+<li>增加需求时，应该是增加代码，而不是去修改已有的代码</li>
+</ul>
+<h3 id="李氏置换"><a href="#李氏置换" class="headerlink" title="李氏置换"></a>李氏置换</h3><ul>
+<li>子类能覆盖父类</li>
+<li>父类能出现的地方子类就能出现</li>
+<li>JS 中使用较少（弱类型 &amp; 继承使用较少）</li>
+</ul>
+<h3 id="接口独立"><a href="#接口独立" class="headerlink" title="接口独立"></a>接口独立</h3><ul>
+<li>保持接口的单一独立，避免出现“胖接口”</li>
+<li>JS 中是没有接口接口的，使用较少</li>
+<li>类似于单一职责，但是更关注接口</li>
+</ul>
+<h3 id="依赖倒置"><a href="#依赖倒置" class="headerlink" title="依赖倒置"></a>依赖倒置</h3><ul>
+<li>面向接口编程，只关注接口而不关注具体类的实现</li>
+<li>JS 中使用较少</li>
+</ul>
+<h2 id="23-种设计模式"><a href="#23-种设计模式" class="headerlink" title="23 种设计模式"></a>23 种设计模式</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/jpeg/2705850/1617863510719-18264df3-e47b-425b-a5c5-e9b7a2f01697.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/jpeg/2705850/1617863510719-18264df3-e47b-425b-a5c5-e9b7a2f01697.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
   
   
@@ -467,7 +516,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/04/08/%E6%A0%88/>https://blog.lqh.kim/2021/04/08/%E6%A0%88/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/04/08/yuque/%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/>https://blog.lqh.kim/2021/04/08/yuque/%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</a></p>
               
             
           </blockquote>
@@ -484,7 +533,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T15:21:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T15:21:32+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年4月8日</p>
@@ -503,21 +552,27 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/04/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>时间复杂度&空间复杂度</p>
-          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
+        <a class='prev' href='/2021/04/08/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
       
-        <a class='next' href='/2021/04/08/%E6%B5%8B%E8%AF%95/'>
-          <p class='title'>栈 - 基础知识<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>测试首页图片是否能正常显示以及文章描述
-</p>
+        <a class='next' href='/2021/04/08/yuque/%E4%B8%80%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/'>
+          <p class='title'>一、面向对象<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>什么是面向对象？概念：
+
+类： 抽象出来的一个具有一些通用特征的模板
+实例： 通过类构造出来的的具体对象
+
+三要素：
+
+继承：子类继承父类
+封装：数据的权限和保密
+多态：统一接口的不同实现
+
+继...</p>
         </a>
       
     </div>
@@ -560,7 +615,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-text">名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#push%EF%BC%9A-%E5%85%A5%E6%A0%88"><span class="toc-text">push： 入栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop%EF%BC%9A-%E5%87%BA%E6%A0%88"><span class="toc-text">pop： 出栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top%EF%BC%9A%E6%A0%88%E9%A1%B6"><span class="toc-text">top：栈顶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E6%A0%88"><span class="toc-text">JavaScript 中的栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E6%A0%88%EF%BC%9F"><span class="toc-text">什么场景下用栈？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88"><span class="toc-text">判断字符串的括号是否有效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E7%AD%89"><span class="toc-text">函数调用栈等</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E4%B8%BA%E8%AE%BE%E8%AE%A1%EF%BC%9F"><span class="toc-text">何为设计？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#S-O-L-I-D-%E4%BA%94%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">S O L I D 五大设计原则**</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%B0%81%E9%97%AD"><span class="toc-text">开放封闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%8E%E6%B0%8F%E7%BD%AE%E6%8D%A2"><span class="toc-text">李氏置换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%8B%AC%E7%AB%8B"><span class="toc-text">接口独立</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE"><span class="toc-text">依赖倒置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">23 种设计模式</span></a></li></ol>
     </div>
   </section>
 
@@ -579,20 +634,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="栈 - 基础知识";
+  pdata.postTitle="二、设计原则";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
