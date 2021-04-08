@@ -448,18 +448,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
 <h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><h3 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
 <p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
 <h3 id="O-n"><a href="#O-n" class="headerlink" title="O(n)"></a>O(n)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <blockquote>
 <p>单个变量所占的空间永远都是一个常量所以是 O(1)</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  arr.push(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
 <blockquote>
 <p>这段代码相当于我们给数组 arr 中添加了 n 个元素，所以占用了 n 个内存单元，因此空间复杂度为 O(n)</p>
 </blockquote>
 <h3 id="O-logn"><a href="#O-logn" class="headerlink" title="O(logn)"></a>O(logn)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= n) &#123;</span><br><span class="line">  i *= <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <blockquote>
 <p>这段代码相当于是在计算 2&lt;=n，也就是 x 次之后循环结束那么 x=logn</p>
@@ -498,10 +502,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T15:12:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T11:15:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月8日</p>
+    <p>2021年4月8日</p>
   </a>
 </div>
 

@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <!-- 绕过语雀防盗链 -->
@@ -24,9 +26,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>代码效率优化方法论 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>归档：2021/4 - 火热</title>
   
 
   
@@ -323,7 +323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="half" class='cover-wrapper  search' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -365,218 +365,290 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+	
+		
+  <section class="post-list">
+    
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
   
-
-
   
-  <div class="article-meta" id="top">
+  
+  
     
-    
-      <a title='代码效率优化方法论' href='/2021/02/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720'>
-      </a>
-    
-    
-      <h1 class="title">
+    <h2 class="article-title" >
+      <a href="/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
         代码效率优化方法论
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' href="/blogs/" rel="nofollow">
-    <img no-lazy src="http://qiniu.lqh.kim/avatar.jpeg">
-    <p>火热</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年2月8日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
-      
-      <div id="lc-pv" data-title="代码效率优化方法论" data-path="/2021/02/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
-          
-        
-      </div>
+      </a>
+    </h2>
+  
+  <div class='md'>
     
-  </div>
-
-
-  
-  
-  <h1 id="代码效率优化方法论"><a href="#代码效率优化方法论" class="headerlink" title="代码效率优化方法论"></a>代码效率优化方法论</h1><h2 id="如何衡量一段代码的优劣呢？"><a href="#如何衡量一段代码的优劣呢？" class="headerlink" title="如何衡量一段代码的优劣呢？"></a>如何衡量一段代码的优劣呢？</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
-<ol>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
-</ol>
-<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。<br>那么我们应该怎么取舍这两个标准呢？</p>
-<h2 id="提高代码效率的方法"><a href="#提高代码效率的方法" class="headerlink" title="提高代码效率的方法"></a>提高代码效率的方法</h2><p>我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？</p>
-<p>总的策略就是降低代码的时间复杂度和空间复杂度。</p>
-<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
-<ol>
-<li>暴力解法：在没有任何时间和空间的限制下，将目标达成</li>
-<li>剔除无效操作：将代码中没有必要的计算、无效的存储删除来优化时间和空间复杂度</li>
-<li>时空转换：设计合理的数据结构，将时间向空间转换</li>
-</ol>
-<h2 id="增删查：数据的基本操作"><a href="#增删查：数据的基本操作" class="headerlink" title="增删查：数据的基本操作"></a>增删查：数据的基本操作</h2><p>一般一段算法的实现最常设计的三个操作就是：增、删、查。<br>而我们对一个算法的优化和实现只要围绕这三个为重心去思考展开即可：</p>
-<ol>
-<li>分析这段代码对数据进行了那些操作</li>
-<li>这些操作中有哪些操作是最消耗性能的，对时间复杂度的损耗是最高的？</li>
-<li>考虑有哪种数据结构可以帮助提高数据操作的使用效率。</li>
-</ol>
-<p>以上三点就是构成我们实现代码效率优化的方法论。</p>
-<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><ol>
-<li>按照元素索引查找<ul>
-<li>对于数组这些天生拥有索引的数据结构来说十分简单</li>
-<li>对于链表这种，通过指针进行连接的就需要知道前面一个元素</li>
-</ul>
-</li>
-<li>按照元素特征值查找<ul>
-<li>对于字典类型的数据来说，key 就相当是特征，value 就是值，查找起来非常方便</li>
-<li>对于数组和链表来说就需要循环对比每个元素来进行比较值的特征是否符合</li>
-</ul>
-</li>
-</ol>
-<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><ol>
-<li>在复杂数据结构的末尾添加数据<ul>
-<li>不会影响数据的原始位置</li>
-</ul>
-</li>
-<li>在复杂数据结构的中间添加数据<ul>
-<li>会影响到数据原始的位置</li>
-</ul>
-</li>
-</ol>
-<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><ol>
-<li>在复杂数据结构的末尾删除<ul>
-<li>不会影响到原先数据的位置</li>
-</ul>
-</li>
-<li>在复杂数据结构的中间位置进行删除<ul>
-<li>会影响到之前数据的原始位置</li>
-</ul>
-</li>
-</ol>
-
-  
-  
-    
-    <div class='footer'>
       
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>如需转载博客，请联系作者授权</p>
-
-              
-            
-              
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/02/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/>https://blog.lqh.kim/2021/02/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/</a></p>
-              
-            
-          </blockquote>
-        </div>
-      
-      
-    </div>
-  
-  
-    
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T15:12:06+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月8日</p>
-  </a>
-</div>
-
-        
-      
-    </div>
-  </div>
-
-
-  
-  
-
-  
-    <div class="prev-next">
-      
-      
-        <a class='next' href='/2021/02/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-          <p class='title'>时间复杂度&空间复杂度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+        代码效率优化方法论如何衡量一段代码的优劣呢？一般我们会从两个维度去考虑一段代码的质量：
 
 时间复杂度
 空间复杂度
 
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
-        </a>
+顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。那么我们应该怎么取舍这两个标准呢？
+提高代码效率的方法我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？
+总的策略就是降低代码的时间复杂...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-04-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
+            阅读全文
+          </a>
+        </div>
       
     </div>
   
-</article>
 
-
-  
-
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-  </article>
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+        时间复杂度&空间复杂度
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+
+时间复杂度
+空间复杂度
+
+顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。
+所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。
+那么我们应该怎么来定义复杂度呢？
+复杂度的定义与特点定义
+复杂度是一个关于输入量 n 的函数。eg：假设你的代码复...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-04-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/08/%E6%A0%88/">
+        栈 - 基础知识
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        栈
+定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
+名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中是没用栈这种数据结构的，不过我们可以利用数组来模拟。而且在 js 中也是有对应的 push  和 pop  方法的:
+push: 向数组末尾添加一个元素，返回值是数组的长度pop：移除数组的第一个元素...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-04-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/08/%E6%A0%88/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/08/%E6%B5%8B%E8%AF%95/">
+        栈 - 基础知识
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>测试首页图片是否能正常显示以及文章描述</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-04-08</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/08/%E6%B5%8B%E8%AF%95/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/04/08/yuque/%E4%B8%80%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+        一、面向对象
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        什么是面向对象？概念：
+
+类： 抽象出来的一个具有一些通用特征的模板
+实例： 通过类构造出来的的具体对象
+
+三要素：
+
+继承：子类继承父类
+封装：数据的权限和保密
+多态：统一接口的不同实现
+
+继承子类继承父类。
+在 js 中实现继承的方式是通过原型链的方式实现的，大概有六种，详情可以看这里https://www.notion.so/callmew/JavaScript-c6f0e1fea7d...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-04-08</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/08/yuque/%E4%B8%80%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+  
 
 
-
-
-
-
+	
 </div>
 <aside class='l_side'>
   
@@ -584,28 +656,113 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://qiniu.lqh.kim/avatar.jpeg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>火热</h2>
+        
+        
+          <p>时间会见证一切</p>
 
+        
+        
+          <p><span id="jinrishici-sentence">火热</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:528851597@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/liuqh0609/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A1%A1%E9%87%8F%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BC%98%E5%8A%A3%E5%91%A2%EF%BC%9F"><span class="toc-text">如何衡量一段代码的优劣呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">提高代码效率的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%9F%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">增删查：数据的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-text">查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0"><span class="toc-text">删</span></a></li></ol></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
+            ><div class='name'>数据结构与算法</div><div class='badge'>(4)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
 
   
 
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #73d13d">数据结构与算法</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
 
 </aside>
-
 
 
 		  
@@ -614,8 +771,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="代码效率优化方法论";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要

@@ -459,7 +459,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 </li>
 </ol>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: <span class="comment">/* value */</span> red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: /* value */ red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
 <ol>
 <li>Selector（选择器）</li>
@@ -470,6 +471,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ol>
 <h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      name: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      url: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
 <h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
   
@@ -505,10 +507,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T15:12:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T11:15:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月8日</p>
+    <p>2021年4月8日</p>
   </a>
 </div>
 

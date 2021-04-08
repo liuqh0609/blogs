@@ -457,7 +457,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ul>
 </blockquote>
 <p>官方文档是按照 3 位来计算优先级的，就是上图中的：<br>[A, B, C]<br>还有一种计算方式是按照四位来计算的，最高位表示是否为行内样式：<br>[ L, A, B, C]</p>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-id">#a</span><span class="selector-class">.b</span> <span class="selector-class">.c</span><span class="selector-attr">[id=x]</span> 		<span class="selector-attr">[0, 1, 3, 1]</span></span><br><span class="line"><span class="selector-id">#a</span><span class="selector-pseudo">:not(</span><span class="selector-id">#b</span>) 					<span class="selector-attr">[0, 2, 0, 0]</span></span><br><span class="line">*<span class="selector-class">.a</span> 								<span class="selector-attr">[0, 0, 1, 0]</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.a</span> 							<span class="selector-attr">[0, 0, 1, 1]</span></span><br></pre></td></tr></table></figure>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-id">#a</span><span class="selector-class">.b</span> <span class="selector-class">.c</span><span class="selector-attr">[id=x]</span> 		<span class="selector-attr">[0, 1, 3, 1]</span></span><br><span class="line"><span class="selector-id">#a</span><span class="selector-pseudo">:not</span>(<span class="selector-id">#b</span>) 					<span class="selector-attr">[0, 2, 0, 0]</span></span><br><span class="line">*<span class="selector-class">.a</span> 								<span class="selector-attr">[0, 0, 1, 0]</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.a</span> 							<span class="selector-attr">[0, 0, 1, 1]</span></span><br></pre></td></tr></table></figure>
+
   
   
     
@@ -491,10 +492,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T15:12:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T11:15:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年2月8日</p>
+    <p>2021年4月8日</p>
   </a>
 </div>
 
