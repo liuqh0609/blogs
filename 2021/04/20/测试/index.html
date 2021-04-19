@@ -24,9 +24,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>链表篇 - 火热</title>
+  <title>栈 - 基础知识 - 火热</title>
+  
+    <meta name="keywords" content="数据结构与算法">
   
 
+  
+    <meta name="description" content="测试首页图片是否能正常显示以及文章描述">
   
 
   <!-- feed -->
@@ -104,7 +108,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +325,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post search' style="display: none;">
+        <div id="half" class='cover-wrapper post search' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -373,7 +377,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        链表篇
+        栈 - 基础知识
       </h1>
       <div class='new-meta-box'>
         
@@ -390,6 +394,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    </a>
+  </div>
+
 
           
         
@@ -397,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月10日</p>
+    <p>2021年4月20日</p>
   </a>
 </div>
 
@@ -408,7 +419,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="链表篇" data-path="/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/">
+      <div id="lc-pv" data-title="栈 - 基础知识" data-path="/2021/04/20/%E6%B5%8B%E8%AF%95/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,83 +437,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="【206】反转链表"><a href="#【206】反转链表" class="headerlink" title="【206】反转链表"></a>【206】反转链表</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><blockquote>
-<p>反转一个单链表。</p>
-</blockquote>
-<blockquote>
-<p><strong>示例:</strong> &gt; <strong>输入:</strong> 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br><strong>输出:</strong> 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-</blockquote>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这是个经典的链表问题，其实这个问题的关键就在于要<strong>提前保存下一个节点</strong>的值。<br>因为你在让当前节点指向上一个节点的过程中，就会把当前节点的 next 指向改变，如果不提前保存当前节点的 next 值的话，就会找不到原有的当前节点的 next 值。</p>
-<h4 id="迭代大法"><a href="#迭代大法" class="headerlink" title="迭代大法"></a>迭代大法</h4><ol>
-<li> 时间复杂度：O(n)</li>
-<li> 空间复杂度：O(1)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">head</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> reverList = <span class="function">(<span class="params">head</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> cur = head;</span><br><span class="line">  <span class="keyword">let</span> prev = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">let</span> tmp;</span><br><span class="line">  <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">    <span class="comment">// 记录当前节点的下一个节点</span></span><br><span class="line">    tmp = cur.next;</span><br><span class="line">    <span class="comment">// 改变当前节点的next指针指向</span></span><br><span class="line">    cur.next = prev;</span><br><span class="line">    <span class="comment">// 更新上一个节点的值</span></span><br><span class="line">    prev = cur;</span><br><span class="line">    <span class="comment">// 更新当前节点</span></span><br><span class="line">    cur = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> prev;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h4><ol>
-<li> 时间复杂度：O(n)</li>
-<li> 空间复杂度：O(1)</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reverList = <span class="function">(<span class="params">head</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> rever = <span class="function">(<span class="params">prev, cur</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 严谨性判断，当cur为空时链表翻转结束</span></span><br><span class="line">    <span class="keyword">if</span> (!cur) <span class="keyword">return</span> prev;</span><br><span class="line">    <span class="comment">// 提前保存上一个节点的值</span></span><br><span class="line">    <span class="keyword">const</span> tmp = cur.next;</span><br><span class="line">    cur.next = prev;</span><br><span class="line">    <span class="keyword">return</span> rever(cur, tmp);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> rever(<span class="literal">null</span>, head);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="【237】删除链表中的节点"><a href="#【237】删除链表中的节点" class="headerlink" title="【237】删除链表中的节点"></a>【237】删除链表中的节点</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><blockquote>
-<p>请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点。传入函数的唯一参数为 要被删除的节点 。</p>
-</blockquote>
-<blockquote>
-<p>现有一个链表 – head = [4,5,1,9]，它可以表示为:<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594950984-e304d392-65d6-41ca-8761-e2a68b61369c.png#align=left&display=inline&height=74&margin=%5Bobject%20Object%5D&name=image.png&originHeight=148&originWidth=686&size=17423&status=done&style=none&width=343" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594950984-e304d392-65d6-41ca-8761-e2a68b61369c.png#align=left&display=inline&height=74&margin=%5Bobject%20Object%5D&name=image.png&originHeight=148&originWidth=686&size=17423&status=done&style=none&width=343" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png">&gt; <img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594962942-0f13002a-db9c-4ea8-b102-6f90d1d4bf42.png#align=left&display=inline&height=286&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1294&size=74872&status=done&style=none&width=647" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594962942-0f13002a-db9c-4ea8-b102-6f90d1d4bf42.png#align=left&display=inline&height=286&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1294&size=74872&status=done&style=none&width=647" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"> &gt; <img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594962942-0f13002a-db9c-4ea8-b102-6f90d1d4bf42.png#align=left&display=inline&height=286&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1294&size=74872&status=done&style=none&width=647" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612594962942-0f13002a-db9c-4ea8-b102-6f90d1d4bf42.png#align=left&display=inline&height=286&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1294&size=74872&status=done&style=none&width=647" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png">    &gt; <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-linked-list/">链接</a></p>
-</blockquote>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>这道题的总体思路就是<strong>狸猫换太子。</strong></p>
-<ol>
-<li> 单向链表我们无法获取到上一项的值，去改变上一项的 next 指向</li>
-<li> 所以我们换种思路，将传入的这个需要删除的节点直接替换成下一个节点，具体替换步骤也是分为两步：</li>
-<li> 替换 val 值</li>
-<li> 替换 next 节点</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.next = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">node</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;void&#125;</span> </span>Do not return anything, modify node in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> deleteNode = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将需要删除的当前节点的值替换为下一个节点的值</span></span><br><span class="line">  node.val = node.next.val;</span><br><span class="line">  <span class="comment">// 将需要删的节点next指向下一个节点的next</span></span><br><span class="line">  node.next = node.next.next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
-<h2 id="【2】两数相加"><a href="#【2】两数相加" class="headerlink" title="【2】两数相加"></a>【2】两数相加</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><blockquote>
-<p>给你两个   非空 的链表，表示两个非负的整数。它们每位数字都是按照   逆序   的方式存储的，并且每个节点只能存储   一位   数字。</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<blockquote>
-<p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<blockquote>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612684035912-bad5471f-ecdd-4cd5-97bb-7e106279b2b2.png#align=left&display=inline&height=388&margin=%5Bobject%20Object%5D&name=image.png&originHeight=776&originWidth=1022&size=113528&status=done&style=none&width=511" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612684035912-bad5471f-ecdd-4cd5-97bb-7e106279b2b2.png#align=left&display=inline&height=388&margin=%5Bobject%20Object%5D&name=image.png&originHeight=776&originWidth=1022&size=113528&status=done&style=none&width=511" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>输入：l1 = [2,4,3], l2 = [5,6,4]</p>
-</blockquote>
-<blockquote>
-<p>输出：[7,0,8]</p>
-</blockquote>
-<blockquote>
-<p>解释：342 + 465 = 807.</p>
-</blockquote>
-<blockquote>
-<p>示例 2：</p>
-</blockquote>
-<blockquote>
-<p>输入：l1 = [0], l2 = [0]</p>
-</blockquote>
-<blockquote>
-<p>输出：[0]</p>
-</blockquote>
-<blockquote>
-<p>示例 3：</p>
-</blockquote>
-<blockquote>
-<p>输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]</p>
-</blockquote>
-<blockquote>
-<p>输出：[8,9,9,9,0,0,0,1]</p>
-</blockquote>
-<blockquote>
-<p>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/add-two-numbers">https://leetcode-cn.com/problems/add-two-numbers</a></p>
-</blockquote>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * function ListNode(val, next) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.next = (next===undefined ? null : next)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l1</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;ListNode&#125;</span> <span class="variable">l2</span></span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return <span class="type">&#123;ListNode&#125;</span></span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> addTwoNumbers = <span class="function"><span class="keyword">function</span> (<span class="params">l1, l2</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 创建一个需要返回的新链表</span></span><br><span class="line">  <span class="keyword">const</span> l3 = <span class="keyword">new</span> ListNode();</span><br><span class="line">  <span class="comment">// 保存每个链表的节点指针</span></span><br><span class="line">  <span class="keyword">let</span> p1 = l1;</span><br><span class="line">  <span class="keyword">let</span> p2 = l2;</span><br><span class="line">  <span class="keyword">let</span> p3 = l3;</span><br><span class="line">  <span class="comment">// 创建变量来存储进位</span></span><br><span class="line">  <span class="keyword">let</span> carry = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 遍历 p1 和 p2 每个节点的val值进行相加</span></span><br><span class="line">  <span class="comment">// 这里需要注意： 因为p1和p2可能长度不同，所以当其中一个有值时都需要相加，没有值的那个用0代替</span></span><br><span class="line">  <span class="keyword">while</span> (p1 || p2) &#123;</span><br><span class="line">    <span class="keyword">const</span> v1 = p1 ? p1.val : <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> v2 = p2 ? p2.val : <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 计算和，要加上前一个数字相加的进位</span></span><br><span class="line">    <span class="keyword">const</span> sum = v1 + v2 + carry;</span><br><span class="line">    <span class="comment">// 计算进位，这里需要注意要将进位向下取整</span></span><br><span class="line">    carry = <span class="built_in">Math</span>.floor(sum / <span class="number">10</span>);</span><br><span class="line">    <span class="comment">// 将个位数字放入l3链表中</span></span><br><span class="line">    p3.next = <span class="keyword">new</span> ListNode(sum % <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新指针</span></span><br><span class="line">    <span class="keyword">if</span> (p1) p1 = p1.next;</span><br><span class="line">    <span class="keyword">if</span> (p2) p2 = p2.next;</span><br><span class="line">    p3 = p3.next;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 遍历结束后，判断进位，如果扔有进位放入l3链表中</span></span><br><span class="line">  <span class="keyword">if</span> (carry) p3.next = <span class="keyword">new</span> ListNode(carry);</span><br><span class="line">  <span class="comment">// 因为我们在创建新链表时，首位是0，所以我们要从头节点的下一位开始</span></span><br><span class="line">  <span class="keyword">return</span> l3.next;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+  <p>测试首页图片是否能正常显示以及文章描述</p>
+<span id="more"></span>
   
   
     
@@ -519,7 +455,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/>https://blog.lqh.kim/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/04/20/%E6%B5%8B%E8%AF%95/>https://blog.lqh.kim/2021/04/20/%E6%B5%8B%E8%AF%95/</a></p>
               
             
           </blockquote>
@@ -536,7 +472,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-20T07:58:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-20T07:58:28+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年4月20日</p>
@@ -555,19 +491,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CSS结构</p>
-          <p class='content'>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。
-CSS2.1 语法
-css2.1Gra...</p>
+        <a class='prev' href='/2021/04/20/%E6%A0%88/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>栈
+定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
+名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中...</p>
         </a>
       
       
-        <a class='next' href='/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/'>
-          <p class='title'>react-hooks的设计动机和工作模式<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Why为什么要有 hooks 这种方式？
-类组件通过 ES6 的 class 形式，继承 component 形成的组件，在该组件内有一系列的生命周期函数供开发者使用
-1234567891011...</p>
+        <a class='next' href='/2021/04/12/yuque/%F0%9F%97%92%20%E5%91%A8%E8%AE%A1%E5%88%92/'>
+          <p class='title'>🗒 周计划<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>每日必做
+至少一道算法题
+英语学习
+需要有产出作为记录
+
+
+
+周计划</p>
         </a>
       
     </div>
@@ -600,20 +541,6 @@ css2.1Gra...</p>
 
 
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90206%E3%80%91%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-text">【206】反转链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%A4%A7%E6%B3%95"><span class="toc-text">迭代大法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E6%96%B9%E6%B3%95"><span class="toc-text">递归方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90237%E3%80%91%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="toc-text">【237】删除链表中的节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-1"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="toc-text">题解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%902%E3%80%91%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0"><span class="toc-text">【2】两数相加</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0-2"><span class="toc-text">描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="toc-text">题解</span></a></li></ol></li></ol>
-    </div>
-  </section>
-
 
   
 
@@ -629,20 +556,20 @@ css2.1Gra...</p>
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="链表篇";
+  pdata.postTitle="栈 - 基础知识";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="none";
-    cover_wrapper.style.display="none";
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
     
   
 </script>

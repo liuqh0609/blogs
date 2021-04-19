@@ -24,9 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>代码效率优化方法论 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>react-hooks的设计动机和工作模式 - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -373,13 +371,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="article-meta" id="top">
     
     
-      <a title='代码效率优化方法论' href='/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720'>
-      </a>
-    
     
       <h1 class="title">
-        代码效率优化方法论
+        react-hooks的设计动机和工作模式
       </h1>
       <div class='new-meta-box'>
         
@@ -396,13 +390,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -410,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年4月8日</p>
+    <p>2020年12月10日</p>
   </a>
 </div>
 
@@ -421,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="代码效率优化方法论" data-path="/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
+      <div id="lc-pv" data-title="react-hooks的设计动机和工作模式" data-path="/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -439,60 +426,32 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="代码效率优化方法论"><a href="#代码效率优化方法论" class="headerlink" title="代码效率优化方法论"></a>代码效率优化方法论</h1><h2 id="如何衡量一段代码的优劣呢？"><a href="#如何衡量一段代码的优劣呢？" class="headerlink" title="如何衡量一段代码的优劣呢？"></a>如何衡量一段代码的优劣呢？</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
-<ol>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
-</ol>
-<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。<br>那么我们应该怎么取舍这两个标准呢？</p>
-<h2 id="提高代码效率的方法"><a href="#提高代码效率的方法" class="headerlink" title="提高代码效率的方法"></a>提高代码效率的方法</h2><p>我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？</p>
-<p>总的策略就是降低代码的时间复杂度和空间复杂度。</p>
-<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
-<ol>
-<li>暴力解法：在没有任何时间和空间的限制下，将目标达成</li>
-<li>剔除无效操作：将代码中没有必要的计算、无效的存储删除来优化时间和空间复杂度</li>
-<li>时空转换：设计合理的数据结构，将时间向空间转换</li>
-</ol>
-<h2 id="增删查：数据的基本操作"><a href="#增删查：数据的基本操作" class="headerlink" title="增删查：数据的基本操作"></a>增删查：数据的基本操作</h2><p>一般一段算法的实现最常设计的三个操作就是：增、删、查。<br>而我们对一个算法的优化和实现只要围绕这三个为重心去思考展开即可：</p>
-<ol>
-<li>分析这段代码对数据进行了那些操作</li>
-<li>这些操作中有哪些操作是最消耗性能的，对时间复杂度的损耗是最高的？</li>
-<li>考虑有哪种数据结构可以帮助提高数据操作的使用效率。</li>
-</ol>
-<p>以上三点就是构成我们实现代码效率优化的方法论。</p>
-<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><ol>
-<li>按照元素索引查找<ul>
-<li>对于数组这些天生拥有索引的数据结构来说十分简单</li>
-<li>对于链表这种，通过指针进行连接的就需要知道前面一个元素</li>
-</ul>
-</li>
-<li>按照元素特征值查找<ul>
-<li>对于字典类型的数据来说，key 就相当是特征，value 就是值，查找起来非常方便</li>
-<li>对于数组和链表来说就需要循环对比每个元素来进行比较值的特征是否符合</li>
-</ul>
-</li>
-</ol>
-<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><ol>
-<li>在复杂数据结构的末尾添加数据<ul>
-<li>不会影响数据的原始位置</li>
-</ul>
-</li>
-<li>在复杂数据结构的中间添加数据<ul>
-<li>会影响到数据原始的位置</li>
-</ul>
-</li>
-</ol>
-<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><ol>
-<li>在复杂数据结构的末尾删除<ul>
-<li>不会影响到原先数据的位置</li>
-</ul>
-</li>
-<li>在复杂数据结构的中间位置进行删除<ul>
-<li>会影响到之前数据的原始位置</li>
-</ul>
-</li>
-</ol>
+  <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么要有 hooks 这种方式？</p>
+<h3 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h3><p>通过 ES6 的 class 形式，继承 component 形成的组件，在该组件内有一系列的生命周期函数供开发者使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoClass</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="comment">// 初始化类组件的 state</span></span><br><span class="line">    state = &#123;</span><br><span class="line">      text: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编写生命周期方法 didMount</span></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 省略业务逻辑</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编写自定义的实例方法</span></span><br><span class="line">  changeText = <span class="function">(<span class="params">newText</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 更新 state</span></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      text: newText,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 编写生命周期方法 render</span></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">&quot;demoClass&quot;</span>&gt;</span><br><span class="line">        &lt;p&gt;&#123;<span class="built_in">this</span>.state.text&#125;&lt;/p&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.changeText&#125;&gt;点我修改&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>类组件是一个封装好的“<strong>重型战舰</strong>”，它里面有一系列的生命周期，可以很方便的让我们使用，而我们只需要继承一下 React.component 即可。<br>但是类组件的全，并不一定是好事，<strong>大而全的背后必定是昂贵的学习代价。</strong>比如说如果我们不了解生命周期的话，那写出来的代码逻辑顺序大概率会变得一团糟。</p>
+<h3 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h3><p>函数组件在早期又叫做<strong>无状态组件</strong>，因为当时没有 hooks 的加持，它没有办法维持自身状态，只能通过父组件传递的 props 来维护一个值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoFun</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; value &#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这是一个函数组件<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数组件相较于类组件，肉眼可见的轻便、简单、易于维护。</p>
+<h3 id="二者的对比（无关优劣，之谈区别）"><a href="#二者的对比（无关优劣，之谈区别）" class="headerlink" title="二者的对比（无关优劣，之谈区别）"></a>二者的对比（无关优劣，之谈区别）</h3><ul>
+<li>类组件需要继承 component 或者 pureComponent，函数组件不需要</li>
+<li>类组件中有众多生命周期可以使用，函数组件中没有</li>
+<li>类组件中可以通过访问 this 来做一些事情，函数组件中不行</li>
+<li>类组件中可以维护自己的状态（state），函数组件中不行（以前不行，现在有了 hooks 就可以了）</li>
+<li><strong>函数组件会捕获 render 内部的状态，这是两者之间最大的区别</strong></li>
+</ul>
+<p>这里就最后一条进行展开描述，因为这条区别可以说是两者之间的本质区别，react 团队也是意识到了这个问题，才开始拥抱函数组件的。</p>
+<h3 id="为什么说函数组件会捕获-render-内部的状态"><a href="#为什么说函数组件会捕获-render-内部的状态" class="headerlink" title="为什么说函数组件会捕获 render 内部的状态"></a>为什么说函数组件会捕获 render 内部的状态</h3><p>可以说函数组件其实才是更契合 React 设计理念的。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上面这个图中可以看到，其实 react 的组件本身就是一个吃进数据，并且吐出 UI 的一种设计。 函数组件可以将数据处理并且最后映射到 UI 中去。<br><strong>React 数据应该总是和渲染紧密绑定在一起的，而类组件就做不到这一点。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js">https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js</a></p>
+<blockquote>
+<p>虽然 props 本身是不可变的，但 this 却是可变的，this 上的数据是可以被修改的？ 怎么理解 props 本身是不可变的这句话？和 immutable 数据有关系吗？</p>
+</blockquote>
+<blockquote>
+<p>为什么类组件中的方法，不 bind this 就无法获取到 this 实例？</p>
+</blockquote>
+<h2 id="为什么需要-React-hooks-呢？（总结）"><a href="#为什么需要-React-hooks-呢？（总结）" class="headerlink" title="为什么需要 React-hooks 呢？（总结）"></a>为什么需要 React-hooks 呢？（总结）</h2>
   
   
     
@@ -509,7 +468,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/>https://blog.lqh.kim/2021/04/08/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/>https://blog.lqh.kim/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</a></p>
               
             
           </blockquote>
@@ -526,10 +485,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-08T15:21:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-20T07:58:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年4月8日</p>
+    <p>2021年4月20日</p>
   </a>
 </div>
 
@@ -545,15 +504,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>链表篇</p>
+          <p class='content'>【206】反转链表描述
+反转一个单链表。
+
+
+示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
+        </a>
       
-        <a class='next' href='/2021/04/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-          <p class='title'>时间复杂度&空间复杂度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
+      
+        <a class='next' href='/2020/12/08/yuque/useCallback/'>
+          <p class='title'>useCallback<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'></p>
         </a>
       
     </div>
@@ -596,7 +559,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A1%A1%E9%87%8F%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BC%98%E5%8A%A3%E5%91%A2%EF%BC%9F"><span class="toc-text">如何衡量一段代码的优劣呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">提高代码效率的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%9F%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">增删查：数据的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-text">查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0"><span class="toc-text">删</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="toc-text">函数组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%80%85%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%88%E6%97%A0%E5%85%B3%E4%BC%98%E5%8A%A3%EF%BC%8C%E4%B9%8B%E8%B0%88%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-text">二者的对比（无关优劣，之谈区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%9A%E6%8D%95%E8%8E%B7-render-%E5%86%85%E9%83%A8%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">为什么说函数组件会捕获 render 内部的状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-React-hooks-%E5%91%A2%EF%BC%9F%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-text">为什么需要 React-hooks 呢？（总结）</span></a></li></ol>
     </div>
   </section>
 
@@ -615,20 +578,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="代码效率优化方法论";
+  pdata.postTitle="react-hooks的设计动机和工作模式";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
