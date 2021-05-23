@@ -24,7 +24,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>Pseudo-element: 伪元素 - 火热</title>
+  <title>代码效率优化方法论 - 火热</title>
+  
+    <meta name="keywords" content="数据结构与算法">
   
 
   
@@ -104,7 +106,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post search' style="display: none;">
+        <div id="half" class='cover-wrapper post search' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -371,9 +373,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="article-meta" id="top">
     
     
+      <a title='代码效率优化方法论' href='/2021/05/23/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
+        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720'>
+      </a>
+    
     
       <h1 class="title">
-        Pseudo-element: 伪元素
+        代码效率优化方法论
       </h1>
       <div class='new-meta-box'>
         
@@ -390,6 +396,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    </a>
+  </div>
+
 
           
         
@@ -397,7 +410,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月20日</p>
+    <p>2021年5月23日</p>
   </a>
 </div>
 
@@ -408,7 +421,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Pseudo-element: 伪元素" data-path="/2020/12/20/yuque/Pseudo-element!%20%E4%BC%AA%E5%85%83%E7%B4%A0/">
+      <div id="lc-pv" data-title="代码效率优化方法论" data-path="/2021/05/23/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,17 +439,59 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <ul>
-<li>::before</li>
-<li>::after</li>
-<li>::first-line 选中第一行</li>
-<li>::first-letter 选中第一个字母</li>
+  <h1 id="代码效率优化方法论"><a href="#代码效率优化方法论" class="headerlink" title="代码效率优化方法论"></a>代码效率优化方法论</h1><h2 id="如何衡量一段代码的优劣呢？"><a href="#如何衡量一段代码的优劣呢？" class="headerlink" title="如何衡量一段代码的优劣呢？"></a>如何衡量一段代码的优劣呢？</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
+<ol>
+<li>时间复杂度</li>
+<li>空间复杂度</li>
+</ol>
+<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。<br>那么我们应该怎么取舍这两个标准呢？</p>
+<h2 id="提高代码效率的方法"><a href="#提高代码效率的方法" class="headerlink" title="提高代码效率的方法"></a>提高代码效率的方法</h2><p>我们从上面已经知道了衡量代码效率的方法，那么我们应该怎么着手去优化提高我们代码的效率呢？</p>
+<p>总的策略就是降低代码的时间复杂度和空间复杂度。</p>
+<p>但是对于一段代码来说往往时间和空间两个是互斥的，如果我们想要降低时间复杂度，那么无疑就会增加空间复杂度。<br>举一个生活中的 🌰，就像我们平时生活中开车过红绿灯，如果只有这一条路（空间）那么我们就只能在这等着红灯，当车越来越多的时候，就会消耗大家很多时间，但是当我们修建了立交桥之后，就会有更多的选择空间，就会大大减少等待红灯的时间。<br><img src="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/gif/2705850/1606953443121-946ba365-7a49-4689-8090-5e820840f5eb.gif#align=left&display=inline&height=720" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="CgqCHl7CRMaAO_oEAJfz6fjfMNQ403.gif"><br>（图片来自拉钩教育-公瑾老师的重学算法与数据结构一课中）<br>而对我们来说，时间永远都要比空间更加重要，因为时间拿钱买不来，而空间我们起码可以拿钱来进行扩容。<br><strong>空间是廉价的，时间是昂贵的</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953817114-7e1a263e-6acb-4bf2-9110-da34521c23f8.png#align=left&display=inline&height=76" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></strong></p>
+<ol>
+<li>暴力解法：在没有任何时间和空间的限制下，将目标达成</li>
+<li>剔除无效操作：将代码中没有必要的计算、无效的存储删除来优化时间和空间复杂度</li>
+<li>时空转换：设计合理的数据结构，将时间向空间转换</li>
+</ol>
+<h2 id="增删查：数据的基本操作"><a href="#增删查：数据的基本操作" class="headerlink" title="增删查：数据的基本操作"></a>增删查：数据的基本操作</h2><p>一般一段算法的实现最常设计的三个操作就是：增、删、查。<br>而我们对一个算法的优化和实现只要围绕这三个为重心去思考展开即可：</p>
+<ol>
+<li>分析这段代码对数据进行了那些操作</li>
+<li>这些操作中有哪些操作是最消耗性能的，对时间复杂度的损耗是最高的？</li>
+<li>考虑有哪种数据结构可以帮助提高数据操作的使用效率。</li>
+</ol>
+<p>以上三点就是构成我们实现代码效率优化的方法论。</p>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><ol>
+<li>按照元素索引查找<ul>
+<li>对于数组这些天生拥有索引的数据结构来说十分简单</li>
+<li>对于链表这种，通过指针进行连接的就需要知道前面一个元素</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &lt;::before/&gt; content content content content content content content content</span><br><span class="line">  &lt;::after/&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  &lt;::first-letter&gt;c&lt;/::first-letter&gt;ontent content content content</span><br><span class="line">  content content content content</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>first-line 和 first-letter 支持的 css 属性设置：<br><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1608462752667-ab307525-ef39-4e99-a142-3fff7b41e87f.png#align=left&display=inline&height=726&margin=%5Bobject%20Object%5D&name=image.png&originHeight=726&originWidth=1638&size=537528&status=done&style=none&width=1638" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1608462752667-ab307525-ef39-4e99-a142-3fff7b41e87f.png#align=left&display=inline&height=726&margin=%5Bobject%20Object%5D&name=image.png&originHeight=726&originWidth=1638&size=537528&status=done&style=none&width=1638" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+</li>
+<li>按照元素特征值查找<ul>
+<li>对于字典类型的数据来说，key 就相当是特征，value 就是值，查找起来非常方便</li>
+<li>对于数组和链表来说就需要循环对比每个元素来进行比较值的特征是否符合</li>
+</ul>
+</li>
+</ol>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><ol>
+<li>在复杂数据结构的末尾添加数据<ul>
+<li>不会影响数据的原始位置</li>
+</ul>
+</li>
+<li>在复杂数据结构的中间添加数据<ul>
+<li>会影响到数据原始的位置</li>
+</ul>
+</li>
+</ol>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><ol>
+<li>在复杂数据结构的末尾删除<ul>
+<li>不会影响到原先数据的位置</li>
+</ul>
+</li>
+<li>在复杂数据结构的中间位置进行删除<ul>
+<li>会影响到之前数据的原始位置</li>
+</ul>
+</li>
+</ol>
 
   
   
@@ -454,7 +509,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/20/yuque/Pseudo-element!%20%E4%BC%AA%E5%85%83%E7%B4%A0/>https://blog.lqh.kim/2020/12/20/yuque/Pseudo-element!%20%E4%BC%AA%E5%85%83%E7%B4%A0/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/05/23/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/>https://blog.lqh.kim/2021/05/23/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/</a></p>
               
             
           </blockquote>
@@ -471,7 +526,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-23T20:29:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-23T20:28:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年5月23日</p>
@@ -490,24 +545,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/21/yuque/CSS%E6%8E%92%E7%89%88/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>CSS排版</p>
-          <p class='content'>盒（Box)
-HTML 代码中可以书写开始标签，结束标签，和自封闭标签一对起止标签，表示一个元素DOM 树中存储的是元素和其他类型的节点（Node)CSS 选择器选中的是元素CSS 选择器选中的...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/12/20/yuque/Calculating%20specificity%EF%BC%9A%E8%AE%A1%E7%AE%97%E4%BC%98%E5%85%88%E7%BA%A7/'>
-          <p class='title'>Calculating specificity：计算优先级<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>计算方法为给定元素计算它的优先级，遵循以下原则：
+        <a class='next' href='/2021/05/23/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
+          <p class='title'>时间复杂度&空间复杂度<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
 
-计算 ID 选择器的值  A
-计算类选择、属性选择器、伪类选择器的值  B
-计算标签选择器和伪元素选择器的值  C
-忽略通用选择器*
+时间复杂度
+空间复杂度
 
-
-:i...</p>
+顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
         </a>
       
     </div>
@@ -540,6 +586,20 @@ HTML 代码中可以书写开始标签，结束标签，和自封闭标签一对
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A1%A1%E9%87%8F%E4%B8%80%E6%AE%B5%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BC%98%E5%8A%A3%E5%91%A2%EF%BC%9F"><span class="toc-text">如何衡量一段代码的优劣呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">提高代码效率的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%9F%A5%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">增删查：数据的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5"><span class="toc-text">查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-text">增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0"><span class="toc-text">删</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -555,20 +615,20 @@ HTML 代码中可以书写开始标签，结束标签，和自封闭标签一对
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Pseudo-element: 伪元素";
+  pdata.postTitle="代码效率优化方法论";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="none";
-    cover_wrapper.style.display="none";
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
     
   
 </script>
