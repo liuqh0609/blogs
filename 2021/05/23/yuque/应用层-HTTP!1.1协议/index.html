@@ -24,9 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>栈 - 基础知识 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>应用层-HTTP/1.1协议 - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -375,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        栈 - 基础知识
+        应用层-HTTP/1.1协议
       </h1>
       <div class='new-meta-box'>
         
@@ -392,13 +390,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -417,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="栈 - 基础知识" data-path="/2021/05/23/%E6%A0%88/">
+      <div id="lc-pv" data-title="应用层-HTTP/1.1协议" data-path="/2021/05/23/yuque/%E5%BA%94%E7%94%A8%E5%B1%82-HTTP!1.1%E5%8D%8F%E8%AE%AE/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -435,21 +426,49 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一种<strong>后进先出</strong>的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="push：-入栈"><a href="#push：-入栈" class="headerlink" title="push： 入栈"></a>push： 入栈</h3><h3 id="pop：-出栈"><a href="#pop：-出栈" class="headerlink" title="pop： 出栈"></a>pop： 出栈</h3><h3 id="top：栈顶"><a href="#top：栈顶" class="headerlink" title="top：栈顶"></a>top：栈顶</h3><h2 id="JavaScript-中的栈"><a href="#JavaScript-中的栈" class="headerlink" title="JavaScript 中的栈"></a>JavaScript 中的栈</h2><p>在 js 中是没用栈这种数据结构的，不过我们可以利用<strong>数组</strong>来模拟。<br>而且在 js 中也是有对应的 <code>push</code>  和 <code>pop</code>  方法的:</p>
-<p>push: 向数组末尾添加一个元素，返回值是数组的长度<br>pop：移除数组的第一个元素，返回值是移除的元素</p>
-<h2 id="什么场景下用栈？"><a href="#什么场景下用栈？" class="headerlink" title="什么场景下用栈？"></a>什么场景下用栈？</h2><blockquote>
-<p>最直白的讲就是需要<strong>后进先出</strong>的场景</p>
-</blockquote>
-<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们计算十进制转二进制时，就是不断除以 2，然后取余数<br>然后将最后一位的余数与第一位的余数拼成二进制</p>
-<p>这样的后进先出的手法有没有想到栈！</p>
-<h3 id="判断字符串的括号是否有效"><a href="#判断字符串的括号是否有效" class="headerlink" title="判断字符串的括号是否有效"></a>判断字符串的括号是否有效</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们验证括号是否有效其实就是在验证是不是能够凑齐一对完整的闭合括号。</p>
-<p>而且我们可以发现一个规律，越靠左的左括号，它对应的右括号就越靠右。反之也就是最后面的左括号，对应的必定是出现的第一个右括号。</p>
-<p>所以我们就可以在遇到左括号时就入栈，遇到右括号时就与栈顶的括号就行配对比较，若果符合配对规则则出栈，否则就不符合规则直接判定无效。匹配到最后结如果栈内是空就证明可以完整闭合</p>
-<h3 id="函数调用栈等"><a href="#函数调用栈等" class="headerlink" title="函数调用栈等"></a>函数调用栈等</h3><p>这个可以看浏览器，js 的解释器就是通过调用栈的形式实现的<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<p>执行 fun1 时先将 fun1 入栈，然后调用 fun2，入栈；然后调用 fun3 入栈。</p>
-<p>fun3 执行完毕出栈<br>fun2 执行完毕出栈<br>fun1 执行完毕出栈<br>程序执行完毕</p>
+  <p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621774288695-54304583-3592-455f-a991-9108bfac386b.png#clientId=uf0bbb445-cdb6-4&from=paste&height=149&id=ucb6af6d9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=298&originWidth=1428&originalType=binary&size=212619&status=done&style=none&taskId=u9e79bd2a-821b-4d12-bae9-ac4a8bb12dd&width=714" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621774288695-54304583-3592-455f-a991-9108bfac386b.png#clientId=uf0bbb445-cdb6-4&from=paste&height=149&id=ucb6af6d9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=298&originWidth=1428&originalType=binary&size=212619&status=done&style=none&taskId=u9e79bd2a-821b-4d12-bae9-ac4a8bb12dd&width=714" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>一种<strong>无状态的</strong>、应用层的、以<strong>请求/应答</strong>方式运行的协议，他使用<strong>可扩展的语义</strong>和自描述消息格式，与基于网络的超文本信息系统灵活的互动。<br>​</p>
+<h2 id="基于-ABNF-语法定义的-HTTP"><a href="#基于-ABNF-语法定义的-HTTP" class="headerlink" title="基于 ABNF 语法定义的 HTTP"></a>基于 ABNF 语法定义的 HTTP</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
+<li><strong>SP</strong>：空白字符，用来分隔定义中的各个元素</li>
+<li><strong>/</strong>: 选择，就是<strong>或</strong>的意思</li>
+<li><strong>%cxx-xx</strong>：值范围，例如 %x30-37，十六进制中的 30-37</li>
+<li><strong>（）</strong>：组合，将括号中的视为一个单个元素</li>
+<li>不定量重复<ul>
+<li><ul>
+<li>： 表示 0~多次</li>
+</ul>
+</li>
+<li>1*： 表示 1~多次</li>
+<li>2*4： 表示 2~4 次</li>
+</ul>
+</li>
+<li>[] : 可选序列，即可有可无</li>
+</ul>
+<h3 id="ABNF-的核心规则"><a href="#ABNF-的核心规则" class="headerlink" title="ABNF 的核心规则"></a>ABNF 的核心规则</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621775109039-1c8e52ac-f8bb-4283-8239-d5c891322c88.png#clientId=uf0bbb445-cdb6-4&from=paste&height=316&id=u85a4430c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1264&originWidth=1888&originalType=binary&size=594978&status=done&style=none&taskId=uf931b266-b4e7-449d-a83c-0a723c83049&width=472" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621775109039-1c8e52ac-f8bb-4283-8239-d5c891322c88.png#clientId=uf0bbb445-cdb6-4&from=paste&height=316&id=u85a4430c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1264&originWidth=1888&originalType=binary&size=594978&status=done&style=none&taskId=uf931b266-b4e7-449d-a83c-0a723c83049&width=472" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h3 id="基于-ABNF-描述的-http-格式"><a href="#基于-ABNF-描述的-http-格式" class="headerlink" title="基于 ABNF 描述的 http 格式"></a>基于 ABNF 描述的 http 格式</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621775234596-79ff102b-13dd-4b9a-9f28-764ecfcb3e81.png#clientId=uf0bbb445-cdb6-4&from=paste&height=474&id=u788c1059&margin=%5Bobject%20Object%5D&name=image.png&originHeight=948&originWidth=2044&originalType=binary&size=529108&status=done&style=none&taskId=u5c60591a-50a3-4382-916e-aecb7f0e0f8&width=1022" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621775234596-79ff102b-13dd-4b9a-9f28-764ecfcb3e81.png#clientId=uf0bbb445-cdb6-4&from=paste&height=474&id=u788c1059&margin=%5Bobject%20Object%5D&name=image.png&originHeight=948&originWidth=2044&originalType=binary&size=529108&status=done&style=none&taskId=u5c60591a-50a3-4382-916e-aecb7f0e0f8&width=1022" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>第一行代码表示的就是 HTTP 信息的整体格式：</p>
+<ul>
+<li>开始行（请求行） 0 或者多个请求头+换行符 换行符 信息体（请求体/响应体）</li>
+</ul>
+<p>下面是对开始行和请求行以及信息体的具体描述：</p>
+<ul>
+<li>开始行： 分为请求头和响应头<ul>
+<li>请求头：<strong>请求方法</strong> 空格符 <strong>请求地址</strong> 空格符 <strong>http 版本</strong> 换行</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621827859400-10b6b29a-633f-46c7-a2cc-320177b8d778.png#clientId=u48e7f544-ec6c-4&from=paste&height=20&id=u2d34aa84&margin=%5Bobject%20Object%5D&name=image.png&originHeight=40&originWidth=504&originalType=binary&size=13913&status=done&style=none&taskId=u257a4dbb-8cc7-49b1-ab72-9bef5961750&width=252" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621827859400-10b6b29a-633f-46c7-a2cc-320177b8d778.png#clientId=u48e7f544-ec6c-4&from=paste&height=20&id=u2d34aa84&margin=%5Bobject%20Object%5D&name=image.png&originHeight=40&originWidth=504&originalType=binary&size=13913&status=done&style=none&taskId=u257a4dbb-8cc7-49b1-ab72-9bef5961750&width=252" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<ul>
+<li>响应头：<strong>http 版本</strong> 空格符 <strong>状态码</strong> 空格符 <strong>原因短语</strong> 换行</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621827894084-5fb99bb0-f6a1-40c7-8fdb-c23a1d962eb1.png#clientId=u48e7f544-ec6c-4&from=paste&height=19&id=ucaef9409&margin=%5Bobject%20Object%5D&name=image.png&originHeight=38&originWidth=262&originalType=binary&size=7104&status=done&style=none&taskId=u38e063c2-9c67-4ad6-b017-1c97a102d66&width=131" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621827894084-5fb99bb0-f6a1-40c7-8fdb-c23a1d962eb1.png#clientId=u48e7f544-ec6c-4&from=paste&height=19&id=ucaef9409&margin=%5Bobject%20Object%5D&name=image.png&originHeight=38&originWidth=262&originalType=binary&size=7104&status=done&style=none&taskId=u38e063c2-9c67-4ad6-b017-1c97a102d66&width=131" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<ul>
+<li>请求头：属性名称 + 冒号 + OWS 属性值 OWS<ul>
+<li>OWS 定义： 0~多个空格或制表符</li>
+<li>field-name 定义：有效的 token 值</li>
+<li>field-value 定义： 0~多个</li>
+</ul>
+</li>
+<li>消息体： 通过二进制的方式传递</li>
+</ul>
 
   
   
@@ -467,7 +486,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/05/23/%E6%A0%88/>https://blog.lqh.kim/2021/05/23/%E6%A0%88/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/05/23/yuque/%E5%BA%94%E7%94%A8%E5%B1%82-HTTP!1.1%E5%8D%8F%E8%AE%AE/>https://blog.lqh.kim/2021/05/23/yuque/%E5%BA%94%E7%94%A8%E5%B1%82-HTTP!1.1%E5%8D%8F%E8%AE%AE/</a></p>
               
             
           </blockquote>
@@ -484,10 +503,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-23T20:28:49+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-27T11:19:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年5月23日</p>
+    <p>2021年5月27日</p>
   </a>
 </div>
 
@@ -503,21 +522,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/05/23/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>时间复杂度&空间复杂度</p>
-          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+        <a class='prev' href='/2021/05/25/yuque/TLS/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>TLS</p>
+          <p class='content'>
+ 
 
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
+</p>
         </a>
       
       
-        <a class='next' href='/2021/05/23/%E6%B5%8B%E8%AF%95/'>
-          <p class='title'>栈 - 基础知识<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>测试首页图片是否能正常显示以及文章描述
-</p>
+        <a class='next' href='/2021/05/20/yuque/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%EF%BC%8C%E8%BF%99%E6%9C%9F%E9%97%B4%E5%8F%91%E7%94%9F%E4%BA%86%E7%A5%9E%E9%AD%94%EF%BC%9F/'>
+          <p class='title'>从输入URL到页面展示，这期间发生了神魔？<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>面试经典问题，为何经典？我觉得是因为这道题涵盖的内容太多了，网络、浏览器、操作系统等都可以聊到，每一块单拿出来又都可以挖很多坑，所以这道题作为面试题可以说是一个极好的切入点。今天就来整理一下自己...</p>
         </a>
       
     </div>
@@ -560,7 +576,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-text">名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#push%EF%BC%9A-%E5%85%A5%E6%A0%88"><span class="toc-text">push： 入栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop%EF%BC%9A-%E5%87%BA%E6%A0%88"><span class="toc-text">pop： 出栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top%EF%BC%9A%E6%A0%88%E9%A1%B6"><span class="toc-text">top：栈顶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E6%A0%88"><span class="toc-text">JavaScript 中的栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E6%A0%88%EF%BC%9F"><span class="toc-text">什么场景下用栈？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88"><span class="toc-text">判断字符串的括号是否有效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E7%AD%89"><span class="toc-text">函数调用栈等</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-ABNF-%E8%AF%AD%E6%B3%95%E5%AE%9A%E4%B9%89%E7%9A%84-HTTP"><span class="toc-text">基于 ABNF 语法定义的 HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABNF-%E7%9A%84%E6%A0%B8%E5%BF%83%E8%A7%84%E5%88%99"><span class="toc-text">ABNF 的核心规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-ABNF-%E6%8F%8F%E8%BF%B0%E7%9A%84-http-%E6%A0%BC%E5%BC%8F"><span class="toc-text">基于 ABNF 描述的 http 格式</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -579,20 +595,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="栈 - 基础知识";
+  pdata.postTitle="应用层-HTTP/1.1协议";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

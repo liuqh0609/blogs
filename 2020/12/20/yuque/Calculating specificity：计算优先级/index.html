@@ -426,38 +426,87 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h2><p>为给定元素计算它的优先级，遵循以下原则：</p>
-<ul>
-<li>计算 ID 选择器的值  A</li>
-<li>计算类选择、属性选择器、伪类选择器的值  B</li>
-<li>计算标签选择器和伪元素选择器的值  C</li>
-<li>忽略通用选择器*</li>
-</ul>
-<ol>
-<li><p>:is()、:not()、:has(),这三个伪类选择器的计算值将被其中优先级最高的值所代替</p>
+  <h2 id="优先级概念"><a href="#优先级概念" class="headerlink" title="优先级概念"></a>优先级概念</h2><p>优先级其实就是分配给某一个 css 声明的权重，它是由该声明中匹配到的<strong>每个选择器类型的数值</strong>来决定的<br>​</p>
+<p>当同一个元素有<strong>多个声明</strong>的时候，优先级才会有意义。因为每一个直接作用于元素的 CSS 规则总是会接管/覆盖（take over）该元素从祖先元素继承而来的规则。</p>
+<h2 id="通用规则"><a href="#通用规则" class="headerlink" title="通用规则"></a>通用规则</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621908826522-1ceec176-442c-46ab-9bb7-600447609aa7.png#clientId=u50c194b9-8c92-4&from=paste&height=328&id=u03d8e0d2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=656&originWidth=1512&originalType=binary&size=147226&status=done&style=none&taskId=u1b3c75ea-65d9-45e7-841a-d36ef864c1d&width=756" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1621908826522-1ceec176-442c-46ab-9bb7-600447609aa7.png#clientId=u50c194b9-8c92-4&from=paste&height=328&id=u03d8e0d2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=656&originWidth=1512&originalType=binary&size=147226&status=done&style=none&taskId=u1b3c75ea-65d9-45e7-841a-d36ef864c1d&width=756" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>（优先级从左到右依次递减）</p>
 <blockquote>
-<p>eg:<br>:is(#id)   [1,0,0] 伪类的优先级值 B 被 id 的高优先值所代替</p>
+<p><strong>!imporant &gt; 行内 &gt; id 选择器 &gt; 类、伪类、属性选择器 &gt; 标签、伪元素选择器 &gt; *通用选择器</strong></p>
 </blockquote>
-</li>
-<li><p>类似的, :nth-child()、：nth-last-child()的计算值是一个伪类的值加上参数的计算值之和。</p>
-<blockquote>
-<p>eg:<br>:nth-child(.item)  [0,2,0]   伪类的值加上参数.item 的值</p>
-</blockquote>
-</li>
-<li><p>:where() 伪类的计算值为 0</p>
-<blockquote>
-<p>eg:<br>.item:where(em,#foo)  [0,1,0]  where 伪类的值为 0</p>
-</blockquote>
-</li>
+<p>从上面的图片可以看到，其实权重的计算很简单，它是由四个部分组成的，我们可以用这样的形式来表达<br><code>[ L , A, B, C ]</code>。在优先级概念中我们也提到了，他的权重是由<strong>匹配到的选择器的数值</strong>来决定的。<br>所以当我们在一个 css 声明中没匹配到对应位置上的一个选择器时，这个数组中的<strong>对应位置就+1</strong>.<br>例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* [ 0, 0, 1, 1] */</span></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* [ 0, 1, 0, 1] */</span></span><br><span class="line"><span class="selector-id">#id</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* [ 0, 0, 2, 1] */</span></span><br><span class="line"><span class="selector-class">.item1</span> <span class="selector-class">.item2</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​</p>
+<p>在样式计算优先级时遵循权重值高的样式，覆盖权重低的样式（<strong>弱肉强食</strong>法则）<br>当权重值相同时，根据声明的时间来决定样式的显示，<strong>声明时间越靠后，也就是在样式表中的位置越靠下优先级就越高。</strong></p>
+<h2 id="特殊伪类计算"><a href="#特殊伪类计算" class="headerlink" title="特殊伪类计算"></a>特殊伪类计算</h2><ol>
+<li><strong>:is()**、</strong>:not()<strong>、</strong>:has() <strong>这三个伪类选择器的计算值将被其参数中</strong>优先级最高的一个所代替**</li>
 </ol>
-<p>【A，B，C】</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:is</span>(<span class="selector-id">#id</span>) &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-pseudo">:is</span>(<span class="selector-id">#id</span>, <span class="selector-class">.item</span>) &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line">参数中的id选择器是优先级最高的,所以两个的权重都为: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>,</span><br><span class="line">  <span class="number">0</span>] 那么决定最后颜色显示的就是他们的顺序，谁最后定义的就是设么颜色;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>:nth-child()**、</strong>:nth-last-child()<strong>的计算值是一个</strong>伪类的值<strong>加上</strong>其他选择器<strong>的值：</strong>伪类值+其他选择器值<strong>。（这里有一点需要注意的是:nth-child(n),中的 n 可以是数字、关键词和表达式，关键词是 odd（偶数）、even（奇数）。并且这个 n 是针对</strong>父级元素**来计算的）</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child</span>(<span class="number">3</span>)&#123;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">标签选择器+伪类选择器：</span><br><span class="line"><span class="selector-attr">[0, 0, 1, 1]</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>:where() 伪类的计算值为 0</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span><span class="selector-pseudo">:where</span>(<span class="selector-tag">p</span>) &#123;</span><br><span class="line">   <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">where伪类的权重值为<span class="number">0</span>：</span><br><span class="line"><span class="selector-attr">[0, 0, 1, 1]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>参考表：</strong></p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>计算</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*   （通用选择器）</td>
+<td>L=0, A=0, B=0, C=0</td>
+<td>[0, 0, 0, 0]</td>
+</tr>
+<tr>
+<td>li</td>
+<td>L=0, A=0, B=0, C=1</td>
+<td>[0, 0, 0, 1]</td>
+</tr>
+<tr>
+<td>ul li</td>
+<td>L=0, A=0, B=0, C=2</td>
+<td>[0, 0, 0, 2]</td>
+</tr>
+<tr>
+<td>ul ol + li</td>
+<td>L=0, A=0, B=0, C=3</td>
+<td>[0, 0, 0, 3]</td>
+</tr>
+<tr>
+<td>h1 + [id=”someElement”]</td>
+<td>L=0, A=0, B=1, C=1</td>
+<td>[0, 0, 1, 1]</td>
+</tr>
+<tr>
+<td>#id:not(.foo)</td>
+<td>L=0, A=1, B=1, C=0</td>
+<td>[0, 1, 1, 0]</td>
+</tr>
+<tr>
+<td>.foo:is(.bar,#baz)</td>
+<td>L=0, A=1, B=1, C=0</td>
+<td>[0, 1, 1, 0]</td>
+</tr>
+</tbody></table>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.red</span> <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.blue</span> <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">color</span>: blue;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是什么颜色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是什么颜色<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
+<p>分析：</p>
 <ul>
-<li>/_ a=0 b=0 c=0 <em>/<br>LI                                      /</em> a=0 b=0 c=1 <em>/<br>UL LI                                  /</em> a=0 b=0 c=2 <em>/<br>UL OL+LI                           /</em> a=0 b=0 c=3 _/<br>H1 + <em>[REL=up]                  /</em> a=0 b=1 c=1 <em>/<br>UL OL LI.red                      /</em> a=0 b=1 c=3 <em>/<br>LI.red.level                        /</em> a=0 b=2 c=1 <em>/<br>#x34y                               /</em> a=1 b=0 c=0 <em>/<br>#s12:not(FOO)                   /</em> a=1 b=0 c=1 <em>/<br>.foo :is(.bar, #baz)             /</em> a=1 b=1 c=0 */</li>
+<li><code>.red p</code> 权重为 [0, 0, 1, 1]</li>
+<li><code>.blue p</code> 权重为 [0, 0, 1, 1]</li>
 </ul>
+<p>可以看到<strong>权重相同</strong>，和 DOM 的结构<strong>无关</strong>，根据<strong>优先级顺序</strong>可以确定显示的都为 blue</p>
 </blockquote>
-<p>官方文档是按照 3 位来计算优先级的，就是上图中的：<br>[A, B, C]<br>还有一种计算方式是按照四位来计算的，最高位表示是否为行内样式：<br>[ L, A, B, C]</p>
-<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-id">#a</span><span class="selector-class">.b</span> <span class="selector-class">.c</span><span class="selector-attr">[id=x]</span> 		<span class="selector-attr">[0, 1, 3, 1]</span></span><br><span class="line"><span class="selector-id">#a</span><span class="selector-pseudo">:not</span>(<span class="selector-id">#b</span>) 					<span class="selector-attr">[0, 2, 0, 0]</span></span><br><span class="line">*<span class="selector-class">.a</span> 								<span class="selector-attr">[0, 0, 1, 0]</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-class">.a</span> 							<span class="selector-attr">[0, 0, 1, 1]</span></span><br></pre></td></tr></table></figure>
 
   
   
@@ -492,10 +541,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-23T20:29:20+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-27T11:19:56+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年5月23日</p>
+    <p>2021年5月27日</p>
   </a>
 </div>
 
@@ -574,7 +623,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-text">计算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-text">练习</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E6%A6%82%E5%BF%B5"><span class="toc-text">优先级概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-text">通用规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E4%BC%AA%E7%B1%BB%E8%AE%A1%E7%AE%97"><span class="toc-text">特殊伪类计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-text">练习</span></a></li></ol>
     </div>
   </section>
 
