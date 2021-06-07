@@ -443,7 +443,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>函数组件会捕获 render 内部的状态，这是两者之间最大的区别</strong></li>
 </ul>
 <p>这里就最后一条进行展开描述，因为这条区别可以说是两者之间的本质区别，react 团队也是意识到了这个问题，才开始拥抱函数组件的。</p>
-<h3 id="为什么说函数组件会捕获-render-内部的状态"><a href="#为什么说函数组件会捕获-render-内部的状态" class="headerlink" title="为什么说函数组件会捕获 render 内部的状态"></a>为什么说函数组件会捕获 render 内部的状态</h3><p>可以说函数组件其实才是更契合 React 设计理念的。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上面这个图中可以看到，其实 react 的组件本身就是一个吃进数据，并且吐出 UI 的一种设计。 函数组件可以将数据处理并且最后映射到 UI 中去。<br><strong>React 数据应该总是和渲染紧密绑定在一起的，而类组件就做不到这一点。</strong></p>
+<h3 id="为什么说函数组件会捕获-render-内部的状态"><a href="#为什么说函数组件会捕获-render-内部的状态" class="headerlink" title="为什么说函数组件会捕获 render 内部的状态"></a>为什么说函数组件会捕获 render 内部的状态</h3><p>可以说函数组件其实才是更契合 React 设计理念的。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary%E2%88%B6=1&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary%E2%88%B6=1&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上面这个图中可以看到，其实 react 的组件本身就是一个吃进数据，并且吐出 UI 的一种设计。 函数组件可以将数据处理并且最后映射到 UI 中去。<br><strong>React 数据应该总是和渲染紧密绑定在一起的，而类组件就做不到这一点。</strong></p>
 <p><a target="_blank" rel="noopener" href="https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js">https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js</a></p>
 <blockquote>
 <p>虽然 props 本身是不可变的，但 this 却是可变的，this 上的数据是可以被修改的？ 怎么理解 props 本身是不可变的这句话？和 immutable 数据有关系吗？</p>
@@ -451,11 +451,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>为什么类组件中的方法，不 bind this 就无法获取到 this 实例？<br>设计缺陷，而我们都是在代码层面去弥补它设计上的缺陷</p>
 </blockquote>
-<h2 id="为什么需要-React-hooks-呢？（总结）"><a href="#为什么需要-React-hooks-呢？（总结）" class="headerlink" title="为什么需要 React-hooks 呢？（总结）"></a>为什么需要 React-hooks 呢？（总结）</h2><ol>
+<h3 id="为什么需要-React-hooks-呢？（总结）"><a href="#为什么需要-React-hooks-呢？（总结）" class="headerlink" title="为什么需要 React-hooks 呢？（总结）"></a>为什么需要 React-hooks 呢？（总结）</h3><ol>
 <li>解决难以理解的 class 模式（this 问题）</li>
 <li>函数组件更加符合 react 的设计：<strong>UI=f(data)</strong></li>
-<li>使组件的状态和逻辑可以进行拆分和维护</li>
+<li>使组件的状态和逻辑可以进行拆分和维护<blockquote>
+<p>函数组件其实更加符合 react 的设计理念。React 的定位其实就是一个吃进 data，然后吐出 UI 的这样一个框架，有个很著名的公式就体现出了这一点：<code> UI = F（data）</code>。而 hooks 的出现就是为了补齐函数组件无法维持状态等等一系列的问题，也是 react 拥抱函数组件的体现<br>还有就是对比之下，其实函数组件要比类组件方便一些。类组件很多处理逻辑都要在生命周期里来处理，就会造成有一些状态和逻辑没办法轻易的做到抽离和复用。其次就是生命周期出现虽然方便了开发者，但是也对应的加大了学习成本。</p>
+</blockquote>
+</li>
 </ol>
+<p>​</p>
+<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><h3 id="什么是-hooks"><a href="#什么是-hooks" class="headerlink" title="什么是 hooks"></a>什么是 hooks</h3><p>React-hooks 是<strong>一套能够使函数组件更加强大、更加灵活的“钩子”。</strong></p>
+<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><p>useState：为函数组件引进了状态。该 hook 返回一个数组，我们可以用解构的形式来获取。数组第一项是我们需要使用的状态，第二项是我们用来修改该状态的一个方法。<br>useEffect：允许我们在函数组件里进行副作用的操作。该 hook 接收两个参数：第一个参数是一个回调，用来写一些处理逻辑，该回调的返回值如果是一个函数的话会在组件被卸载时执行。第二个参数是一个数组，当然也可以不传。当传入的是一个空数组的时候只在页面挂载时调用。当数组中传入了对应的变量时，会作为一个依赖存在，就是这个变量变化时就会触发对应的回调</p>
 
   
   
@@ -490,10 +496,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-27T11:19:56+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-07T10:20:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年5月27日</p>
+    <p>2021年6月7日</p>
   </a>
 </div>
 
@@ -564,7 +570,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="toc-text">函数组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%80%85%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%88%E6%97%A0%E5%85%B3%E4%BC%98%E5%8A%A3%EF%BC%8C%E4%B9%8B%E8%B0%88%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-text">二者的对比（无关优劣，之谈区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%9A%E6%8D%95%E8%8E%B7-render-%E5%86%85%E9%83%A8%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">为什么说函数组件会捕获 render 内部的状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-React-hooks-%E5%91%A2%EF%BC%9F%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-text">为什么需要 React-hooks 呢？（总结）</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="toc-text">函数组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%80%85%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%88%E6%97%A0%E5%85%B3%E4%BC%98%E5%8A%A3%EF%BC%8C%E4%B9%8B%E8%B0%88%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-text">二者的对比（无关优劣，之谈区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%9A%E6%8D%95%E8%8E%B7-render-%E5%86%85%E9%83%A8%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">为什么说函数组件会捕获 render 内部的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-React-hooks-%E5%91%A2%EF%BC%9F%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-text">为什么需要 React-hooks 呢？（总结）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What"><span class="toc-text">What</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-hooks"><span class="toc-text">什么是 hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-text">怎么使用</span></a></li></ol></li></ol>
     </div>
   </section>
 

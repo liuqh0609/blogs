@@ -24,9 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>时间复杂度&amp;空间复杂度 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>手撕Promise - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -373,13 +371,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="article-meta" id="top">
     
     
-      <a title='时间复杂度&空间复杂度' href='/2021/05/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
-        <img class='thumbnail' src='https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99'>
-      </a>
-    
     
       <h1 class="title">
-        时间复杂度&空间复杂度
+        手撕Promise
       </h1>
       <div class='new-meta-box'>
         
@@ -396,13 +390,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -410,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年5月27日</p>
+    <p>2021年6月5日</p>
   </a>
 </div>
 
@@ -421,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="时间复杂度&空间复杂度" data-path="/2021/05/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+      <div id="lc-pv" data-title="手撕Promise" data-path="/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -439,48 +426,72 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h1 id="时间复杂度-amp-空间复杂度"><a href="#时间复杂度-amp-空间复杂度" class="headerlink" title="时间复杂度&amp;空间复杂度"></a>时间复杂度&amp;空间复杂度</h1><h2 id="复杂度的作用"><a href="#复杂度的作用" class="headerlink" title="复杂度的作用"></a>复杂度的作用</h2><p>一般我们会从两个维度去考虑一段代码的质量：</p>
+  <h2 id="第一步：完成-Promise-的基本构造"><a href="#第一步：完成-Promise-的基本构造" class="headerlink" title="第一步：完成 Promise 的基本构造"></a>第一步：完成 Promise 的基本构造</h2><p>这一步主要是完成一个<code>new Promise()</code>的基本构造。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622873517468-f826db51-b214-4059-a3e5-c6dd00362764.png#clientId=u10ae581c-08cc-4&from=paste&height=89&id=u4d8e6c25&margin=%5Bobject%20Object%5D&name=image.png&originHeight=178&originWidth=974&originalType=binary%E2%88%B6=2&size=26226&status=done&style=none&taskId=ue375c91f-b63b-48b0-92ab-b0eae397567&width=487" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622873517468-f826db51-b214-4059-a3e5-c6dd00362764.png#clientId=u10ae581c-08cc-4&from=paste&height=89&id=u4d8e6c25&margin=%5Bobject%20Object%5D&name=image.png&originHeight=178&originWidth=974&originalType=binary%E2%88%B6=2&size=26226&status=done&style=none&taskId=ue375c91f-b63b-48b0-92ab-b0eae397567&width=487" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上图中的创建方法和参数我们可以确定两点</p>
+<ul>
+<li><p>参数类型为一个函数,该函数接收两个函数类型的参数</p>
+<ul>
+<li>resolve: 将 pending 状态推向已决状态的 fulfilled 状态</li>
+<li>rejected: 将 pending 状态推向已决状态的 rejected 状态</li>
+</ul>
+</li>
+<li><p>调用构造函数时,需要将该函数类型的参数执行</p>
+<ul>
+<li>执行时需要捕获该参数的错误,因为在该函数发生错误时,需要主动将状态推向 rejected 状态</li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PROMISE_STATE = <span class="string">&quot;[[PromiseState]]&quot;</span>; <span class="comment">// 状态</span></span><br><span class="line"><span class="keyword">const</span> PROMISE_RESULT = <span class="string">&quot;[[PromiseResult]]&quot;</span>; <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 三种状态值</span></span><br><span class="line"><span class="keyword">const</span> PENDING = <span class="string">&quot;pending&quot;</span>; <span class="comment">// 未决状态</span></span><br><span class="line"><span class="keyword">const</span> FULFILLED = <span class="string">&quot;fulfilled&quot;</span>; <span class="comment">// 已决状态1</span></span><br><span class="line"><span class="keyword">const</span> REJECTED = <span class="string">&quot;rejected&quot;</span>; <span class="comment">// 已决状态2</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyPromise</span> </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 构造函数</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;function&#125;</span> </span>executor 传递进来的回调函数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">executor</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>[PROMISE_RESULT] = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="built_in">this</span>[PROMISE_STATE] = PENDING;</span><br><span class="line">    <span class="comment">// 已决状态: fulfilled</span></span><br><span class="line">    <span class="keyword">const</span> resolve = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._changeState(data, FULFILLED);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 已决状态: rejected</span></span><br><span class="line">    <span class="keyword">const</span> rejected = <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._changeState(err, REJECTED);</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="keyword">new</span> <span class="built_in">Error</span>(err));</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 执行回调,从未决状态推向已决状态: 需要注意这里需要捕获错误,并且推向rejected状态</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      executor(resolve, rejected);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      rejected(err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 改变状态</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>result 结果值</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>state 状态值</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@returns <span class="variable">Undefined</span></span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">_changeState</span>(<span class="params">result, state</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 改变状态只能在pending的状态下改变</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>[PROMISE_STATE] !== PENDING) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 改变状态和结果</span></span><br><span class="line">    <span class="built_in">this</span>[PROMISE_STATE] = state;</span><br><span class="line">    <span class="built_in">this</span>[PROMISE_RESULT] = result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>改变状态时需要注意两点:</p>
 <ol>
-<li>时间复杂度</li>
-<li>空间复杂度</li>
+<li>状态必须是由未决状态的 pending 推向其他状态,</li>
+<li>状态只能改变一次。如果不是 pending 状态则说明状态已经改变过一次,已经是已决状态了,所以不能再次改变状态了</li>
 </ol>
-<p>顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。</p>
-<p>所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。</p>
-<p>那么我们应该怎么来定义复杂度呢？<br><img src="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/2705850/1606953725697-beedfd24-126b-4e4f-97cc-28d93d2321e1.png#align=left&display=inline&height=78&margin=%5Bobject%20Object%5D&name=image.png&originHeight=155&originWidth=198&size=27501&status=done&style=none&width=99" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="复杂度的定义与特点"><a href="#复杂度的定义与特点" class="headerlink" title="复杂度的定义与特点"></a>复杂度的定义与特点</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>复杂度是一个关于输入量 n 的函数。<br>eg：假设你的代码复杂度是 f(n),那么用大写字母 O 将其括起来就可以表示复杂度了 — O(f(n))</p>
 </blockquote>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h4 id="与常系数无关"><a href="#与常系数无关" class="headerlink" title="与常系数无关"></a>与常系数无关</h4><blockquote>
-<p>例如 O(n) + O(n) = O(2n), 其实 O(n)复杂度和 O(2n)复杂度是一样的，我们通常会忽略常系数对复杂度的影响</p>
-</blockquote>
-<h4 id="多项式级相加的复杂度，会取结果最大的那一个作为最后的结果"><a href="#多项式级相加的复杂度，会取结果最大的那一个作为最后的结果" class="headerlink" title="多项式级相加的复杂度，会取结果最大的那一个作为最后的结果"></a>多项式级相加的复杂度，会取结果最大的那一个作为最后的结果</h4><blockquote>
-<p>O(n^2) + O(n)，明显 n^2 在输入量 n 逐渐变大的情况下，变化会更大，所以我们就说复杂度是 O(n^2)即可</p>
-</blockquote>
-<h4 id="O-1-是一个特殊的复杂度：输入量-n-与消耗的资源无关"><a href="#O-1-是一个特殊的复杂度：输入量-n-与消耗的资源无关" class="headerlink" title="O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关"></a>O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关</h4><blockquote>
-<p>O（1）表示的是当前复杂度和输入 n 无关。例如你的代码处理 100 条数据是消耗 3 个时间单元和 1 个空间单元，处理 500 条数据依然还是消耗 3 个时间单元和 1 个空间单元，那么就是输入量与消耗资源无</p>
-</blockquote>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612220986085-7033d2c5-66bb-4608-8177-b3105aa878a9.png#align=left&display=inline&height=337&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1346&originWidth=1412&size=1576566&status=done&style=none&width=353" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
-<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><h3 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num += <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="第二步：实现-Promise-的-then-、-catch-调用"><a href="#第二步：实现-Promise-的-then-、-catch-调用" class="headerlink" title="第二步：实现 Promise 的.then()、.catch()调用"></a>第二步：实现 Promise 的.then()、.catch()调用</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622878248516-2a9356f4-038e-4727-8dc2-16ce2a2ca0a4.png#clientId=u10ae581c-08cc-4&from=paste&height=186&id=u613da58d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=372&originWidth=1018&originalType=binary%E2%88%B6=2&size=69246&status=done&style=none&taskId=ud63ef257-7d12-4c54-85c0-1e7f5a0ddcc&width=509" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622878248516-2a9356f4-038e-4727-8dc2-16ce2a2ca0a4.png#clientId=u10ae581c-08cc-4&from=paste&height=186&id=u613da58d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=372&originWidth=1018&originalType=binary%E2%88%B6=2&size=69246&status=done&style=none&taskId=ud63ef257-7d12-4c54-85c0-1e7f5a0ddcc&width=509" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上图中调用方式我们可以知道：</p>
+<ol>
+<li>promise 类中需要返回两个方法，一个 then、一个 catch</li>
+<li>可以添加多个 then 和 catch 方法，所以需要两个任务队列来将所有注册的方法存入队列中去执行</li>
+</ol>
+<p>​</p>
+<p>那么现在就牵扯到两个问题：</p>
+<ol>
+<li>什么时候入队？</li>
+<li>什么时候执行？</li>
+</ol>
+<p>​</p>
+<h3 id="什么时候入队？"><a href="#什么时候入队？" class="headerlink" title="什么时候入队？"></a>什么时候入队？</h3><p>按照正常步骤来理解，在注册 then 或者 catch 函数的时候就应该入队。<br>但是这里有一点需要注意的是：<strong>当状态已经变为已决状态的时候，应该立即执行 then 或者 catch 中传入的回调</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.fuilledList =  [];</span><br><span class="line"><span class="built_in">this</span>.catchList = [];</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * then方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fulfilledFn fulfilled状态下的处理回调</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn then函数的第二个参数是rejected状态下的处理函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="title">then</span>(<span class="params">fuilledFn,catchFn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">this</span>[PROMISE_STATE] === FULFILLED) &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        fuilledFn(<span class="built_in">this</span>[PROMISE_RESULT]);</span><br><span class="line">      &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.fuilledList.push(fuilledFn);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="built_in">this</span>.catch(catchFn)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * catch方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn rejected状态的处理回调</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">catch</span>(catchFn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>[PROMISE_STATE] === REJECTED) &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        catchFn(<span class="built_in">this</span>[PROMISE_RESULT]);</span><br><span class="line">      &#125;, <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.catchList.push(fuilledFn);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度：O(1)<br>空间复杂度：O(1)</p>
-<h3 id="O-n"><a href="#O-n" class="headerlink" title="O(n)"></a>O(n)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <blockquote>
-<p>单个变量所占的空间永远都是一个常量所以是 O(1)</p>
+<p>上面代码中 setTimeout 的作用：<br>模拟 promise 的异步执行<br>利用定时器将任务推入任务队列<br>这里的区别就是 setTimeout 是<strong>宏任务队列</strong>,而 promise 是<strong>微任务队列</strong>​</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i++; i &lt; n) &#123;</span><br><span class="line">  arr.push(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上面代码中可以看出，then 和 catch 中的处理函数可以提取为公共函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 已决阶段的处理函数</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>callback 需要执行的回调函数</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>state 需要确定的状态</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>queue 需要装入的队列</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="title">_settleHandle</span>(<span class="params">callback, state, queue</span>)</span> &#123;</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">typeof</span> callback !== <span class="string">&#x27;function&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">   <span class="keyword">if</span> (<span class="built_in">this</span>[PROMISE_STATE] === state) &#123;</span><br><span class="line">     <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">       callback(<span class="built_in">this</span>[PROMISE_RESULT]);</span><br><span class="line">     &#125;, <span class="number">0</span>);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">     queue.push(callback);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * then方法</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fulfilledFn fulfilled状态下的处理回调</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn then函数的第二个参数是rejected状态下的处理函数</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="title">then</span>(<span class="params">fulfilledFn, catchFn</span>)</span> &#123;</span><br><span class="line">   <span class="built_in">this</span>._settleHandle(fulfilledFn, FULFILLED, <span class="built_in">this</span>.fulfilledList);</span><br><span class="line">   <span class="built_in">this</span>.catch(catchFn);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * catch方法</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn rejected状态的处理回调</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">catch</span>(catchFn) &#123;</span><br><span class="line">   <span class="built_in">this</span>._settleHandle(catchFn, REJECTED, <span class="built_in">this</span>.catchList);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<blockquote>
-<p>这段代码相当于我们给数组 arr 中添加了 n 个元素，所以占用了 n 个内存单元，因此空间复杂度为 O(n)</p>
-</blockquote>
-<h3 id="O-logn"><a href="#O-logn" class="headerlink" title="O(logn)"></a>O(logn)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= n) &#123;</span><br><span class="line">  i *= <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>then 和 catch 的入队时机是在<strong>注册</strong>的时候。<br>注意点就是：当状态已经成为已决状态时，不是执行入队操作，而是直接执行当前状态对应的回调<br>​</p>
+<h3 id="什么时候执行？"><a href="#什么时候执行？" class="headerlink" title="什么时候执行？"></a>什么时候执行？</h3><p>执行对应任务队列里的 fuilled 或者 catch 函数，应该是在状态改变时执行。<br>所以这里我们只需要改变一下之前的_changeState 函数 即可</p>
+<ol>
+<li>添加一个参数 queue，即需要执行哪个队列里的任务</li>
+<li>遍历队列，执行函数，在执行时将当前的 result 值作为参数，传递给 fn</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 改变状态</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>result 结果值</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>state 状态值</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>queue 需要执行的任务队列</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@returns <span class="variable">Undefined</span></span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="function"><span class="title">_changeState</span>(<span class="params">result, state, queue</span>)</span> &#123;</span><br><span class="line">   <span class="comment">// 改变状态只能在pending的状态下改变</span></span><br><span class="line">   <span class="keyword">if</span> (<span class="built_in">this</span>[PROMISE_STATE] !== PENDING) &#123;</span><br><span class="line">     <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 改变状态和结果</span></span><br><span class="line">   <span class="built_in">this</span>[PROMISE_STATE] = state;</span><br><span class="line">   <span class="built_in">this</span>[PROMISE_RESULT] = result;</span><br><span class="line">   <span class="comment">// 执行缓存队列里的对应函数</span></span><br><span class="line">   queue.forEach(<span class="function">(<span class="params">fn</span>) =&gt;</span> fn(<span class="built_in">this</span>[PROMISE_RESULT]));</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<blockquote>
-<p>这段代码相当于是在计算 2&lt;=n，也就是 x 次之后循环结束那么 x=logn</p>
-</blockquote>
+<p>接下来就是在不同的改变状态的函数中调用即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 已决状态: fulfilled</span></span><br><span class="line"><span class="keyword">const</span> resolve = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>._changeState(data, FULFILLED, <span class="built_in">this</span>.fulfilledList);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 已决状态: rejected</span></span><br><span class="line"><span class="keyword">const</span> rejected = <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">this</span>._changeState(err, REJECTED, <span class="built_in">this</span>.catchList);</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="keyword">new</span> <span class="built_in">Error</span>(err));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>在状态发生变化的时候执行对应的队列中的函数。<br>注意点：</p>
+<ol>
+<li>执行函数时将此时的 PROMISE_RESULT 值当做参数传递进去</li>
+</ol>
+<h2 id="第三步：实现-then-或者-catch-的链式调用"><a href="#第三步：实现-then-或者-catch-的链式调用" class="headerlink" title="第三步：实现.then 或者.catch 的链式调用"></a>第三步：实现.then 或者.catch 的链式调用</h2><p>这里需要知道的就是，为了实现链式调用，那么 then 和 catch 返回值必定是一个新的 promise 对象。<br>这里需要考虑的问题：</p>
+<ol>
+<li>链式的 then 什么时候执行？</li>
+</ol>
+<p>很明显这里的，then 应该是等待上次的 then 执行完毕之后再去执行下一次的 then。那么这里就又需要考虑，我们怎么才能知道上一次的 then 执行完了呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * then方法</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fulfilledFn fulfilled状态下的处理回调</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn then函数的第二个参数是rejected状态下的处理函数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">then</span>(<span class="params">fulfilledFn, catchFn</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.linkPromise(fulfilledFn, catchFn);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * catch方法</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn rejected状态的处理回调</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">catch</span>(catchFn) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.linkPromise(<span class="literal">undefined</span>, catchFn);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 需要返回的promise对象</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>fulfilledFn fulfilled状态下的回调</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>catchFn rejected状态下的回调</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@returns <span class="variable">Undefined</span></span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">linkPromise</span>(<span class="params">fulfilledFn, catchFn</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> MyPromise(<span class="function">(<span class="params">resolve, rejected</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>._settleHandle(</span><br><span class="line">        <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// then处理函数的返回值就是下一个then的data值</span></span><br><span class="line">            <span class="keyword">const</span> result = fulfilledFn(data);</span><br><span class="line">            resolve(result);</span><br><span class="line">          &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            rejected(err);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        FULFILLED,</span><br><span class="line">        <span class="built_in">this</span>.fulfilledList</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      <span class="built_in">this</span>._settleHandle(</span><br><span class="line">        <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// then处理函数的返回值就是下一个then的data值</span></span><br><span class="line">          <span class="keyword">const</span> result = catchFn(err);</span><br><span class="line">          resolve(result);</span><br><span class="line">        &#125;,</span><br><span class="line">        REJECTED,</span><br><span class="line">        <span class="built_in">this</span>.catchList</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   
   
@@ -498,7 +509,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/05/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/>https://blog.lqh.kim/2021/05/27/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/>https://blog.lqh.kim/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/</a></p>
               
             
           </blockquote>
@@ -515,10 +526,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-05-27T11:19:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-07T10:20:41+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年5月27日</p>
+    <p>2021年6月7日</p>
   </a>
 </div>
 
@@ -534,22 +545,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/05/27/%E4%BB%A3%E7%A0%81%E6%95%88%E7%8E%87%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E8%AE%BA/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>代码效率优化方法论</p>
-          <p class='content'>代码效率优化方法论如何衡量一段代码的优劣呢？一般我们会从两个维度去考虑一段代码的质量：
-
-时间复杂度
-空间复杂度
-
-顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是...</p>
+        <a class='prev' href='/2021/06/07/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
       
-        <a class='next' href='/2021/05/27/%E6%A0%88/'>
-          <p class='title'>栈 - 基础知识<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>栈
-定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
-名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中...</p>
+        <a class='next' href='/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/'>
+          <p class='title'>webpack简介<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>webpack 简介webpack 通过一个开发时态的入口模块为起点，分析出文件中所有的依赖关系，然后经过一系列的压缩、合并过程，最终生成运行时态的文件
+webpack 的特点
+为前端工程化而生...</p>
         </a>
       
     </div>
@@ -592,7 +599,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">复杂度的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%89%B9%E7%82%B9"><span class="toc-text">复杂度的定义与特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-text">特点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E5%B8%B8%E7%B3%BB%E6%95%B0%E6%97%A0%E5%85%B3"><span class="toc-text">与常系数无关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%BA%A7%E7%9B%B8%E5%8A%A0%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%8C%E4%BC%9A%E5%8F%96%E7%BB%93%E6%9E%9C%E6%9C%80%E5%A4%A7%E7%9A%84%E9%82%A3%E4%B8%80%E4%B8%AA%E4%BD%9C%E4%B8%BA%E6%9C%80%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-text">多项式级相加的复杂度，会取结果最大的那一个作为最后的结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#O-1-%E6%98%AF%E4%B8%80%E4%B8%AA%E7%89%B9%E6%AE%8A%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9A%E8%BE%93%E5%85%A5%E9%87%8F-n-%E4%B8%8E%E6%B6%88%E8%80%97%E7%9A%84%E8%B5%84%E6%BA%90%E6%97%A0%E5%85%B3"><span class="toc-text">O(1)是一个特殊的复杂度：输入量 n 与消耗的资源无关</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#O-1"><span class="toc-text">O(1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-n"><span class="toc-text">O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#O-logn"><span class="toc-text">O(logn)</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%8C%E6%88%90-Promise-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E9%80%A0"><span class="toc-text">第一步：完成 Promise 的基本构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AE%9E%E7%8E%B0-Promise-%E7%9A%84-then-%E3%80%81-catch-%E8%B0%83%E7%94%A8"><span class="toc-text">第二步：实现 Promise 的.then()、.catch()调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%85%A5%E9%98%9F%EF%BC%9F"><span class="toc-text">什么时候入队？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E6%89%A7%E8%A1%8C%EF%BC%9F"><span class="toc-text">什么时候执行？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%AE%9E%E7%8E%B0-then-%E6%88%96%E8%80%85-catch-%E7%9A%84%E9%93%BE%E5%BC%8F%E8%B0%83%E7%94%A8"><span class="toc-text">第三步：实现.then 或者.catch 的链式调用</span></a></li></ol>
     </div>
   </section>
 
@@ -611,20 +618,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="时间复杂度&amp;空间复杂度";
+  pdata.postTitle="手撕Promise";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>

@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <!-- 绕过语雀防盗链 -->
@@ -26,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2021/5 - 火热</title>
+  <title>webpack简介 - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -365,78 +363,169 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        webpack简介
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/13/yuque/TCP%E5%88%9D%E6%8E%A2/">
-        TCP初探
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/blogs/" rel="nofollow">
+    <img no-lazy src="http://qiniu.lqh.kim/avatar.jpeg">
+    <p>火热</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>2021年6月4日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        五层网络模型的流程首先是应用层，应用层提供的就是Aplication-to-Aplication的协议。就比如我们日常使用的微信就是一个应用，当我们使用微信和别人聊天的时候就相当于是从我们的微信应用发送到对方的微信应用中，就是使用的微信的聊天协议（应用到应用的协议），想要达到这个聊天的功能，我们还需要一个主机到主机（Host-to-Host)的协议来帮助应用层的协议工作。应用层往往有众多的应...
-      
-    
+      <div id="lc-pv" data-title="webpack简介" data-path="/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-13</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="webpack-简介"><a href="#webpack-简介" class="headerlink" title="webpack 简介"></a>webpack 简介</h2><p>webpack 通过一个开发时态的入口模块为起点，分析出文件中所有的依赖关系，然后经过一系列的压缩、合并过程，最终生成运行时态的文件<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622760970845-ffabbfd0-5850-4222-9b3f-5cc3d7bfe0cd.png#clientId=ud3677966-50f2-4&from=paste&height=473&id=u697f2a32&margin=%5Bobject%20Object%5D&name=image.png&originHeight=946&originWidth=2074&originalType=binary&size=162532&status=done&style=none&taskId=u1edd3704-a051-47f3-930f-9228a616000&width=1037" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1622760970845-ffabbfd0-5850-4222-9b3f-5cc3d7bfe0cd.png#clientId=ud3677966-50f2-4&from=paste&height=473&id=u697f2a32&margin=%5Bobject%20Object%5D&name=image.png&originHeight=946&originWidth=2074&originalType=binary&size=162532&status=done&style=none&taskId=u1edd3704-a051-47f3-930f-9228a616000&width=1037" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="webpack-的特点"><a href="#webpack-的特点" class="headerlink" title="webpack 的特点"></a>webpack 的特点</h2><ol>
+<li>为前端工程化而生：让开发者集中注意力编写业务代码</li>
+<li>简单易用： 支持零配置</li>
+<li>强大生态： 灵活，可扩展，提供了使用第三方库来完成其他功能</li>
+<li><strong>基于 nodejs</strong>：由于 webpack 在<strong>构建过程</strong>中需要读取文件，所以是运行在 node 环境中的</li>
+<li>基于模块化： 通过文件中的<strong>导入语句</strong>来分析依赖关系，它支持各种模块化标准，包括但不限于 commonjs，es module、amd、cmd 等</li>
+</ol>
+<p>​</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/05/13/yuque/TCP%E5%88%9D%E6%8E%A2/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/>https://blog.lqh.kim/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-07T10:20:41+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年6月7日</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/05/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
+    </div>
+  </div>
 
 
-	
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>手撕Promise</p>
+          <p class='content'>第一步：完成 Promise 的基本构造这一步主要是完成一个new Promise()的基本构造。从上图中的创建方法和参数我们可以确定两点
+
+参数类型为一个函数,该函数接收两个函数类型的参数
+
+...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/05/27/yuque/%E8%AF%8D%E6%B3%95%E7%8E%AF%E5%A2%83%E5%92%8C%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/'>
+          <p class='title'>词法环境和词法作用域<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>词法环境概念词法环境（Lexical Environment）：是一种规范类型，是为了表明标识符与变量和函数之间的一种关联关系。词法环境包含两部分
+
+环境记录（environment recor...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -444,113 +533,28 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://qiniu.lqh.kim/avatar.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>火热</h2>
-        
-        
-          <p>时间会见证一切</p>
 
-        
-        
-          <p><span id="jinrishici-sentence">火热</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:528851597@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/liuqh0609/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
-            ><div class='name'>数据结构与算法</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E7%AE%80%E4%BB%8B"><span class="toc-text">webpack 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">webpack 的特点</span></a></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #73d13d">数据结构与算法</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
 		  
@@ -559,21 +563,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="webpack简介";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
