@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>react-hooks的设计动机和工作模式 - 火热</title>
+  <title>webpack编译结果分析 - 火热</title>
   
 
   
@@ -373,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        react-hooks的设计动机和工作模式
+        webpack编译结果分析
       </h1>
       <div class='new-meta-box'>
         
@@ -397,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月10日</p>
+    <p>2021年6月7日</p>
   </a>
 </div>
 
@@ -408,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="react-hooks的设计动机和工作模式" data-path="/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
+      <div id="lc-pv" data-title="webpack编译结果分析" data-path="/2021/06/07/yuque/webpack%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,42 +426,53 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>为什么要有 hooks 这种方式？</p>
-<h3 id="类组件"><a href="#类组件" class="headerlink" title="类组件"></a>类组件</h3><p>通过 ES6 的 class 形式，继承 component 形成的组件，在该组件内有一系列的生命周期函数供开发者使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DemoClass</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="comment">// 初始化类组件的 state</span></span><br><span class="line">    state = &#123;</span><br><span class="line">      <span class="attr">text</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编写生命周期方法 didMount</span></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 省略业务逻辑</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 编写自定义的实例方法</span></span><br><span class="line">  changeText = <span class="function">(<span class="params">newText</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 更新 state</span></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      <span class="attr">text</span>: newText,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 编写生命周期方法 render</span></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;demoClass&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.state.text&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.changeText&#125;</span>&gt;</span>点我修改<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>类组件是一个封装好的“<strong>重型战舰</strong>”，它里面有一系列的生命周期，可以很方便的让我们使用，而我们只需要继承一下 React.component 即可。<br>但是类组件的全，并不一定是好事，<strong>大而全的背后必定是昂贵的学习代价。</strong>比如说如果我们不了解生命周期的话，那写出来的代码逻辑顺序大概率会变得一团糟。</p>
-<h3 id="函数组件"><a href="#函数组件" class="headerlink" title="函数组件"></a>函数组件</h3><p>函数组件在早期又叫做<strong>无状态组件</strong>，因为当时没有 hooks 的加持，它没有办法维持自身状态，只能通过父组件传递的 props 来维护一个值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DemoFun</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; value &#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这是一个函数组件<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>函数组件相较于类组件，肉眼可见的轻便、简单、易于维护。</p>
-<h3 id="二者的对比（无关优劣，之谈区别）"><a href="#二者的对比（无关优劣，之谈区别）" class="headerlink" title="二者的对比（无关优劣，之谈区别）"></a>二者的对比（无关优劣，之谈区别）</h3><ul>
-<li>类组件需要继承 component 或者 pureComponent，函数组件不需要</li>
-<li>类组件中有众多生命周期可以使用，函数组件中没有</li>
-<li>类组件中可以通过访问 this 来做一些事情，函数组件中不行</li>
-<li>类组件中可以维护自己的状态（state），函数组件中不行（以前不行，现在有了 hooks 就可以了）</li>
-<li><strong>函数组件会捕获 render 内部的状态，这是两者之间最大的区别</strong></li>
+  <p>首先我们可以尝试自己手写一个简单的编译结果。然后和实际的编译结果进行对比，来加深对编译结果的分析。<br>​</p>
+<h2 id="手写-webpack-编译结果"><a href="#手写-webpack-编译结果" class="headerlink" title="手写 webpack 编译结果"></a>手写 webpack 编译结果</h2><blockquote>
+<p>这里的相关代码，已上传 git 仓库</p>
+</blockquote>
+<h3 id="1-合并模块-形成一个模块对象"><a href="#1-合并模块-形成一个模块对象" class="headerlink" title="1. 合并模块,形成一个模块对象"></a>1. 合并模块,形成一个模块对象</h3><p>在开始写编译结果之前，我们需要思考一个问题：<br>打包之后的结果里，怎么把所有的模块给合并到一起，这些模块的导出用什么形式来接收？<br>其实这一步我们可以使用函数来完成，即<strong>把每个模块的代码都当成一个函数去执行</strong>，将这些所有代码组装成一个 Module 对象：</p>
+<ul>
+<li>对象的 key 就是模块的文件路径</li>
+<li>value 就是一个函数，这个函数里的内容就是对应模块文件中需要执行的代码</li>
 </ul>
-<p>这里就最后一条进行展开描述，因为这条区别可以说是两者之间的本质区别，react 团队也是意识到了这个问题，才开始拥抱函数组件的。</p>
-<h3 id="为什么说函数组件会捕获-render-内部的状态"><a href="#为什么说函数组件会捕获-render-内部的状态" class="headerlink" title="为什么说函数组件会捕获 render 内部的状态"></a>为什么说函数组件会捕获 render 内部的状态</h3><p>可以说函数组件其实才是更契合 React 设计理念的。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary%E2%88%B6=1&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1618875780476-bb2f146e-cefc-484a-b16f-3ab15b636d0d.png#clientId=u3b15fcb3-76ed-4&from=paste&height=346&id=u65f5d3d8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=944&originalType=binary%E2%88%B6=1&size=88794&status=done&style=none&taskId=ua75adc5e-de63-4e17-b59a-4e7b0cd9ca6&width=472" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>从上面这个图中可以看到，其实 react 的组件本身就是一个吃进数据，并且吐出 UI 的一种设计。 函数组件可以将数据处理并且最后映射到 UI 中去。<br><strong>React 数据应该总是和渲染紧密绑定在一起的，而类组件就做不到这一点。</strong></p>
-<p><a target="_blank" rel="noopener" href="https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js">https://codesandbox.io/s/focused-sun-si5pu?file=/src/index.js</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">module</span> = &#123;</span><br><span class="line">  <span class="string">&quot;./src/a.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;a module&quot;</span>);</span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">      <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;./src/index.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;index module&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&quot;./src/a.js&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>虽然 props 本身是不可变的，但 this 却是可变的，this 上的数据是可以被修改的？ 怎么理解 props 本身是不可变的这句话？和 immutable 数据有关系吗？</p>
+<p>这里有几个问题需要注意</p>
+<ul>
+<li>在函数中，我们的形参为<strong>module, exports, require。这些都是导入导出所需要的变量，我们用参数的形式代替。之后需要我们来完成这些导入导出的统一。</strong></li>
+</ul>
 </blockquote>
-<blockquote>
-<p>为什么类组件中的方法，不 bind this 就无法获取到 this 实例？<br>设计缺陷，而我们都是在代码层面去弥补它设计上的缺陷</p>
-</blockquote>
-<h3 id="为什么需要-React-hooks-呢？（总结）"><a href="#为什么需要-React-hooks-呢？（总结）" class="headerlink" title="为什么需要 React-hooks 呢？（总结）"></a>为什么需要 React-hooks 呢？（总结）</h3><ol>
-<li>解决难以理解的 class 模式（this 问题）</li>
-<li>函数组件更加符合 react 的设计：<strong>UI=f(data)</strong></li>
-<li>使组件的状态和逻辑可以进行拆分和维护<blockquote>
-<p>函数组件其实更加符合 react 的设计理念。React 的定位其实就是一个吃进 data，然后吐出 UI 的这样一个框架，有个很著名的公式就体现出了这一点：<code> UI = F（data）</code>。而 hooks 的出现就是为了补齐函数组件无法维持状态等等一系列的问题，也是 react 拥抱函数组件的体现<br>还有就是对比之下，其实函数组件要比类组件方便一些。类组件很多处理逻辑都要在生命周期里来处理，就会造成有一些状态和逻辑没办法轻易的做到抽离和复用。其次就是生命周期出现虽然方便了开发者，但是也对应的加大了学习成本。</p>
+<p><strong>​</strong></p>
+<p>但是这里我们需要注意一个问题，就是为了不影响其他模块的内容，我们打包后的文件里的所有声明都不应该去影响到其他的声明，所以我们这里可以借助<strong>立即执行函数来形成一个封闭的空间，保证变量或者函数声明的局部性</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span></span>) </span>&#123;&#125;)(&#123;</span><br><span class="line">  <span class="string">&quot;./src/a.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;a module&quot;</span>);</span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">      <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;./src/index.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;index module&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&quot;./a&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-执行入口文件，实现-require-功能"><a href="#2-执行入口文件，实现-require-功能" class="headerlink" title="2. 执行入口文件，实现 require 功能"></a>2. 执行入口文件，实现 require 功能</h3><p>我们已经形成了一个模块对象，接下来我们就需要考虑函数里需要实现什么功能。<br>一开始我们需要执行入口文件，通过入口文件来不断的执行所有的依赖文件。<br>所以我们这里就需要<strong>先实现执行入口文件的功能</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 执行入口文件</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;./src/index.js&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>我们通过自定义一个 require 方法来实现执行文件的效果，这个方法需要有这样的几个功能</p>
+<ol>
+<li>根据参数来执行对应的模块函数</li>
+<li>返回值需要是导出的对象<blockquote>
+<p>这里我们注意一个问题，为了与 node 的 require 方法区别开来，我们这里将 require 方法命名为_webpack_require</p>
 </blockquote>
 </li>
 </ol>
-<p>​</p>
-<h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><h3 id="什么是-hooks"><a href="#什么是-hooks" class="headerlink" title="什么是 hooks"></a>什么是 hooks</h3><p>React-hooks 是<strong>一套能够使函数组件更加强大、更加灵活的“钩子”。</strong></p>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><p>useState：为函数组件引进了状态。该 hook 返回一个数组，我们可以用解构的形式来获取。数组第一项是我们需要使用的状态，第二项是我们用来修改该状态的一个方法。<br>useEffect：允许我们在函数组件里进行副作用的操作。该 hook 接收两个参数：第一个参数是一个回调，用来写一些处理逻辑，该回调的返回值如果是一个函数的话会在组件被卸载时执行。第二个参数是一个数组，当然也可以不传。当传入的是一个空数组的时候只在页面挂载时调用。当数组中传入了对应的变量时，会作为一个依赖存在，就是这个变量变化时就会触发对应的回调</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">_webpack_require</span>(<span class="params">moduleID</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 根据参数找到对应的模块函数</span></span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">module</span>[moduleID];</span><br><span class="line">    <span class="comment">// 定义执行函数所需要的参数</span></span><br><span class="line">    <span class="keyword">const</span> _webpack_module = &#123;</span><br><span class="line">      <span class="attr">exports</span>: &#123;&#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">exports</span> = _webpack_module.exports;</span><br><span class="line">    <span class="comment">// 执行函数,注意函数的三个参数</span></span><br><span class="line">    func(_webpack_module, <span class="built_in">exports</span>, _webpack_require);</span><br><span class="line">    <span class="comment">// 返回值为导出的对象</span></span><br><span class="line">    <span class="keyword">return</span> _webpack_module.exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 执行入口文件</span></span><br><span class="line">  _webpack_require(<span class="string">&quot;./src/index.js&quot;</span>);</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">  <span class="string">&quot;./src/a.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;a module&quot;</span>);</span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">      <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;./src/index.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;index module&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&quot;./src/a.js&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里也需要注意一个问题，webpack 在打包的时候会把我们写的引用模块的路径给补充完整。<br>例如我们代码里写的是 require(‘./a’)，那么他就会打包成为 require(‘./src/a.js’)</p>
+</blockquote>
+<h3 id="3-完成模块缓存"><a href="#3-完成模块缓存" class="headerlink" title="3. 完成模块缓存"></a>3. 完成模块缓存</h3><p>因为执行过的模块会被缓存起来，用来优化执行效率，所以这里主要是借助一个缓存对象来完成</p>
+<ol>
+<li>初始化缓存对象 cache</li>
+<li>判断该模块是否被缓存</li>
+<li>如果有缓存，直接返回缓存的 exports</li>
+<li>没有缓存，就正常下面的执行逻辑。加入缓存，然后更新缓存标识</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化缓存对象</span></span><br><span class="line">  <span class="keyword">const</span> cache = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">_webpack_require</span>(<span class="params">moduleID</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cache[moduleID]) &#123;</span><br><span class="line">      <span class="keyword">return</span> cache[moduleID].exports;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 根据参数找到对应的模块函数</span></span><br><span class="line">    <span class="keyword">const</span> func = <span class="built_in">module</span>[moduleID];</span><br><span class="line">    <span class="comment">// 定义执行函数所需要的参数</span></span><br><span class="line">    <span class="keyword">const</span> _webpack_module = &#123;</span><br><span class="line">      <span class="attr">exports</span>: &#123;&#125;,</span><br><span class="line">      <span class="attr">l</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">exports</span> = _webpack_module.exports;</span><br><span class="line">    <span class="comment">// 执行函数,注意函数的三个参数</span></span><br><span class="line">    func(_webpack_module, <span class="built_in">exports</span>, _webpack_require);</span><br><span class="line">    <span class="comment">// 更新加载标识</span></span><br><span class="line">    _webpack_require.l = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">// 返回值为导出的对象</span></span><br><span class="line">    <span class="keyword">return</span> _webpack_module.exports;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 执行入口文件</span></span><br><span class="line">  _webpack_require(<span class="string">&quot;./src/index.js&quot;</span>);</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">  <span class="string">&quot;./src/a.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;a module&quot;</span>);</span><br><span class="line">    <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">      <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;./src/index.js&quot;</span>: <span class="function"><span class="keyword">function</span> (<span class="params"><span class="built_in">module</span>, <span class="built_in">exports</span>, <span class="built_in">require</span></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;index module&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">&quot;./src/a.js&quot;</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对比真实打包文件"><a href="#对比真实打包文件" class="headerlink" title="对比真实打包文件"></a>对比真实打包文件</h2><p>下面是去除了注释之后的代码。<br>首先来看整体的格式：<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069114505-04a5b523-d0a2-4984-af5b-db50d672fa2f.png#clientId=ua35c57fd-c75a-4&from=paste&height=189&id=u8fc32c31&margin=%5Bobject%20Object%5D&name=image.png&originHeight=378&originWidth=1700&originalType=binary%E2%88%B6=2&size=50378&status=done&style=none&taskId=ub8c5f402-1c39-424d-b912-3989cecafe7&width=850" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069114505-04a5b523-d0a2-4984-af5b-db50d672fa2f.png#clientId=ua35c57fd-c75a-4&from=paste&height=189&id=u8fc32c31&margin=%5Bobject%20Object%5D&name=image.png&originHeight=378&originWidth=1700&originalType=binary%E2%88%B6=2&size=50378&status=done&style=none&taskId=ub8c5f402-1c39-424d-b912-3989cecafe7&width=850" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>是一个立即执行函数，并且参数就是由依赖形成的一个 module 对象<br>然后我们来看看函数内部的实现，重点关注我标注的这些地方<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069328677-ebaa2ecb-791d-4075-a46d-f2107098d3e4.png#clientId=ua35c57fd-c75a-4&from=paste&height=568&id=uebc33d0f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1136&originWidth=1494&originalType=binary%E2%88%B6=2&size=224593&status=done&style=none&taskId=u3a8fa3dc-e88c-424e-8665-f04a142e164&width=747" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069328677-ebaa2ecb-791d-4075-a46d-f2107098d3e4.png#clientId=ua35c57fd-c75a-4&from=paste&height=568&id=uebc33d0f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1136&originWidth=1494&originalType=binary%E2%88%B6=2&size=224593&status=done&style=none&taskId=u3a8fa3dc-e88c-424e-8665-f04a142e164&width=747" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>是不是和我们写的很像。<br>然后我们来看看他的<em>webpack_require</em>函数里的实现<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069446824-11e844e8-77f8-419a-ba55-b7cb2a224f0e.png#clientId=ua35c57fd-c75a-4&from=paste&height=438&id=uce18d9d2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=876&originWidth=1514&originalType=binary%E2%88%B6=2&size=162590&status=done&style=none&taskId=uc4be773f-3554-4484-9600-774daeb7d17&width=757" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623069446824-11e844e8-77f8-419a-ba55-b7cb2a224f0e.png#clientId=ua35c57fd-c75a-4&from=paste&height=438&id=uce18d9d2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=876&originWidth=1514&originalType=binary%E2%88%B6=2&size=162590&status=done&style=none&taskId=uc4be773f-3554-4484-9600-774daeb7d17&width=757" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
 
   
   
@@ -479,7 +490,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/>https://blog.lqh.kim/2020/12/10/yuque/react-hooks%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8A%A8%E6%9C%BA%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/07/yuque/webpack%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/>https://blog.lqh.kim/2021/06/07/yuque/webpack%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/</a></p>
               
             
           </blockquote>
@@ -496,7 +507,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-07T10:20:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-07T20:44:36+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年6月7日</p>
@@ -515,19 +526,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>链表篇</p>
-          <p class='content'>【206】反转链表描述
-反转一个单链表。
-
-
-示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
+        <a class='prev' href='/2021/06/07/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
       
-        <a class='next' href='/2020/12/08/yuque/useCallback/'>
-          <p class='title'>useCallback<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'></p>
+        <a class='next' href='/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/'>
+          <p class='title'>手撕Promise<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>第一步：完成 Promise 的基本构造这一步主要是完成一个new Promise()的基本构造。从上图中的创建方法和参数我们可以确定两点
+
+参数类型为一个函数,该函数接收两个函数类型的参数
+
+...</p>
         </a>
       
     </div>
@@ -570,7 +582,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-text">类组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="toc-text">函数组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%80%85%E7%9A%84%E5%AF%B9%E6%AF%94%EF%BC%88%E6%97%A0%E5%85%B3%E4%BC%98%E5%8A%A3%EF%BC%8C%E4%B9%8B%E8%B0%88%E5%8C%BA%E5%88%AB%EF%BC%89"><span class="toc-text">二者的对比（无关优劣，之谈区别）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6%E4%BC%9A%E6%8D%95%E8%8E%B7-render-%E5%86%85%E9%83%A8%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">为什么说函数组件会捕获 render 内部的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-React-hooks-%E5%91%A2%EF%BC%9F%EF%BC%88%E6%80%BB%E7%BB%93%EF%BC%89"><span class="toc-text">为什么需要 React-hooks 呢？（总结）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What"><span class="toc-text">What</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-hooks"><span class="toc-text">什么是 hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-text">怎么使用</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99-webpack-%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C"><span class="toc-text">手写 webpack 编译结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%88%E5%B9%B6%E6%A8%A1%E5%9D%97-%E5%BD%A2%E6%88%90%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97%E5%AF%B9%E8%B1%A1"><span class="toc-text">1. 合并模块,形成一个模块对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%A7%E8%A1%8C%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6%EF%BC%8C%E5%AE%9E%E7%8E%B0-require-%E5%8A%9F%E8%83%BD"><span class="toc-text">2. 执行入口文件，实现 require 功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%8C%E6%88%90%E6%A8%A1%E5%9D%97%E7%BC%93%E5%AD%98"><span class="toc-text">3. 完成模块缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E7%9C%9F%E5%AE%9E%E6%89%93%E5%8C%85%E6%96%87%E4%BB%B6"><span class="toc-text">对比真实打包文件</span></a></li></ol>
     </div>
   </section>
 
@@ -589,7 +601,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="react-hooks的设计动机和工作模式";
+  pdata.postTitle="webpack编译结果分析";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
