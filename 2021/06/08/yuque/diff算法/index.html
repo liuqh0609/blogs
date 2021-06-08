@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <!-- 绕过语雀防盗链 -->
@@ -26,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2021 - 火热</title>
+  <title>diff算法 - 火热</title>
   
 
   
@@ -106,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -323,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -365,522 +363,185 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        diff算法
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/">
-        手撕Promise
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/blogs/" rel="nofollow">
+    <img no-lazy src="http://qiniu.lqh.kim/avatar.jpeg">
+    <p>火热</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>2021年6月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        第一步：完成 Promise 的基本构造这一步主要是完成一个new Promise()的基本构造。从上图中的创建方法和参数我们可以确定两点
-
-参数类型为一个函数,该函数接收两个函数类型的参数
-
-resolve: 将 pending 状态推向已决状态的 fulfilled 状态
-rejected: 将 pending 状态推向已决状态的 rejected 状态
-
-
-调用构造函数时,需要将该函数...
-      
-    
+      <div id="lc-pv" data-title="diff算法" data-path="/2021/06/08/yuque/diff%E7%AE%97%E6%B3%95/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-06-05</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <h2 id="O-n-3-gt-O-n"><a href="#O-n-3-gt-O-n" class="headerlink" title="O(n^3) ===&gt; O(n)"></a>O(n^3) ===&gt; O(n)</h2><p>正常情况下对比两棵树，是通过循环递归来来进行每个节点间的比较，这个过程的算法复杂度为<strong>O(n^3)**。<br>对于一个大型项目，如果一个 DOM 树的节点非常多的话，那么 O(n^3)的复杂度可以说是会灏费很多的时间。<br>针对这点，React 团队就进行了算法的优化，将其复杂度降低到了</strong>O(n)。**<br><strong>​</strong></p>
+<p>对于此，我们需要把握住三个关键点：</p>
+<ol>
+<li><strong>每次的对比都建立在相同层级的前提下</strong></li>
+<li><strong>每个节点的类型是一致的，才有继续对比的必要</strong></li>
+<li><strong>相同层级间的一组子节点，可以利用</strong><code>**key**</code><strong>属性来达到节点的复用</strong></li>
+</ol>
+<p><strong>​</strong></p>
+<h3 id="分层对比"><a href="#分层对比" class="headerlink" title="分层对比"></a>分层对比</h3><p>从上面三点中其实我们可以体会到，复杂度降低的关键性思路是<strong>分层对比</strong>的这一思想。因为在 React 中我们进行组件操作的时候，几乎都是在同一个层级中进行的，很少有跨层级的操作（尽量不要出现这种操作）</p>
+<blockquote>
+<p>对于跨层级的操作，react 采取的策略是：<strong>销毁+重建。</strong>这种过程是极其消耗性能的所以不推荐出现跨层级操作</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623140232190-0da7c07c-67bf-4b25-9f7a-3e0b3a49558e.png#clientId=u466d7743-2483-4&from=paste&height=274&id=W3eFg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=548&originWidth=1478&originalType=binary%E2%88%B6=2&size=366449&status=done&style=none&taskId=u574efcaa-8b52-487c-96c0-ef320c7b74d&width=739" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623140232190-0da7c07c-67bf-4b25-9f7a-3e0b3a49558e.png#clientId=u466d7743-2483-4&from=paste&height=274&id=W3eFg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=548&originWidth=1478&originalType=binary%E2%88%B6=2&size=366449&status=done&style=none&taskId=u574efcaa-8b52-487c-96c0-ef320c7b74d&width=739" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>对于分层对比，我们可以从上图中看出，<strong>只需要从上到下，进行一次遍历，就可以完成整个树的对比。</strong><br><strong>​</strong></p>
+<h3 id="类型的一致性"><a href="#类型的一致性" class="headerlink" title="类型的一致性"></a>类型的一致性</h3><p>在同层级比较时，如果节点的类型保持一致，那么他才有继续比较下去的必要。<br>因为如果在该层级的某个节点比较时发现，新旧节点的类型都已经不一致了，那就说明它以及他下面的子节点类型也都可能发生了变化，所以针对这种情况，react 就会<strong>放弃比较，直接原地替换掉旧的节点</strong></p>
+<h3 id="同层级的-key-属性"><a href="#同层级的-key-属性" class="headerlink" title="同层级的 key 属性"></a>同层级的 key 属性</h3><p>key 属性是为了达到同一层级下节点的重用，避免销毁重建的过程。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623140633798-e4ab3377-2313-4759-8f24-3694ab7be3d3.png#clientId=u466d7743-2483-4&from=paste&height=240&id=u9fc99895&margin=%5Bobject%20Object%5D&name=image.png&originHeight=480&originWidth=1745&originalType=binary%E2%88%B6=2&size=73941&status=done&style=none&taskId=u79c4520b-18af-4802-bbcb-70bb8d303af&width=872.5" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623140633798-e4ab3377-2313-4759-8f24-3694ab7be3d3.png#clientId=u466d7743-2483-4&from=paste&height=240&id=u9fc99895&margin=%5Bobject%20Object%5D&name=image.png&originHeight=480&originWidth=1745&originalType=binary%E2%88%B6=2&size=73941&status=done&style=none&taskId=u79c4520b-18af-4802-bbcb-70bb8d303af&width=872.5" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h4 id="没有-key-属性的比较"><a href="#没有-key-属性的比较" class="headerlink" title="没有 key 属性的比较"></a>没有 key 属性的比较</h4><ol>
+<li>比较同层级的第一个 B 节点，发现没有更改，直接重用，比较一下个节点</li>
+<li>下一个节点为：D 和 C 节点，发现两个节点不同，销毁 D 节点，新建 C 节点进行替换，然后比较下一个节点</li>
+<li>下一个节点为：E 和 D 节点，发现两个节点不同，销毁 E 节点，新建 D 节点进行替换，然后比较下一个节点</li>
+<li>下一个节点为：空和 E 节点，发现 E 节点为新节点，直接新建 E 节点，插入该层级的后面</li>
+</ol>
+<p>​</p>
+<p>可以看到上面的流程中其实有很多节点都可以重用，但是因为没有 key 属性的加持造成了没必要的销毁+重建。<br>​</p>
+<h4 id="有-key-属性时的比较"><a href="#有-key-属性时的比较" class="headerlink" title="有 key 属性时的比较"></a>有 key 属性时的比较</h4><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623141163953-dc711613-2e35-4c96-b4a4-399676675b90.png#clientId=u466d7743-2483-4&from=paste&height=272&id=uf0d0ae9d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=543&originWidth=1720&originalType=binary%E2%88%B6=2&size=74764&status=done&style=none&taskId=u053b07b0-30c3-4bab-b164-c798a0286e6&width=860" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623141163953-dc711613-2e35-4c96-b4a4-399676675b90.png#clientId=u466d7743-2483-4&from=paste&height=272&id=uf0d0ae9d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=543&originWidth=1720&originalType=binary%E2%88%B6=2&size=74764&status=done&style=none&taskId=u053b07b0-30c3-4bab-b164-c798a0286e6&width=860" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>当有了 key 属性的时候，在同层级去对比的时候，就会<strong>根据这个 key 属性作为节点的唯一标识来寻找并且对比节点。</strong><br>对于 c 节点的标识 3 发现是一个新的节点，所以就会直接<strong>新建并且插入</strong>到对应位置就可以了。对于 B、D、E 节点通过 key 找到并且对比后发现节点没有变化，所以可以直接重用，这就体现除了 key 属性的作用，可以最大限度的重用子节点。<br>​</p>
+<blockquote>
+<p>这里需要注意一个问题:<br><strong>key 属性必须要用未定并且唯一的值</strong><br>如果用数组的索引来做 key 属性的话，当在数组头部或者中间插入元素时，会导致后面的元素下标发生变化，造成通过 key 属性查找出来的两个节点不同，而再次造成节点的销毁和重建，无法达到节点重用的作用。</p>
+</blockquote>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/06/05/yuque/%E6%89%8B%E6%92%95Promise/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>如需转载博客，请联系作者授权</p>
+
+              
+            
+              
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/08/yuque/diff%E7%AE%97%E6%B3%95/>https://blog.lqh.kim/2021/06/08/yuque/diff%E7%AE%97%E6%B3%95/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T16:39:34+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>2021年6月8日</p>
+  </a>
 </div>
 
-          </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/">
-        webpack简介
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        webpack 简介webpack 通过一个开发时态的入口模块为起点，分析出文件中所有的依赖关系，然后经过一系列的压缩、合并过程，最终生成运行时态的文件
-webpack 的特点
-为前端工程化而生：让开发者集中注意力编写业务代码
-简单易用： 支持零配置
-强大生态： 灵活，可扩展，提供了使用第三方库来完成其他功能
-基于 nodejs：由于 webpack 在构建过程中需要读取文件，所以是运行在 ...
-      
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-06-04</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/06/04/yuque/webpack%E7%AE%80%E4%BB%8B/'>
-            阅读全文
-          </a>
-        </div>
+        <a class='prev' href='/2021/06/08/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/06/08/yuque/%E8%99%9A%E6%8B%9FDOM/'>
+          <p class='title'>虚拟DOM<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>什么是虚拟 DOM？虚拟 DOM：本质上是 JS 和真实 DOM 之间的一个映射。用 js 对象的形式来描述 DOM 结构和属性需要关注的两个点：
+
+虚拟 DOM 就是一个 JS 对象
+虚拟 D...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/27/yuque/%E8%AF%8D%E6%B3%95%E7%8E%AF%E5%A2%83%E5%92%8C%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/">
-        词法环境和词法作用域
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        词法环境概念词法环境（Lexical Environment）：是一种规范类型，是为了表明标识符与变量和函数之间的一种关联关系。词法环境包含两部分
-
-环境记录（environment record）: 存储变量和函数声明的实际位置
-外部词法环境（outer Lexical Environment）：可以访问的的外部词法环境。这里是实现作用域链的关键。每个环境能访问到的标识符集合叫做作用域，通...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/27/yuque/%E8%AF%8D%E6%B3%95%E7%8E%AF%E5%A2%83%E5%92%8C%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/26/yuque/%E7%BC%96%E7%A8%8B%E9%A2%98/">
-        编程题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        实现 setTimeout 方法123new Promise((resolve) =&gt; mySetTimeout(() =&gt; resolve(&quot;执行&quot;), 3000)).then(  (data) =&gt; console.log(data));
-
-题解使用requestAnimationFrame（callback）来实现，该 API 的作用就是在浏览器下...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/26/yuque/%E7%BC%96%E7%A8%8B%E9%A2%98/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/25/yuque/TLS/">
-        TLS
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
- 
+  </article>
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/25/yuque/TLS/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/23/yuque/%E5%BA%94%E7%94%A8%E5%B1%82-HTTP!1.1%E5%8D%8F%E8%AE%AE/">
-        应用层-HTTP/1.1协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        一种无状态的、应用层的、以请求/应答方式运行的协议，他使用可扩展的语义和自描述消息格式，与基于网络的超文本信息系统灵活的互动。​
-基于 ABNF 语法定义的 HTTP基本语法
-SP：空白字符，用来分隔定义中的各个元素
-/: 选择，就是或的意思
-%cxx-xx：值范围，例如 %x30-37，十六进制中的 30-37
-（）：组合，将括号中的视为一个单个元素
-不定量重复
-
-： 表示 0~多次
 
 
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/23/yuque/%E5%BA%94%E7%94%A8%E5%B1%82-HTTP!1.1%E5%8D%8F%E8%AE%AE/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/20/yuque/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%EF%BC%8C%E8%BF%99%E6%9C%9F%E9%97%B4%E5%8F%91%E7%94%9F%E4%BA%86%E7%A5%9E%E9%AD%94%EF%BC%9F/">
-        从输入URL到页面展示，这期间发生了神魔？
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        面试经典问题，为何经典？我觉得是因为这道题涵盖的内容太多了，网络、浏览器、操作系统等都可以聊到，每一块单拿出来又都可以挖很多坑，所以这道题作为面试题可以说是一个极好的切入点。今天就来整理一下自己学习整理之后的一些知识点。
-导航阶段
-从发起请求到页面解析的这个过程，称为导航阶段
 
 
-浏览器进程将用户输入的 URL 处理完成后发送给网络进程
-网络进程会根据该 URL 来首先查找本地缓存，看是否有...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/20/yuque/%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%EF%BC%8C%E8%BF%99%E6%9C%9F%E9%97%B4%E5%8F%91%E7%94%9F%E4%BA%86%E7%A5%9E%E9%AD%94%EF%BC%9F/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/13/yuque/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/">
-        虚拟列表
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        首先需要一个能够模拟出滚动区的页面结构按照虚拟列表的方式，计算出来渲染区每次可以渲染出来的总数，但是渲染去并不会被撑开，比如渲染区只能渲染 10 条，俺正常来说渲染区是没滚动条的，那就无法进行滚动，所以我们接下来需要将完整数据的渲染区滚动条给模拟出来​
-useRef 的作用我们在函数组件中这样去定义一个变量时，会发生一个问题： 就是每次渲染之后，这个变量都会重新被定义，也就是每次渲染之后都会...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-13</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/13/yuque/%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/05/13/yuque/TCP%E5%88%9D%E6%8E%A2/">
-        TCP初探
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        五层网络模型的流程首先是应用层，应用层提供的就是Aplication-to-Aplication的协议。就比如我们日常使用的微信就是一个应用，当我们使用微信和别人聊天的时候就相当于是从我们的微信应用发送到对方的微信应用中，就是使用的微信的聊天协议（应用到应用的协议），想要达到这个聊天的功能，我们还需要一个主机到主机（Host-to-Host)的协议来帮助应用层的协议工作。应用层往往有众多的应...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-05-13</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/13/yuque/TCP%E5%88%9D%E6%8E%A2/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/08/yuque/%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">
-        二、设计原则
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        何为设计？
-即按照哪一种思路或者标准来实现功能
-功能相同，可以有不同的设计方案来实现
-伴随着需求增加，设计的作用才能体现出来
-
-《UNIX/LINUX 设计哲学》一书中提出了几个设计的准则：
-
-准则 1： 小即是美
-准则 2： 让每个程序只做好一件事
-准则 3： 快速建立原型
-准则 4： 舍弃高效率而取可移植性
-准则 5： 采用纯文本来存储数据（可读性）
-准则 6： 充分利用软件的杠杆效应（...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='dashed'>
-      <div>
-        
-        <time>2021-04-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/04/08/yuque/%E4%BA%8C%E3%80%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 3
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -888,113 +549,28 @@ useRef 的作用我们在函数组件中这样去定义一个变量时，会发�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://qiniu.lqh.kim/avatar.jpeg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>火热</h2>
-        
-        
-          <p>时间会见证一切</p>
 
-        
-        
-          <p><span id="jinrishici-sentence">火热</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="mailto:528851597@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/liuqh0609/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow desktop">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
-            id="categoriesE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
-            ><div class='name'>数据结构与算法</div><div class='badge'>(4)</div></a></li>
-        
-      </ul>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#O-n-3-gt-O-n"><span class="toc-text">O(n^3) &#x3D;&#x3D;&#x3D;&gt; O(n)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E5%AF%B9%E6%AF%94"><span class="toc-text">分层对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">类型的一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E5%B1%82%E7%BA%A7%E7%9A%84-key-%E5%B1%9E%E6%80%A7"><span class="toc-text">同层级的 key 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B2%A1%E6%9C%89-key-%E5%B1%9E%E6%80%A7%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">没有 key 属性的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89-key-%E5%B1%9E%E6%80%A7%E6%97%B6%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">有 key 属性时的比较</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #73d13d">数据结构与算法</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
+
 
 
 		  
@@ -1003,21 +579,21 @@ useRef 的作用我们在函数组件中这样去定义一个变量时，会发�
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="diff算法";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
