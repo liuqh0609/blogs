@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>CSS结构 - 火热</title>
+  <title>虚拟DOM - 火热</title>
   
 
   
@@ -373,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        CSS结构
+        虚拟DOM
       </h1>
       <div class='new-meta-box'>
         
@@ -397,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月14日</p>
+    <p>2021年6月8日</p>
   </a>
 </div>
 
@@ -408,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="CSS结构" data-path="/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/">
+      <div id="lc-pv" data-title="虚拟DOM" data-path="/2021/06/08/yuque/%E8%99%9A%E6%8B%9FDOM/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,53 +426,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <p>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。<br>现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。</p>
-<h2 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.ayqy.net/doc/css2-1/grammar.html">css2.1Grammar 中文对照版</a></li>
-</ul>
-<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p>一个样式文件从上到下的顺序结构：</p>
+  <h2 id="什么是虚拟-DOM？"><a href="#什么是虚拟-DOM？" class="headerlink" title="什么是虚拟 DOM？"></a>什么是虚拟 DOM？</h2><p>虚拟 DOM：本质上是 JS 和真实 DOM 之间的一个映射。用 js 对象的形式来描述 DOM 结构和属性<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623138011060-e9f66394-338b-49d6-b75a-83f4b737b942.png#clientId=ua758b3c0-3225-4&from=paste&height=351&id=u96bbcf61&margin=%5Bobject%20Object%5D&name=image.png&originHeight=701&originWidth=1263&originalType=binary%E2%88%B6=2&size=182714&status=done&style=none&taskId=u1e6b1c28-4f7e-4255-ada3-206b8222fdf&width=631.5" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623138011060-e9f66394-338b-49d6-b75a-83f4b737b942.png#clientId=ua758b3c0-3225-4&from=paste&height=351&id=u96bbcf61&margin=%5Bobject%20Object%5D&name=image.png&originHeight=701&originWidth=1263&originalType=binary%E2%88%B6=2&size=182714&status=done&style=none&taskId=u1e6b1c28-4f7e-4255-ada3-206b8222fdf&width=631.5" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>需要关注的两个点：</p>
 <ol>
-<li><p>@charset</p>
-<blockquote>
-<p><code>@charset &#39;UTF-8&#39;;</code> <br>声明 css 文件的字符编码标准。</p>
-<ul>
-<li>必须在样式表的第一行声明</li>
-<li>如果有多个@charset 声明，那么只有第一个会生效</li>
-<li>无法在 HTML 的 style 标签里使用该 at-rule 规则</li>
-</ul>
-<p>Tip:<br>在样式表中声明字符编码有很多种方式，浏览器会按照以下顺序去尝试确定文件的编码方式（只要找到一种就会停止并得出结果）：</p>
+<li>虚拟 DOM 就是一个 JS 对象</li>
+<li>虚拟 DOM 是对真实 DOM 的一个描述（抽象出来的一个结构）</li>
+</ol>
+<h2 id="虚拟-DOM-在-React-中怎么工作的？"><a href="#虚拟-DOM-在-React-中怎么工作的？" class="headerlink" title="虚拟 DOM 在 React 中怎么工作的？"></a>虚拟 DOM 在 React 中怎么工作的？</h2><p>虚拟 dom 在 react 中的工作过程分为两个阶段：</p>
 <ol>
-<li>文件开头的  <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Byte_order_mark">Unicode byte-order</a>  字符值</li>
-<li>由 Content-type 确定：HTTP 协议中的  charset 属性给出的值或用于提供样式表的协议中的等效值</li>
-<li>CSS @rule 规则：@charset</li>
-<li>假设文档上是 UTF-8 的格式</li>
+<li><strong>挂载阶段：</strong>react 通过 JSX 解析出来对应的虚拟 DOM，然后 ReactDOM.render()方法将虚拟 DOM 渲染成为真实 DOM</li>
+<li><strong>更新阶段：</strong>会先作用于虚拟 DOM 上<strong>，</strong>通过 diff 算法来对比更新前后的两个虚拟 DOM 找出差异，然后将需要改变的地方再作用于真实 DOM</li>
 </ol>
-</blockquote>
-</li>
-<li><p>@import</p>
-</li>
-<li><p>rules （这部分是我们日常最常用到的部分）</p>
-<ol>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623138522156-f1e4f284-9102-4d7b-8fa4-7748b47773ca.png#clientId=ua758b3c0-3225-4&from=paste&height=196&id=u44f2fb7d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=391&originWidth=1396&originalType=binary%E2%88%B6=2&size=44133&status=done&style=none&taskId=u8e8b8cd8-5da9-429c-81fd-5a336cb021b&width=698" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623138522156-f1e4f284-9102-4d7b-8fa4-7748b47773ca.png#clientId=ua758b3c0-3225-4&from=paste&height=196&id=u44f2fb7d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=391&originWidth=1396&originalType=binary%E2%88%B6=2&size=44133&status=done&style=none&taskId=u8e8b8cd8-5da9-429c-81fd-5a336cb021b&width=698" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="为什么用虚拟-DOM？"><a href="#为什么用虚拟-DOM？" class="headerlink" title="为什么用虚拟 DOM？"></a>为什么用虚拟 DOM？</h2><ol>
+<li>虚拟 DOM 可以实现跨平台。因为虚拟 dom 其实就相当于一个独立的 Model 层，对于不同的平台可以将真实的结构来抽象形成一个对应的抽象对象来进行描述，这样就可以实现一套代码，多端运行的目的</li>
+<li>虚拟 DOM 的出现可以提高我们的日常开发效率</li>
+<li>其实虚拟 DOM 并不会提高应用的性能，react 官方也没有说过虚拟 dom 会提高性能这一点。</li>
 </ol>
-</li>
-</ol>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: /* value */ red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
-<ol>
-<li>Selector（选择器）</li>
-<li>Declare（声明）<ol>
-<li>key</li>
-<li>value</li>
-</ol>
-</li>
-</ol>
-<h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">name</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      <span class="attr">url</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
   
   
@@ -490,7 +459,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/>https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/08/yuque/%E8%99%9A%E6%8B%9FDOM/>https://blog.lqh.kim/2021/06/08/yuque/%E8%99%9A%E6%8B%9FDOM/</a></p>
               
             
           </blockquote>
@@ -507,7 +476,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年6月8日</p>
@@ -526,19 +495,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>翻译记录</p>
-          <p class='content'>Selectors Level 4Selector syntax(选择器语法）一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过连接符（Combinators）分割开。并且在一个选择器...</p>
+        <a class='prev' href='/2021/06/08/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
       
-        <a class='next' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
-          <p class='title'>链表篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>【206】反转链表描述
-反转一个单链表。
-
-
-示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
+        <a class='next' href='/2021/06/08/yuque/React-redux/'>
+          <p class='title'>React-redux<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>核心原则单向数据源整个应用的数据源 state，只存在于一个 store 中。单项数据源保证了流程的可控，和可追踪，能比较清晰的知道是在哪个环节出现了问题。
+state 是只读的state 是只...</p>
         </a>
       
     </div>
@@ -581,7 +548,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">CSS2.1 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">总体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E8%A7%84%E5%88%99%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 规则的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E5%8F%96-w3c-%E7%9A%84-css-%E8%A7%84%E5%88%99"><span class="toc-text">爬取 w3c 的 css 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-text">思维导图</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%99%9A%E6%8B%9F-DOM%EF%BC%9F"><span class="toc-text">什么是虚拟 DOM？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F-DOM-%E5%9C%A8-React-%E4%B8%AD%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="toc-text">虚拟 DOM 在 React 中怎么工作的？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E8%99%9A%E6%8B%9F-DOM%EF%BC%9F"><span class="toc-text">为什么用虚拟 DOM？</span></a></li></ol>
     </div>
   </section>
 
@@ -600,7 +567,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="CSS结构";
+  pdata.postTitle="虚拟DOM";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要

@@ -24,7 +24,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>CSS结构 - 火热</title>
+  <title>栈 - 基础知识 - 火热</title>
+  
+    <meta name="keywords" content="数据结构与算法">
   
 
   
@@ -104,7 +106,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post search' style="display: none;">
+        <div id="half" class='cover-wrapper post search' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -373,7 +375,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        CSS结构
+        栈 - 基础知识
       </h1>
       <div class='new-meta-box'>
         
@@ -390,6 +392,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    </a>
+  </div>
+
 
           
         
@@ -397,7 +406,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月14日</p>
+    <p>2021年6月8日</p>
   </a>
 </div>
 
@@ -408,7 +417,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="CSS结构" data-path="/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/">
+      <div id="lc-pv" data-title="栈 - 基础知识" data-path="/2021/06/08/%E6%A0%88/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,53 +435,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <p>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。<br>现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。</p>
-<h2 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.ayqy.net/doc/css2-1/grammar.html">css2.1Grammar 中文对照版</a></li>
-</ul>
-<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p>一个样式文件从上到下的顺序结构：</p>
-<ol>
-<li><p>@charset</p>
-<blockquote>
-<p><code>@charset &#39;UTF-8&#39;;</code> <br>声明 css 文件的字符编码标准。</p>
-<ul>
-<li>必须在样式表的第一行声明</li>
-<li>如果有多个@charset 声明，那么只有第一个会生效</li>
-<li>无法在 HTML 的 style 标签里使用该 at-rule 规则</li>
-</ul>
-<p>Tip:<br>在样式表中声明字符编码有很多种方式，浏览器会按照以下顺序去尝试确定文件的编码方式（只要找到一种就会停止并得出结果）：</p>
-<ol>
-<li>文件开头的  <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Byte_order_mark">Unicode byte-order</a>  字符值</li>
-<li>由 Content-type 确定：HTTP 协议中的  charset 属性给出的值或用于提供样式表的协议中的等效值</li>
-<li>CSS @rule 规则：@charset</li>
-<li>假设文档上是 UTF-8 的格式</li>
-</ol>
+  <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612236925054-f7e99dfb-004a-4be1-aee6-aacfbdabd331.png#align=left&display=inline&height=314&margin=%5Bobject%20Object%5D&name=image.png&originHeight=314&originWidth=342&size=23754&status=done&style=none&width=342" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一种<strong>后进先出</strong>的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h3 id="push：-入栈"><a href="#push：-入栈" class="headerlink" title="push： 入栈"></a>push： 入栈</h3><h3 id="pop：-出栈"><a href="#pop：-出栈" class="headerlink" title="pop： 出栈"></a>pop： 出栈</h3><h3 id="top：栈顶"><a href="#top：栈顶" class="headerlink" title="top：栈顶"></a>top：栈顶</h3><h2 id="JavaScript-中的栈"><a href="#JavaScript-中的栈" class="headerlink" title="JavaScript 中的栈"></a>JavaScript 中的栈</h2><p>在 js 中是没用栈这种数据结构的，不过我们可以利用<strong>数组</strong>来模拟。<br>而且在 js 中也是有对应的 <code>push</code>  和 <code>pop</code>  方法的:</p>
+<p>push: 向数组末尾添加一个元素，返回值是数组的长度<br>pop：移除数组的第一个元素，返回值是移除的元素</p>
+<h2 id="什么场景下用栈？"><a href="#什么场景下用栈？" class="headerlink" title="什么场景下用栈？"></a>什么场景下用栈？</h2><blockquote>
+<p>最直白的讲就是需要<strong>后进先出</strong>的场景</p>
 </blockquote>
-</li>
-<li><p>@import</p>
-</li>
-<li><p>rules （这部分是我们日常最常用到的部分）</p>
-<ol>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
-</ol>
-</li>
-</ol>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: /* value */ red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
-<ol>
-<li>Selector（选择器）</li>
-<li>Declare（声明）<ol>
-<li>key</li>
-<li>value</li>
-</ol>
-</li>
-</ol>
-<h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">name</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      <span class="attr">url</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
+<h3 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245130432-6b1613e8-13ae-4f96-a691-47f68394f3bb.png#align=left&display=inline&height=259&margin=%5Bobject%20Object%5D&name=image.png&originHeight=259&originWidth=379&size=80976&status=done&style=none&width=379" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们计算十进制转二进制时，就是不断除以 2，然后取余数<br>然后将最后一位的余数与第一位的余数拼成二进制</p>
+<p>这样的后进先出的手法有没有想到栈！</p>
+<h3 id="判断字符串的括号是否有效"><a href="#判断字符串的括号是否有效" class="headerlink" title="判断字符串的括号是否有效"></a>判断字符串的括号是否有效</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612245247309-b9ef1209-3935-4573-acd5-3b11b1e44384.png#align=left&display=inline&height=228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=228&originWidth=275&size=30754&status=done&style=none&width=275" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们验证括号是否有效其实就是在验证是不是能够凑齐一对完整的闭合括号。</p>
+<p>而且我们可以发现一个规律，越靠左的左括号，它对应的右括号就越靠右。反之也就是最后面的左括号，对应的必定是出现的第一个右括号。</p>
+<p>所以我们就可以在遇到左括号时就入栈，遇到右括号时就与栈顶的括号就行配对比较，若果符合配对规则则出栈，否则就不符合规则直接判定无效。匹配到最后结如果栈内是空就证明可以完整闭合</p>
+<h3 id="函数调用栈等"><a href="#函数调用栈等" class="headerlink" title="函数调用栈等"></a>函数调用栈等</h3><p>这个可以看浏览器，js 的解释器就是通过调用栈的形式实现的<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249568954-7f2f8a5c-6c50-4eb5-bb44-c98e9dd0490b.png#align=left&display=inline&height=290&margin=%5Bobject%20Object%5D&name=image.png&originHeight=290&originWidth=305&size=43181&status=done&style=none&width=305" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1612249579751-d03a29ca-0a7a-4a44-896b-2bb23a79b6ed.png#align=left&display=inline&height=130&margin=%5Bobject%20Object%5D&name=image.png&originHeight=182&originWidth=470&size=38332&status=done&style=none&width=335" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<p>执行 fun1 时先将 fun1 入栈，然后调用 fun2，入栈；然后调用 fun3 入栈。</p>
+<p>fun3 执行完毕出栈<br>fun2 执行完毕出栈<br>fun1 执行完毕出栈<br>程序执行完毕</p>
 
   
   
@@ -490,7 +467,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/>https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/08/%E6%A0%88/>https://blog.lqh.kim/2021/06/08/%E6%A0%88/</a></p>
               
             
           </blockquote>
@@ -507,7 +484,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年6月8日</p>
@@ -526,19 +503,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>翻译记录</p>
-          <p class='content'>Selectors Level 4Selector syntax(选择器语法）一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过连接符（Combinators）分割开。并且在一个选择器...</p>
+        <a class='prev' href='/2021/06/08/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>时间复杂度&空间复杂度</p>
+          <p class='content'>时间复杂度&amp;空间复杂度复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+
+时间复杂度
+空间复杂度
+
+顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这...</p>
         </a>
       
       
-        <a class='next' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
-          <p class='title'>链表篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>【206】反转链表描述
-反转一个单链表。
-
-
-示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
+        <a class='next' href='/2021/06/08/%E6%B5%8B%E8%AF%95/'>
+          <p class='title'>栈 - 基础知识<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
     </div>
@@ -581,7 +560,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">CSS2.1 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">总体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E8%A7%84%E5%88%99%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 规则的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E5%8F%96-w3c-%E7%9A%84-css-%E8%A7%84%E5%88%99"><span class="toc-text">爬取 w3c 的 css 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-text">思维导图</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-text">名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#push%EF%BC%9A-%E5%85%A5%E6%A0%88"><span class="toc-text">push： 入栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop%EF%BC%9A-%E5%87%BA%E6%A0%88"><span class="toc-text">pop： 出栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#top%EF%BC%9A%E6%A0%88%E9%A1%B6"><span class="toc-text">top：栈顶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E6%A0%88"><span class="toc-text">JavaScript 中的栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E6%A0%88%EF%BC%9F"><span class="toc-text">什么场景下用栈？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%8B%AC%E5%8F%B7%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%88"><span class="toc-text">判断字符串的括号是否有效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E7%AD%89"><span class="toc-text">函数调用栈等</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -600,20 +579,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="CSS结构";
+  pdata.postTitle="栈 - 基础知识";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="none";
-    cover_wrapper.style.display="none";
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
     
   
 </script>

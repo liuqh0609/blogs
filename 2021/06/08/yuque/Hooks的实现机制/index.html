@@ -24,7 +24,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>CSS结构 - 火热</title>
+  <title>Hooks的实现机制 - 火热</title>
   
 
   
@@ -373,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        CSS结构
+        Hooks的实现机制
       </h1>
       <div class='new-meta-box'>
         
@@ -397,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月14日</p>
+    <p>2021年6月8日</p>
   </a>
 </div>
 
@@ -408,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="CSS结构" data-path="/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/">
+      <div id="lc-pv" data-title="Hooks的实现机制" data-path="/2021/06/08/yuque/Hooks%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -426,53 +426,46 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <p>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。<br>现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。</p>
-<h2 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.ayqy.net/doc/css2-1/grammar.html">css2.1Grammar 中文对照版</a></li>
-</ul>
-<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p>一个样式文件从上到下的顺序结构：</p>
+  <p>Hooks 使用的时候官方给出了两条限制条件：</p>
 <ol>
-<li><p>@charset</p>
-<blockquote>
-<p><code>@charset &#39;UTF-8&#39;;</code> <br>声明 css 文件的字符编码标准。</p>
-<ul>
-<li>必须在样式表的第一行声明</li>
-<li>如果有多个@charset 声明，那么只有第一个会生效</li>
-<li>无法在 HTML 的 style 标签里使用该 at-rule 规则</li>
-</ul>
-<p>Tip:<br>在样式表中声明字符编码有很多种方式，浏览器会按照以下顺序去尝试确定文件的编码方式（只要找到一种就会停止并得出结果）：</p>
-<ol>
-<li>文件开头的  <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Byte_order_mark">Unicode byte-order</a>  字符值</li>
-<li>由 Content-type 确定：HTTP 协议中的  charset 属性给出的值或用于提供样式表的协议中的等效值</li>
-<li>CSS @rule 规则：@charset</li>
-<li>假设文档上是 UTF-8 的格式</li>
+<li>只能在 React 函数中使用 hooks</li>
+<li><strong>不能在循环、条件或嵌套函数中使用 hook</strong></li>
 </ol>
+<p><strong>​</strong></p>
+<p>第一条其实是比较容易理解的，因为之前也说过，hooks 的出现就是为了增强函数组件的功能的，所以只能在函数中使用，也是情有可原。<br>那为什么不能在循环或者条件函数里使用 hook 呢？<br>这里我们就以<strong>useState</strong>为例来探索一下 hooks 的实现机制。<br>​</p>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>在开始之前我们先来看一下 React 中的<strong>更新</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [name, setName] = useState(<span class="string">&#x27;六一&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span> setName(&#x27;憨憨の爸爸&#x27;)&#125;&gt;&#123;name&#125;<span class="tag">&lt;<span class="name">p</span>/&gt;</span></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>就上面这个组件来说，其实更新包含两个阶段：</p>
+<ol>
+<li>页面初次挂载，产生第一次更新：<strong>mount</strong></li>
+<li>点击 p 标签，调用 setName 方法也会触发页面的更新：<strong>update</strong></li>
+</ol>
+<p><strong>​</strong></p>
+<p>而我们在下面探索的 useState 也是这样，他的调用链路在不同的更新阶段会有所差别。<br>​</p>
+<h2 id="useState-的调用链路"><a href="#useState-的调用链路" class="headerlink" title="useState 的调用链路"></a>useState 的调用链路</h2><h3 id="初次挂载：mount"><a href="#初次挂载：mount" class="headerlink" title="初次挂载：mount"></a>初次挂载：mount</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623120979348-24ca1ed3-d9c5-4ea5-8631-74206c3e5669.png#clientId=u1d51cbde-e5db-4&from=paste&height=326&id=u745029ce&margin=%5Bobject%20Object%5D&name=image.png&originHeight=652&originWidth=1976&originalType=binary%E2%88%B6=2&size=131646&status=done&style=none&taskId=u551c42c8-0cd3-4bb3-927c-aa028df6b56&width=988" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623120979348-24ca1ed3-d9c5-4ea5-8631-74206c3e5669.png#clientId=u1d51cbde-e5db-4&from=paste&height=326&id=u745029ce&margin=%5Bobject%20Object%5D&name=image.png&originHeight=652&originWidth=1976&originalType=binary%E2%88%B6=2&size=131646&status=done&style=none&taskId=u551c42c8-0cd3-4bb3-927c-aa028df6b56&width=988" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>我们这里主要关注<code>mountState</code>这个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 进入 mounState 逻辑</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountState</span>(<span class="params">initialState</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 将新的 hook 对象追加进链表尾部</span></span><br><span class="line">  <span class="keyword">var</span> hook = mountWorkInProgressHook();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// initialState 可以是一个回调，若是回调，则取回调执行后的值</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> initialState === <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// $FlowFixMe: Flow doesn&#x27;t like mixed types</span></span><br><span class="line">    initialState = initialState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建当前 hook 对象的更新队列，这一步主要是为了能够依序保留 dispatch</span></span><br><span class="line">  <span class="keyword">const</span> queue = (hook.queue = &#123;</span><br><span class="line">    <span class="attr">last</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">dispatch</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">lastRenderedReducer</span>: basicStateReducer,</span><br><span class="line">    <span class="attr">lastRenderedState</span>: (initialState: any),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将 initialState 作为一个“记忆值”存下来</span></span><br><span class="line">  hook.memoizedState = hook.baseState = initialState;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// dispatch 是由上下文中一个叫 dispatchAction 的方法创建的，这里不必纠结这个方法具体做了什么</span></span><br><span class="line">  <span class="keyword">var</span> dispatch = (queue.dispatch = dispatchAction.bind(</span><br><span class="line">    <span class="literal">null</span>,</span><br><span class="line">    currentlyRenderingFiber$<span class="number">1</span>,</span><br><span class="line">    queue</span><br><span class="line">  ));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回目标数组，dispatch 其实就是示例中常常见到的 setXXX 这个函数，想不到吧？哈哈</span></span><br><span class="line">  <span class="keyword">return</span> [hook.memoizedState, dispatch];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个阶段主要是为了<strong>初始化 Hooks，</strong>我们需要重点关注一下<code>mountWorkInProgressHook</code>这个方法，这个方法中为我们表述了基本的 hook 结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mountWorkInProgressHook</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 注意，单个 hook 是以对象的形式存在的</span></span><br><span class="line">  <span class="keyword">var</span> hook = &#123;</span><br><span class="line">    <span class="attr">memoizedState</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">baseState</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">baseQueue</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">queue</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">next</span>: <span class="literal">null</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (workInProgressHook === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// 这行代码每个 React 版本不太一样，但做的都是同一件事：将 hook 作为链表的头节点处理</span></span><br><span class="line">    firstWorkInProgressHook = workInProgressHook = hook;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 若链表不为空，则将 hook 追加到链表尾部</span></span><br><span class="line">    workInProgressHook = workInProgressHook.next = hook;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 返回当前的 hook</span></span><br><span class="line">  <span class="keyword">return</span> workInProgressHook;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个方法就是<strong>初始化单个 hook 对象</strong>的，并且将每个 hook 对象以 next 指针进行关联，形成一个<strong>单向链表。</strong><br>而 hook 的基本结构就是这样的<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121363169-31ba856c-4403-4c15-b714-1f6b33aa7055.png#clientId=u1d51cbde-e5db-4&from=paste&height=139&id=u519a9150&margin=%5Bobject%20Object%5D&name=image.png&originHeight=278&originWidth=400&originalType=binary%E2%88%B6=2&size=22848&status=done&style=none&taskId=u851f667c-684a-437b-ba00-34e0e88f5f2&width=200" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121363169-31ba856c-4403-4c15-b714-1f6b33aa7055.png#clientId=u1d51cbde-e5db-4&from=paste&height=139&id=u519a9150&margin=%5Bobject%20Object%5D&name=image.png&originHeight=278&originWidth=400&originalType=binary%E2%88%B6=2&size=22848&status=done&style=none&taskId=u851f667c-684a-437b-ba00-34e0e88f5f2&width=200" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>memoizedState 就是当前的 state 值。</p>
+<blockquote>
+<p>这里需要和 fiber 结构中的 memoizedState 区别开来。fiber 结构中的 memoizedState 保存该 FunctionComponent 对应的 Hooks 链表<br>而函数组件能实现状态的保存，也是<strong>将数据保存在对应函数组件的 fiber 中</strong> &gt; <img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121583819-336bd109-b4cd-4899-b068-8c7ef316307d.png#clientId=u1d51cbde-e5db-4&from=paste&height=158&id=u3899165f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=316&originWidth=718&originalType=binary%E2%88%B6=2&size=85580&status=done&style=none&taskId=u855f8cf9-ef67-48e7-8b85-32477513b5f&width=359" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121583819-336bd109-b4cd-4899-b068-8c7ef316307d.png#clientId=u1d51cbde-e5db-4&from=paste&height=158&id=u3899165f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=316&originWidth=718&originalType=binary%E2%88%B6=2&size=85580&status=done&style=none&taskId=u855f8cf9-ef67-48e7-8b85-32477513b5f&width=359" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+</blockquote>
+<h3 id="更新阶段：update"><a href="#更新阶段：update" class="headerlink" title="更新阶段：update"></a>更新阶段：update</h3><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121752668-0a68672f-aaa1-45e9-a6d8-d6e7041a1bca.png#clientId=u1d51cbde-e5db-4&from=paste&height=271&id=ud524512e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=542&originWidth=2010&originalType=binary%E2%88%B6=2&size=111304&status=done&style=none&taskId=uedb455c4-4f78-4c70-aded-c8634fe9a0d&width=1005" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623121752668-0a68672f-aaa1-45e9-a6d8-d6e7041a1bca.png#clientId=u1d51cbde-e5db-4&from=paste&height=271&id=ud524512e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=542&originWidth=2010&originalType=binary%E2%88%B6=2&size=111304&status=done&style=none&taskId=uedb455c4-4f78-4c70-aded-c8634fe9a0d&width=1005" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>可以看到在更新阶段，他们的调用方法是不一样的。<br>​</p>
+<p>并且对于这个流程我们只需要知道<code>updateState</code>以及之后的流程做的一件事目的都比较明确就是：根据我们<strong>在 mout 阶段生成的 hooks 的链表，来按照顺序遍历读取对应的数据进行渲染。</strong><br><strong>​</strong></p>
+<p>这里需要注意一点就是，在非首次更新的阶段中，查找对应的 hook 是“<strong>依次遍历</strong>”的，也就是按照顺序一个个查找下来的，并不是按照 useState 的名字去查找的。</p>
+<blockquote>
+<p>所以当我们在判断中去写 useState 的时候，就会造成在初次挂载时形成的链表结构中是有 3 个 hook，但是在更新的时候由于条件不满足就会造成只剩两个或者一个 hook，所以就会造成在遍历链表的过程中造成 hook 对应不上的情况，就会抛出错误，并且不能获取到真实数据的情况。</p>
+</blockquote>
+<p><strong>​</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>为什么 hook 不能写在循环或者判断里<blockquote>
+<p>在一个组件初次挂载的时候，会调用 mountState 方法，就所有的 hook 形成一个链表结构，在组件发生更新时会调用 updateState 方法，去按照顺序遍历我们在挂载时形成的链表，如果在更新时因为判断或者循环造成 hook 的顺序或者数量发生变化，就会发生无法对应到实际 hook 的情况</p>
 </blockquote>
 </li>
-<li><p>@import</p>
-</li>
-<li><p>rules （这部分是我们日常最常用到的部分）</p>
-<ol>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
 </ol>
-</li>
-</ol>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: /* value */ red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
-<ol>
-<li>Selector（选择器）</li>
-<li>Declare（声明）<ol>
-<li>key</li>
-<li>value</li>
-</ol>
-</li>
-</ol>
-<h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">name</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      <span class="attr">url</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
 
   
   
@@ -490,7 +483,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/>https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/08/yuque/Hooks%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/>https://blog.lqh.kim/2021/06/08/yuque/Hooks%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6/</a></p>
               
             
           </blockquote>
@@ -507,7 +500,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:50+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>2021年6月8日</p>
@@ -526,19 +519,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>翻译记录</p>
-          <p class='content'>Selectors Level 4Selector syntax(选择器语法）一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过连接符（Combinators）分割开。并且在一个选择器...</p>
+        <a class='prev' href='/2021/06/08/yuque/Fiber%E6%9E%B6%E6%9E%84/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Fiber架构</p>
+          <p class='content'>怎么理解 fiber 架构</p>
         </a>
       
       
-        <a class='next' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
-          <p class='title'>链表篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>【206】反转链表描述
-反转一个单链表。
+        <a class='next' href='/2021/06/07/yuque/webpack%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90/'>
+          <p class='title'>webpack编译结果分析<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>首先我们可以尝试自己手写一个简单的编译结果。然后和实际的编译结果进行对比，来加深对编译结果的分析。​
+手写 webpack 编译结果
+这里的相关代码，已上传 git 仓库
 
-
-示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
+1. 合并模块,形成...</p>
         </a>
       
     </div>
@@ -581,7 +574,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">CSS2.1 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">总体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E8%A7%84%E5%88%99%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 规则的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E5%8F%96-w3c-%E7%9A%84-css-%E8%A7%84%E5%88%99"><span class="toc-text">爬取 w3c 的 css 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-text">思维导图</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-text">更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#useState-%E7%9A%84%E8%B0%83%E7%94%A8%E9%93%BE%E8%B7%AF"><span class="toc-text">useState 的调用链路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E6%8C%82%E8%BD%BD%EF%BC%9Amount"><span class="toc-text">初次挂载：mount</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5%EF%BC%9Aupdate"><span class="toc-text">更新阶段：update</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
 
@@ -600,7 +593,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="CSS结构";
+  pdata.postTitle="Hooks的实现机制";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要

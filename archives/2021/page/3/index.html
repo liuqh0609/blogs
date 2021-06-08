@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <!-- 绕过语雀防盗链 -->
@@ -24,7 +26,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>CSS结构 - 火热</title>
+  <title>归档：2021 - 火热</title>
   
 
   
@@ -104,7 +106,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -321,7 +323,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post search' style="display: none;">
+        <div id="half" class='cover-wrapper  search' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -363,205 +365,243 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  
-
-
-  
-  <div class="article-meta" id="top">
+	
+		
+  <section class="post-list">
     
     
-    
-      <h1 class="title">
-        CSS结构
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' href="/blogs/" rel="nofollow">
-    <img no-lazy src="http://qiniu.lqh.kim/avatar.jpeg">
-    <p>火热</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2020年12月14日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
       
-      <div id="lc-pv" data-title="CSS结构" data-path="/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
-          
         
-      </div>
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/06/yuque/%E9%98%9F%E5%88%97/">
+        队列
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+具体请移步git 仓库查看
+
+【933】最近的请求次数题目描述这道题可能读起来有点难懂，我们这里先来梳理一下题意：我们配合示例来看，首先输入是两个数组
+
+第一个数组是字符串组成的，这个字符串其实对应的是方法的调用
+第二个数组是由数字组成的，这个就是在调用的第一个数组时传入的参数
+两个数组两两对应
+
+题解1234567891011121314151617181920212223242526v...
+      
     
   </div>
-
-
   
-  
-  <p>因为找不到一个明确的语法线索，所以我们这里根据 2.1 版本的语法来进行学习。<br>现版本 css 多了很多 css3 的语法，但是不影响我们理解他的语法结构。</p>
-<h2 id="CSS2-1-语法"><a href="#CSS2-1-语法" class="headerlink" title="CSS2.1 语法"></a>CSS2.1 语法</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.ayqy.net/doc/css2-1/grammar.html">css2.1Grammar 中文对照版</a></li>
-</ul>
-<h2 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h2><p>一个样式文件从上到下的顺序结构：</p>
-<ol>
-<li><p>@charset</p>
-<blockquote>
-<p><code>@charset &#39;UTF-8&#39;;</code> <br>声明 css 文件的字符编码标准。</p>
-<ul>
-<li>必须在样式表的第一行声明</li>
-<li>如果有多个@charset 声明，那么只有第一个会生效</li>
-<li>无法在 HTML 的 style 标签里使用该 at-rule 规则</li>
-</ul>
-<p>Tip:<br>在样式表中声明字符编码有很多种方式，浏览器会按照以下顺序去尝试确定文件的编码方式（只要找到一种就会停止并得出结果）：</p>
-<ol>
-<li>文件开头的  <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Byte_order_mark">Unicode byte-order</a>  字符值</li>
-<li>由 Content-type 确定：HTTP 协议中的  charset 属性给出的值或用于提供样式表的协议中的等效值</li>
-<li>CSS @rule 规则：@charset</li>
-<li>假设文档上是 UTF-8 的格式</li>
-</ol>
-</blockquote>
-</li>
-<li><p>@import</p>
-</li>
-<li><p>rules （这部分是我们日常最常用到的部分）</p>
-<ol>
-<li>@media</li>
-<li>@page</li>
-<li>rule</li>
-</ol>
-</li>
-</ol>
-<h2 id="CSS-规则的结构"><a href="#CSS-规则的结构" class="headerlink" title="CSS 规则的结构"></a>CSS 规则的结构</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="comment">/* selector */</span> &#123;</span><br><span class="line">  <span class="comment">/* key */</span></span><br><span class="line">  <span class="attribute">background-color</span>: /* value */ red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由上面的 css 代码可以明确 css 规则的结构分为以下两个部分：</p>
-<ol>
-<li>Selector（选择器）</li>
-<li>Declare（声明）<ol>
-<li>key</li>
-<li>value</li>
-</ol>
-</li>
-</ol>
-<h2 id="爬取-w3c-的-css-规则"><a href="#爬取-w3c-的-css-规则" class="headerlink" title="爬取 w3c 的 css 规则"></a>爬取 w3c 的 css 规则</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.stringify(</span><br><span class="line">  <span class="built_in">Array</span>.prototype.slice</span><br><span class="line">    .call(<span class="built_in">document</span>.querySelector(<span class="string">&quot;#container&quot;</span>).children)</span><br><span class="line">    .filter(<span class="function">(<span class="params">e</span>) =&gt;</span> e.getAttribute(<span class="string">&quot;data-tag&quot;</span>).match(<span class="regexp">/css/</span>))</span><br><span class="line">    .map(<span class="function">(<span class="params">e</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">name</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].innerText,</span><br><span class="line">      <span class="attr">url</span>: e.children[<span class="number">1</span>].children[<span class="number">0</span>].href,</span><br><span class="line">    &#125;))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/2705850/1608424173469-cf7b1df7-98e3-4d61-aa22-74c472f7e380.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII="></p>
-
-  
-  
-    
-    <div class='footer'>
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-02-06</time>
+        
+      </div>
       
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>如需转载博客，请联系作者授权</p>
-
-              
-            
-              
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/>https://blog.lqh.kim/2020/12/14/yuque/CSS%E7%BB%93%E6%9E%84/</a></p>
-              
-            
-          </blockquote>
+        <div>
+          <a class='readmore' href='/2021/02/06/yuque/%E9%98%9F%E5%88%97/'>
+            阅读全文
+          </a>
         </div>
       
-      
     </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
   
   
     
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
+    <h2 class="article-title" >
+      <a href="/2021/02/02/yuque/%E6%A0%88/">
+        栈
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T15:55:51+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年6月8日</p>
-  </a>
-</div>
+具体请移步git 仓库查看
 
-        
+【20】有效的括号描述
+给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’  的字符串 s ，判断字符串是否有效。
+
+
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+
+提示：
+
+** ** 1 &lt;= s.length &lt;= 10
+s 仅由括号 &#39;()[]&#123;&#125;&#39;...
       
-    </div>
+    
   </div>
-
-
   
-  
-
-  
-    <div class="prev-next">
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-02-02</time>
+        
+      </div>
       
-        <a class='prev' href='/2020/12/15/yuque/%E7%BF%BB%E8%AF%91%E8%AE%B0%E5%BD%95/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>翻译记录</p>
-          <p class='content'>Selectors Level 4Selector syntax(选择器语法）一个选择器是由一个或者多个简单选择器序列组合而成的，他们通过连接符（Combinators）分割开。并且在一个选择器...</p>
-        </a>
-      
-      
-        <a class='next' href='/2020/12/10/yuque/%E9%93%BE%E8%A1%A8%E7%AF%87/'>
-          <p class='title'>链表篇<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>【206】反转链表描述
-反转一个单链表。
-
-
-示例: &gt; 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL输出: 5-&gt;4-&gt;3-&gt;2-&gt...</p>
-        </a>
+        <div>
+          <a class='readmore' href='/2021/02/02/yuque/%E6%A0%88/'>
+            阅读全文
+          </a>
+        </div>
       
     </div>
   
-</article>
 
-
-  
-
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-  </article>
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/02/yuque/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+        数据结构
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        栈
+定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
+名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中是没用栈这种数据结构的，不过我们可以利用数组来模拟。而且在 js 中也是有对应的 push  和 pop  方法的:
+push: 向数组末尾添加一个元素，返回值是数组的长度pop：移除数组的第一个元素...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-02-02</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/02/yuque/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/02/yuque/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+        时间复杂度&空间复杂度
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        复杂度的作用一般我们会从两个维度去考虑一段代码的质量：
+
+时间复杂度
+空间复杂度
+
+顾名思义，其实时间复杂度就是说这段代码的计算量所能消耗的时间，而空间复杂度就是这段代码所占据的内存空间。
+所以时间复杂度和空间复杂度一般是用来衡量一段代码的优劣的。
+那么我们应该怎么来定义复杂度呢？
+复杂度的定义与特点定义
+复杂度是一个关于输入量 n 的函数。eg：假设你的代码复杂度是 f(n),那么用大写字...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='dashed'>
+      <div>
+        
+        <time>2021-02-02</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/02/yuque/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6&%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+      <br>
+      <div class="prev-next">
+        
+          <a class="prev" rel="prev" href="/archives/2021/page/2/">
+            <section class="post prev white-box shadow" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+            </section>
+          </a>
+        
+        <p class="current">
+          3 / 3
+        </p>
+        
+      </div>
+    
+  
 
 
-
-
-
-
+	
 </div>
 <aside class='l_side'>
   
@@ -569,28 +609,113 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://qiniu.lqh.kim/avatar.jpeg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>火热</h2>
+        
+        
+          <p>时间会见证一切</p>
 
+        
+        
+          <p><span id="jinrishici-sentence">火热</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:528851597@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/liuqh0609/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS2-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">CSS2.1 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">总体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E8%A7%84%E5%88%99%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 规则的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%88%AC%E5%8F%96-w3c-%E7%9A%84-css-%E8%A7%84%E5%88%99"><span class="toc-text">爬取 w3c 的 css 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-text">思维导图</span></a></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"
+            id="categoriesE695B0E68DAEE7BB93E69E84E4B88EE7AE97E6B395"
+            ><div class='name'>数据结构与算法</div><div class='badge'>(4)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
 
   
 
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #73d13d">数据结构与算法</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
 
 </aside>
-
 
 
 		  
@@ -599,21 +724,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="CSS结构";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="none";
-    cover_wrapper.style.display="none";
+    cover_wrapper.id="half";
+    cover_wrapper.style.display="";
     
   
 </script>
