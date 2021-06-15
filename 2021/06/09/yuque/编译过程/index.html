@@ -24,13 +24,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>栈 - 基础知识 - 火热</title>
-  
-    <meta name="keywords" content="数据结构与算法">
+  <title>编译过程 - 火热</title>
   
 
-  
-    <meta name="description" content="测试首页图片是否能正常显示以及文章描述">
   
 
   <!-- feed -->
@@ -108,7 +104,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <body>
     
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -325,7 +321,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper post search' style="display: ;">
+        <div id="full" class='cover-wrapper post search' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://qiniu.lqh.kim/banner1.jpeg"></div>
           
@@ -377,7 +373,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title">
-        栈 - 基础知识
+        编译过程
       </h1>
       <div class='new-meta-box'>
         
@@ -394,13 +390,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
-  <div class='new-meta-item category'>
-    <a class='notlink'>
-      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
-    </a>
-  </div>
-
 
           
         
@@ -408,7 +397,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>2021年6月8日</p>
+    <p>2021年6月9日</p>
   </a>
 </div>
 
@@ -419,7 +408,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="栈 - 基础知识" data-path="/2021/06/08/%E6%B5%8B%E8%AF%95/">
+      <div id="lc-pv" data-title="编译过程" data-path="/2021/06/09/yuque/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -437,8 +426,45 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
   
-  <p>测试首页图片是否能正常显示以及文章描述</p>
-<span id="more"></span>
+  <p>webpack 在编译的过程中大体分为三个阶段：</p>
+<ol>
+<li>初始化</li>
+<li>编译</li>
+<li>输出</li>
+</ol>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在初始化这一步中主要是为了整合所有的配置，然后生成一个最终的配置对象。<br>他会将 cli、配置文件、默认配置通过一个 yarg 的第三方库进行整合然后生成最终的一个配置对象。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623711798185-348035b4-a9ef-4fe5-9e39-688c97f59320.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=349&id=u4a2e647d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=698&originWidth=1332&originalType=binary%E2%88%B6=2&size=120186&status=done&style=none&taskId=u89647371-720d-421a-9744-bc1efb58cbf&width=666" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623711798185-348035b4-a9ef-4fe5-9e39-688c97f59320.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=349&id=u4a2e647d&margin=%5Bobject%20Object%5D&name=image.png&originHeight=698&originWidth=1332&originalType=binary%E2%88%B6=2&size=120186&status=done&style=none&taskId=u89647371-720d-421a-9744-bc1efb58cbf&width=666" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>这一步是最重要也是其中比较复杂的一步。我们会根据上一步中生成的配置对象进行相关的编译流程。</p>
+<h3 id="生成-chunk"><a href="#生成-chunk" class="headerlink" title="生成 chunk"></a>生成 chunk</h3><p>chunk 是在编译过程中的一个概念，在输出之后我们是感知不到的,根据<strong>入口(默认./src/index.js)模块</strong>生成 chunk，默认情况下叫做<code>main chunk</code>。<br><strong>chunk 表示通过某个入口找到的所有依赖的统称。</strong></p>
+<blockquote>
+<p><strong>一般情况下每个项目只有一个 chunk，当然如果你配置了多个入口，那么也会根据多个入口文件生成多个 chunk。</strong></p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623712798937-3e193d28-acab-4bc6-857c-f25ca8632224.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=315&id=u196b7792&margin=%5Bobject%20Object%5D&name=image.png&originHeight=630&originWidth=1152&originalType=binary%E2%88%B6=2&size=100525&status=done&style=none&taskId=u0a21c350-4b05-43c4-9167-c52721345cd&width=576" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623712798937-3e193d28-acab-4bc6-857c-f25ca8632224.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=315&id=u196b7792&margin=%5Bobject%20Object%5D&name=image.png&originHeight=630&originWidth=1152&originalType=binary%E2%88%B6=2&size=100525&status=done&style=none&taskId=u0a21c350-4b05-43c4-9167-c52721345cd&width=576" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>一般情况下 chunk 有最少两个属性：</p>
+<ol>
+<li>name：表示 chunk 的名称，默认为 main</li>
+<li>id：chunk 的唯一编号。<ul>
+<li>开发环境：用 name 表示</li>
+<li>生产环境：用数字表示，默认从 0 开始</li>
+</ul>
+</li>
+</ol>
+<h3 id="构建所有依赖"><a href="#构建所有依赖" class="headerlink" title="构建所有依赖"></a>构建所有依赖</h3><p>构建依赖的过程一句话概括就是<strong>根据入口文件分析各个模块间的依赖关系，然后加载转换其对应的内容。</strong>具体流程如下图<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623714406530-add2b060-675b-416f-8af6-471682ed2c2b.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=581&id=u6d051060&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1162&originWidth=2048&originalType=binary%E2%88%B6=2&size=351082&status=done&style=none&taskId=uee328281-a6c0-458d-a0eb-a5a441e35d3&width=1024" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623714406530-add2b060-675b-416f-8af6-471682ed2c2b.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=581&id=u6d051060&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1162&originWidth=2048&originalType=binary%E2%88%B6=2&size=351082&status=done&style=none&taskId=uee328281-a6c0-458d-a0eb-a5a441e35d3&width=1024" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<ol>
+<li>根据入口（默认<code>./src/index.js</code>）找到对应的入口模块文件</li>
+<li>首先根据入口地址，即以<code>./src/index.js</code>为标识从 chunk 的模块记录中查找是否有该模块的缓存记录<ol>
+<li>有。则结束该流程</li>
+<li>无。继续下一步</li>
+</ol>
+</li>
+<li>根据加载到的模块文件读取其内容</li>
+<li>通过语法分析生成抽象语法树</li>
+<li>通过抽象语法树来分析该文件中的所有依赖，将其记录到 dependencies 中</li>
+<li>然后进行替换依赖函数，就是将 require 之类的函数替换成自己实现的一些模块加载函数</li>
+<li>最后将转换后的代码与其地址对应起来保存到模块记录中</li>
+<li>之后就是根据 dependencies 中记录的所有依赖进行递归加载模块，反复执行上面的流程</li>
+</ol>
+<p>​</p>
+<p>这一步结束之后其实就是<strong>将所有的模块集中在 chunk 中</strong>：<img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623768036971-41f1c6ba-3942-4c38-b1bc-a6323e008951.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=352&id=u7d100dde&margin=%5Bobject%20Object%5D&name=image.png&originHeight=704&originWidth=1214&originalType=binary%E2%88%B6=2&size=123612&status=done&style=none&taskId=u78b759b6-602d-48e3-9d4d-ecee5172796&width=607" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623768036971-41f1c6ba-3942-4c38-b1bc-a6323e008951.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=352&id=u7d100dde&margin=%5Bobject%20Object%5D&name=image.png&originHeight=704&originWidth=1214&originalType=binary%E2%88%B6=2&size=123612&status=done&style=none&taskId=u78b759b6-602d-48e3-9d4d-ecee5172796&width=607" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>​</p>
+<h3 id="生成-chunk-assets"><a href="#生成-chunk-assets" class="headerlink" title="生成 chunk assets"></a>生成 chunk assets</h3><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2>
   
   
     
@@ -455,7 +481,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
               
             
               
-                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/08/%E6%B5%8B%E8%AF%95/>https://blog.lqh.kim/2021/06/08/%E6%B5%8B%E8%AF%95/</a></p>
+                <p>本文永久链接：<a href=https://blog.lqh.kim/2021/06/09/yuque/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/>https://blog.lqh.kim/2021/06/09/yuque/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</a></p>
               
             
           </blockquote>
@@ -472,10 +498,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-08T16:39:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-15T22:41:48+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年6月8日</p>
+    <p>2021年6月15日</p>
   </a>
 </div>
 
@@ -491,11 +517,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/08/%E6%A0%88/'>
+        <a class='prev' href='/2021/06/15/%E6%B5%8B%E8%AF%95/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
-          <p class='content'>栈
-定义一种后进先出的数据结构。 类似于一个麻袋，先装进去的就在袋子的最底部，所以只能先拿出来最上面的
-名词解释push： 入栈pop： 出栈top：栈顶JavaScript 中的栈在 js 中...</p>
+          <p class='content'>测试首页图片是否能正常显示以及文章描述
+</p>
         </a>
       
       
@@ -534,6 +559,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk"><span class="toc-text">生成 chunk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%89%80%E6%9C%89%E4%BE%9D%E8%B5%96"><span class="toc-text">构建所有依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk-assets"><span class="toc-text">生成 chunk assets</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-text">输出</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -549,20 +588,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="栈 - 基础知识";
+  pdata.postTitle="编译过程";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
   
     // cover
     var cover_wrapper=document.querySelector('.cover-wrapper');
     
-    cover_wrapper.id="half";
-    cover_wrapper.style.display="";
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
     
   
 </script>
