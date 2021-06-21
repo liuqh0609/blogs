@@ -448,6 +448,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 </ol>
 <h3 id="构建所有依赖"><a href="#构建所有依赖" class="headerlink" title="构建所有依赖"></a>构建所有依赖</h3><p>构建依赖的过程一句话概括就是<strong>根据入口文件分析各个模块间的依赖关系，然后加载转换其对应的内容。</strong>具体流程如下图<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623714406530-add2b060-675b-416f-8af6-471682ed2c2b.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=581&id=u6d051060&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1162&originWidth=2048&originalType=binary%E2%88%B6=2&size=351082&status=done&style=none&taskId=uee328281-a6c0-458d-a0eb-a5a441e35d3&width=1024" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623714406530-add2b060-675b-416f-8af6-471682ed2c2b.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=581&id=u6d051060&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1162&originWidth=2048&originalType=binary%E2%88%B6=2&size=351082&status=done&style=none&taskId=uee328281-a6c0-458d-a0eb-a5a441e35d3&width=1024" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<blockquote>
+<p>AST 在线网站：<a target="_blank" rel="noopener" href="https://astexplorer.net/">https://astexplorer.net/</a></p>
+</blockquote>
 <ol>
 <li>根据入口（默认<code>./src/index.js</code>）找到对应的入口模块文件</li>
 <li>首先根据入口地址，即以<code>./src/index.js</code>为标识从 chunk 的模块记录中查找是否有该模块的缓存记录<ol>
@@ -457,14 +460,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </li>
 <li>根据加载到的模块文件读取其内容</li>
 <li>通过语法分析生成抽象语法树</li>
-<li>通过抽象语法树来分析该文件中的所有依赖，将其记录到 dependencies 中</li>
-<li>然后进行替换依赖函数，就是将 require 之类的函数替换成自己实现的一些模块加载函数</li>
-<li>最后将转换后的代码与其地址对应起来保存到模块记录中</li>
+<li>通过抽象语法树来分析该文件中的所有依赖，将其记录到 dependencies 中<em>（dependencies 类似于一个数组[./src/a.js, ./src/b.js])</em></li>
+<li>然后进行替换依赖函数，就是将 require 之类的函数替换成自己实现的一些模块加载函数（<em>类似于编译结果分析里的自己封装的__webpack_require 函数）</em></li>
+<li>最后将转换后的代码与其地址对应起来保存到模块记录中（<em>这里就是编译结果中传递的 module 对象，就是通过地址和转换后的字符串代码进行对应起来，方便查找）</em></li>
 <li>之后就是根据 dependencies 中记录的所有依赖进行递归加载模块，反复执行上面的流程</li>
 </ol>
 <p>​</p>
 <p>这一步结束之后其实就是<strong>将所有的模块集中在 chunk 中</strong>：<img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623768036971-41f1c6ba-3942-4c38-b1bc-a6323e008951.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=352&id=u7d100dde&margin=%5Bobject%20Object%5D&name=image.png&originHeight=704&originWidth=1214&originalType=binary%E2%88%B6=2&size=123612&status=done&style=none&taskId=u78b759b6-602d-48e3-9d4d-ecee5172796&width=607" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623768036971-41f1c6ba-3942-4c38-b1bc-a6323e008951.png#clientId=ub8ce7cbd-ac07-4&from=paste&height=352&id=u7d100dde&margin=%5Bobject%20Object%5D&name=image.png&originHeight=704&originWidth=1214&originalType=binary%E2%88%B6=2&size=123612&status=done&style=none&taskId=u78b759b6-602d-48e3-9d4d-ecee5172796&width=607" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>​</p>
-<h3 id="生成-chunk-assets"><a href="#生成-chunk-assets" class="headerlink" title="生成 chunk assets"></a>生成 chunk assets</h3><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2>
+<h3 id="生成-chunk-assets"><a href="#生成-chunk-assets" class="headerlink" title="生成 chunk assets"></a>生成 chunk assets</h3><p>经过上一步之后，chunk 中会生成一个模块列表，列表中包含了模块的 id 和转换后的代码。<br>webpack 会根据这个列表生成一个对应的资源列表 chunk assets<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844077931-35091f16-6433-4b2d-8f1c-15700683e4a3.png#clientId=u23c72bec-2a32-4&from=paste&height=249&id=uf837a82c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=498&originWidth=1458&originalType=binary%E2%88%B6=2&size=265157&status=done&style=none&taskId=ub526cb61-31cc-4072-aa01-412a7081f8c&width=729" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844077931-35091f16-6433-4b2d-8f1c-15700683e4a3.png#clientId=u23c72bec-2a32-4&from=paste&height=249&id=uf837a82c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=498&originWidth=1458&originalType=binary%E2%88%B6=2&size=265157&status=done&style=none&taskId=ub526cb61-31cc-4072-aa01-412a7081f8c&width=729" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"><br>大致过程：<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844223511-11597f22-f465-4a37-932e-86c3dfb4d701.png#clientId=u23c72bec-2a32-4&from=paste&height=319&id=u10637aad&margin=%5Bobject%20Object%5D&name=image.png&originHeight=638&originWidth=1510&originalType=binary%E2%88%B6=2&size=408034&status=done&style=none&taskId=u4777d122-90e5-4200-8776-ac5d3098908&width=755" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844223511-11597f22-f465-4a37-932e-86c3dfb4d701.png#clientId=u23c72bec-2a32-4&from=paste&height=319&id=u10637aad&margin=%5Bobject%20Object%5D&name=image.png&originHeight=638&originWidth=1510&originalType=binary%E2%88%B6=2&size=408034&status=done&style=none&taskId=u4777d122-90e5-4200-8776-ac5d3098908&width=755" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h3 id="合并-chunk-assets"><a href="#合并-chunk-assets" class="headerlink" title="合并 chunk assets"></a>合并 chunk assets</h3><p>将多个 chunk assets 合并成一个（这个是针对多入口时产生的多个 chunk 的处理）<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844290169-44f0c43a-7e3c-4b36-9a87-d7a0b1a947aa.png#clientId=u23c72bec-2a32-4&from=paste&height=447&id=uc7fc13b3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=894&originWidth=1500&originalType=binary%E2%88%B6=2&size=522730&status=done&style=none&taskId=u5e4e5da1-aeaf-470b-81b2-264a1d0f252&width=750" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844290169-44f0c43a-7e3c-4b36-9a87-d7a0b1a947aa.png#clientId=u23c72bec-2a32-4&from=paste&height=447&id=uc7fc13b3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=894&originWidth=1500&originalType=binary%E2%88%B6=2&size=522730&status=done&style=none&taskId=u5e4e5da1-aeaf-470b-81b2-264a1d0f252&width=750" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="输出-emit"><a href="#输出-emit" class="headerlink" title="输出(emit)"></a>输出(emit)</h2><p>利用 node 中的 fs 模块，根据最后生成的 assets 创建对应的文件<br><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844387751-93c44936-d071-424a-9922-88cea4779ba1.png#clientId=u23c72bec-2a32-4&from=paste&height=460&id=ue812978f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=920&originWidth=1268&originalType=binary%E2%88%B6=2&size=356947&status=done&style=none&taskId=ubd3b8e32-06da-454a-8094-a66b7c36b9b&width=634" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844387751-93c44936-d071-424a-9922-88cea4779ba1.png#clientId=u23c72bec-2a32-4&from=paste&height=460&id=ue812978f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=920&originWidth=1268&originalType=binary%E2%88%B6=2&size=356947&status=done&style=none&taskId=ubd3b8e32-06da-454a-8094-a66b7c36b9b&width=634" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844414453-c90268e0-7f75-4363-a392-64974badf3f0.png#clientId=u23c72bec-2a32-4&from=paste&height=344&id=u9879ad16&margin=%5Bobject%20Object%5D&name=image.png&originHeight=688&originWidth=1478&originalType=binary%E2%88%B6=2&size=430288&status=done&style=none&taskId=ua7f3c610-82ab-47ba-8679-3d85b226668&width=739" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/2705850/1623844414453-c90268e0-7f75-4363-a392-64974badf3f0.png#clientId=u23c72bec-2a32-4&from=paste&height=344&id=u9879ad16&margin=%5Bobject%20Object%5D&name=image.png&originHeight=688&originWidth=1478&originalType=binary%E2%88%B6=2&size=430288&status=done&style=none&taskId=ua7f3c610-82ab-47ba-8679-3d85b226668&width=739" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image.png"></p>
+<ol>
+<li>执行 webpack 命令之后，进行初始化将所有配置合并</li>
+<li>然后执行编译过程将所有模块输出到一个或者多个 chunk 中</li>
+<li>然后将 chunk 合并成一个 chunk assets</li>
+<li>最后将资源输出成为对应的文件</li>
+</ol>
+
   
   
     
@@ -498,10 +511,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-15T22:41:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-06-21T10:32:43+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>2021年6月15日</p>
+    <p>2021年6月21日</p>
   </a>
 </div>
 
@@ -517,7 +530,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/06/15/%E6%B5%8B%E8%AF%95/'>
+        <a class='prev' href='/2021/06/21/%E6%B5%8B%E8%AF%95/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>栈 - 基础知识</p>
           <p class='content'>测试首页图片是否能正常显示以及文章描述
 </p>
@@ -569,7 +582,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk"><span class="toc-text">生成 chunk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%89%80%E6%9C%89%E4%BE%9D%E8%B5%96"><span class="toc-text">构建所有依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk-assets"><span class="toc-text">生成 chunk assets</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-text">输出</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk"><span class="toc-text">生成 chunk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%89%80%E6%9C%89%E4%BE%9D%E8%B5%96"><span class="toc-text">构建所有依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-chunk-assets"><span class="toc-text">生成 chunk assets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6-chunk-assets"><span class="toc-text">合并 chunk assets</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-emit"><span class="toc-text">输出(emit)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
 
